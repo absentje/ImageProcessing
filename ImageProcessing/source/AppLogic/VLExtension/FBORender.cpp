@@ -58,8 +58,8 @@ vl::Texture* FBORender::GetRenderTexture( vl::EAttachmentPoint ap )
 
 void	FBORender::SetCamera( vl::Camera* camera )
 {
-	VL_CHECK( camera )
-		pRendering->setCamera( camera );
+	VL_CHECK( camera );
+	pRendering->setCamera( camera );
 	resizeCamera();
 }
 
@@ -87,8 +87,8 @@ void	FBORender::Render( vl::Image& saveScreen )
 
 void	FBORender::AddSceneManager( vl::SceneManager* sceneManager )
 {
-	VL_CHECK( sceneManager )
-		pRendering->sceneManagers()->push_back( sceneManager );
+	VL_CHECK( sceneManager );
+	pRendering->sceneManagers()->push_back( sceneManager );
 }
 void	FBORender::ClearAdditionalScenes()
 {
@@ -199,29 +199,29 @@ void	FBORender::resizeCamera()
 
 void	FBORender::Resize( int width, int height )
 {
-	VL_CHECK( width > 0 )
-		VL_CHECK( height > 0 )
-		if ( width != fboWidth || height != fboHeight )
+	VL_CHECK( width > 0 );
+	VL_CHECK( height > 0 );
+	if ( width != fboWidth || height != fboHeight )
+	{
+		if ( width > fboWidth || height > fboHeight )
+		{// надо пересоздавать фбо, когда размер больше стартового
+			createFBO( width, height );
+			setDrawBuffers();
+		} else
 		{
-			if ( width > fboWidth || height > fboHeight )
-			{// надо пересоздавать фбо, когда размер больше стартового
-				createFBO( width, height );
-				setDrawBuffers();
-			} else
-			{
-				pFBO->setWidth( width );
-				pFBO->setHeight( height );
-			}
-			fboWidth = width;
-			fboHeight = height;
-
-			for ( auto& att : mAttachTextures )
-			{
-				createTexture( att.second->internalFormat(), att.first );
-			}
-
-			resizeCamera();
+			pFBO->setWidth( width );
+			pFBO->setHeight( height );
 		}
+		fboWidth = width;
+		fboHeight = height;
+
+		for ( auto& att : mAttachTextures )
+		{
+			createTexture( att.second->internalFormat(), att.first );
+		}
+
+		resizeCamera();
+	}
 }
 
 }

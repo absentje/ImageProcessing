@@ -11,14 +11,14 @@ Pipeline::Pipeline( int w, int h )
 
 void Pipeline::SetInputTexture( vl::Texture* texture )
 {
-	VL_CHECK( texture )
-		pInTexture = texture;
+	VL_CHECK( texture );
+	pInTexture = texture;
 }
 
 void Pipeline::SetInputPipeline( Pipeline* pipeline )
 {
-	VL_CHECK( pipeline )
-		pInPipeline = pipeline;
+	VL_CHECK( pipeline );
+	pInPipeline = pipeline;
 }
 
 Pipeline::~Pipeline()

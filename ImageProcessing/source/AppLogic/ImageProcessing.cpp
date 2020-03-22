@@ -15,7 +15,7 @@ static QMessageBox* msMessage = nullptr;
 
 class ImageProcessingController: public VLExtension::SceneController
 {
-    VL_INSTRUMENT_CLASS( ImageProcessingController, VLExtension::SceneController )
+    VL_INSTRUMENT_CLASS( ImageProcessingController, VLExtension::SceneController );
 public:
     ImageProcessingController( ImageProcessing* ptr )
         : pImageProcessing( ptr ) {}
@@ -69,8 +69,10 @@ void ImageProcessing::LoadImage(const std::wstring& file_path)
 
 void ImageProcessing::SaveOutputImage()
 {
-    if (!pOutputImage)
+    if ( !pOutputImage )
+    {
         return;
+    }
     std::wstring fileName = pSourceImage->filePath().extractFileName().toStdWString();
     std::wstring fileType = pSourceImage->filePath().extractFileExtension().toStdWString();
     auto iter = fileName.find(L'.');
@@ -94,8 +96,10 @@ void ImageProcessing::ProcessImage()
 {
     static const int THREAD_COUNT = 4;
     std::vector<std::thread> threads;
-    if (!msMessage)
+    if ( !msMessage )
+    {
         msMessage = new QMessageBox;
+    }
     msMessage->show();
 
     Timer timer;
@@ -148,20 +152,26 @@ void ImageProcessing::ProcessImage()
 
 void ImageProcessing::ShowOutputImage()
 {
-    if (!pOutputImage) return;
-        pActor->SetTexture(vl::ref<vl::Texture>(new vl::Texture(pOutputImage.get())).get());
+    if ( !pOutputImage )
+    {
+        return;
+    }
+    pActor->SetTexture( vl::ref<vl::Texture>( new vl::Texture( pOutputImage.get() ) ).get() );
 }
 
 void ImageProcessing::ProcessOutputImage(int i, int w)
 {
-    if (!pOutputImage) return;
+    if ( !pOutputImage )
+    {
+        return;
+    }
     unsigned char* pixels = pOutputImage->pixels();
     int bytesPerPixel = pOutputImage->bitsPerPixel() / 8;
     int pixelCount = pOutputImage->width() * pOutputImage->height();
     int j = i;
-    while (j < pixelCount)
+    while ( j < pixelCount )
     {
-        ProcessColor(*reinterpret_cast<vl::ubvec3*>(pixels + bytesPerPixel * j));
+        ProcessColor( *reinterpret_cast<vl::ubvec3*>( pixels + bytesPerPixel * j ) );
         j += w;
     }
 }

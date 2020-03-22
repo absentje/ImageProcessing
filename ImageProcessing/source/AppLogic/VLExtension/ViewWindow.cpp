@@ -109,14 +109,20 @@ void    ViewWindow::ClearViewWindow()
 void    ViewWindow::Render()
 {
     if ( pFBO )
+    {
         pFBO->Render();
+    }
     pViewActor->SetTexture( pFBO->GetRenderTexture() );
     if ( pRender )
+    {
         pRender->render();
+    }
 
     // show rendering
     if ( pCanvas && pCanvas->hasDoubleBuffer() )
+    {
         pCanvas->swapBuffers();
+    }
 }
 
 void    ViewWindow::Resize( int width, int height )

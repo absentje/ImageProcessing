@@ -33,8 +33,8 @@ void    Scene::AddRenderActor( Actor* actor )
 
 void	Scene::RemoveRenderActor( Actor* actor )
 {
-    VL_CHECK( actor )
-        GetRenderSceneManager()->tree()->eraseActor( actor->VLActor() );
+    VL_CHECK( actor );
+    GetRenderSceneManager()->tree()->eraseActor( actor->VLActor() );
 }
 
 vl::SceneManagerActorTree* Scene::GetRenderSceneManager()
