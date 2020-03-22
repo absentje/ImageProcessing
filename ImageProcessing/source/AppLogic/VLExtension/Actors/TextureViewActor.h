@@ -1,8 +1,5 @@
-#ifndef TEXTURE_VIEW_ACTOR_H
-#define TEXTURE_VIEW_ACTOR_H
-
+#pragma once
 #include "Actor.h"
-
 namespace vl
 {
 	class Texture;
@@ -27,5 +24,3 @@ private:
 	void	prepareGeometry();
 	void	prepareEffect();
 };
-
-#endif // TEXTURE_VIEW_ACTOR_H

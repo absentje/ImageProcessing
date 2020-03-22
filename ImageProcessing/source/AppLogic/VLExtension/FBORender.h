@@ -1,6 +1,4 @@
-#ifndef FBO_RENDER_H
-#define FBO_RENDER_H
-
+#pragma once
 #include <vlCore/Object.hpp>
 #include <vlCore/vlnamespace.hpp>
 #include <vlCore/Vector4.hpp>
@@ -64,5 +62,3 @@ private:
 
     vl::OpenGLContext* gl_context;
 };
-
-#endif // FBO_RENDER_H

@@ -1,5 +1,4 @@
-#ifndef IMAGEPROCESSING_H
-#define IMAGEPROCESSING_H
+#pragma once
 #include <string>
 #include <vlCore/Object.hpp>
 #include <vlCore/Vector4.hpp>
@@ -66,5 +65,3 @@ private:
 
     friend class ImageProcessingController;
 };
-
-#endif // IMAGEPROCESSING_H

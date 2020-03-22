@@ -1,6 +1,4 @@
-#ifndef SHADER_H
-#define SHADER_H
-
+#pragma once
 #include <vlGraphics/Shader.hpp>
 #include <vlGraphics/GLSL.hpp>
 #include <string>
@@ -32,6 +30,3 @@ private:
 
     vl::ref<vl::Uniform>	pUniColor;
 };
-
-
-#endif // SHADER_H

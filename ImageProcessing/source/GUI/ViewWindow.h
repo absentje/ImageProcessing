@@ -1,5 +1,4 @@
-#ifndef VIEWWINDOW_H
-#define VIEWWINDOW_H
+#pragma once
 #include <QWidget>
 #include <vlCore/Object.hpp>
 
@@ -39,5 +38,3 @@ private:
     vl::ref<FBORender>                  pFBO;
     vl::ref<TextureViewActor>           pViewActor;
 };
-
-#endif // VIEWWINDOW_H

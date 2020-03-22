@@ -1,5 +1,4 @@
-#ifndef SCENE_CONTROLLER_H
-#define SCENE_CONTROLLER_H
+#pragma once
 
 #include <vlCore/vlnamespace.hpp>
 #include <vlGraphics/UIEventListener.hpp>
@@ -33,5 +32,3 @@ public:
 private:
 	friend class Scene;
 };
-
-#endif // SCENE_CONTROLLER_H

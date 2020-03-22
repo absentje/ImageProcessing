@@ -1,6 +1,4 @@
-#ifndef SCENE_H
-#define SCENE_H
-
+#pragma once
 #include <vlCore/Object.hpp>
 #include <vlGraphics/SceneManagerActorTree.hpp>
 
@@ -49,5 +47,3 @@ private:
 
     std::unordered_map<std::wstring, vl::ref<SceneController>>	mSceneControllers;
 };
-
-#endif // SCENE_H

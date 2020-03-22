@@ -1,6 +1,4 @@
-#ifndef TIMER_H
-#define TIMER_H
-
+#pragma once
 #include <chrono>
 
 class Timer
@@ -18,5 +16,3 @@ private:
 	std::chrono::high_resolution_clock::time_point	mStart;
 	std::chrono::high_resolution_clock::time_point	mStop;
 };
-
-#endif // TIMER_H

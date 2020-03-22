@@ -1,6 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
+#pragma once
 #include <QWidget>
 #include "ViewWindow.h"
 #include "AppLogic/ImageProcessing.h"
@@ -58,5 +56,3 @@ private slots:
     void ProcessTypeChanged();
     void SaveImage();
 };
-
-#endif // MAINWINDOW_H

@@ -1,5 +1,4 @@
-#ifndef BRIGHTNESSCONTRASTEFFECT_H
-#define BRIGHTNESSCONTRASTEFFECT_H
+#pragma once
 #include "Effect.h"
 
 namespace vl
@@ -26,5 +25,3 @@ protected:
     float		Brightness;
     float		Contrast;
 };
-
-#endif // BRIGHTNESSCONTRASTEFFECT_H

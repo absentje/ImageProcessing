@@ -1,6 +1,4 @@
-#ifndef ACTOR_H
-#define ACTOR_H
-
+#pragma once
 #include <vlGraphics/Actor.hpp>
 #include <vlGraphics/Geometry.hpp>
 #include "Shader.h"
@@ -48,5 +46,3 @@ protected:
 	vl::ref<vl::Geometry>	pGeometry;
 	vl::ref<vl::Transform>	pTransform;
 };
-
-#endif // ACTOR_H
