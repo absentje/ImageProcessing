@@ -4,9 +4,12 @@
 /*
 	јктор, к. рендрит заданную текстуру(-ы) сохран€€ пропорции текстуры
 */
-class TextureRatioViewActor : public TextureViewActor
+namespace VLExtension
 {
-	VL_INSTRUMENT_CLASS(TextureRatioViewActor, TextureViewActor);
+class TextureRatioViewActor: public TextureViewActor
+{
+	VL_INSTRUMENT_CLASS( TextureRatioViewActor, TextureViewActor );
 public:
-	TextureRatioViewActor(vl::Texture* texture = nullptr);
+	TextureRatioViewActor( vl::Texture* texture = nullptr );
 };
+}

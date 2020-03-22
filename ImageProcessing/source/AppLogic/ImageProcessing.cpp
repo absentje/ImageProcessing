@@ -13,25 +13,25 @@
 
 static QMessageBox* msMessage = nullptr;
 
-class ImageProcessingController : public SceneController
+class ImageProcessingController: public VLExtension::SceneController
 {
-    VL_INSTRUMENT_CLASS(ImageProcessingController, SceneController)
+    VL_INSTRUMENT_CLASS( ImageProcessingController, VLExtension::SceneController )
 public:
-    ImageProcessingController(ImageProcessing* ptr)
-        : pImageProcessing(ptr) {}
+    ImageProcessingController( ImageProcessing* ptr )
+        : pImageProcessing( ptr ) {}
 
-    virtual void fileDroppedEvent(const std::vector<vl::String>& files) override
+    virtual void fileDroppedEvent( const std::vector<vl::String>& files ) override
     {
-        if (!pImageProcessing || files.empty()) return;
-        pImageProcessing->LoadImage(files[0].toStdWString());
+        if ( !pImageProcessing || files.empty() ) return;
+        pImageProcessing->LoadImage( files[0].toStdWString() );
     }
 
-    virtual void addedListenerEvent(vl::OpenGLContext* openglContext) override
+    virtual void addedListenerEvent( vl::OpenGLContext* openglContext ) override
     {
-        if (pImageProcessing)
+        if ( pImageProcessing )
         {
             pImageProcessing->pContext = openglContext;
-            pImageProcessing->InitPipeline(openglContext);
+            pImageProcessing->InitPipeline( openglContext );
         }
     }
 private:
@@ -41,16 +41,16 @@ private:
 ImageProcessing::ImageProcessing()
     :fBrightness(0.f), fContrast(0.f)
 {
-    pScene = new Scene(L"ImageProcessingScene");
+    pScene = new VLExtension::Scene(L"ImageProcessingScene");
     pScene->GetRenderSceneManager()->setCullingEnabled(false);
     pScene->AddSceneController(L"ImageProcessingController", vl::ref<ImageProcessingController>(new ImageProcessingController(this)).get());
-    pActor = new TextureRatioViewActor;
+    pActor = new VLExtension::TextureRatioViewActor;
     pScene->AddRenderActor(pActor.get());
 
     SetImageProcessingType(EImageProcessingType::IPT_PARALLEL_CPU);
 }
 
-Scene* ImageProcessing::GetScene()
+VLExtension::Scene* ImageProcessing::GetScene()
 {
     return pScene.get();
 }
@@ -223,8 +223,8 @@ void    ImageProcessing::toRGB(vl::vec3& YUV)
 
 void    ImageProcessing::InitPipeline(vl::OpenGLContext* context)
 {
-    pPipeline = new EffectPipeline(context);
-    pEffect = new BrightnessContrastEffect;
+    pPipeline = new VLExtension::EffectPipeline(context);
+    pEffect = new VLExtension::BrightnessContrastEffect;
     pEffect->SetBrightness(fBrightness);
     pEffect->SetContrast(fContrast);
     pPipeline->AddEffect(pEffect.get());
@@ -233,8 +233,8 @@ void    ImageProcessing::InitPipeline(vl::OpenGLContext* context)
 vl::ref<vl::Image> ImageProcessing::textureToImage(vl::Texture* inTexture)
 {
     vl::ref<vl::Image> resultValue = new vl::Image;
-    vl::ref<Actor> pTextureViewActor = new TextureViewActor(inTexture);
-    FBORender fbo(pContext);
+    vl::ref<VLExtension::Actor> pTextureViewActor = new VLExtension::TextureViewActor(inTexture);
+    VLExtension::FBORender fbo(pContext);
     fbo.Resize(inTexture->width(), inTexture->height());
     fbo.AddActor(pTextureViewActor.get());
     fbo.Render(*resultValue);

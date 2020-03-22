@@ -1,8 +1,10 @@
 #include "TextureRatioViewActor.h"
 
-class TextureViewActorEventCallback : public vl::ActorEventCallback
+namespace VLExtension
 {
-	VL_INSTRUMENT_CLASS(TextureViewActorEventCallback, vl::ActorEventCallback);
+class TextureViewActorEventCallback: public vl::ActorEventCallback
+{
+	VL_INSTRUMENT_CLASS( TextureViewActorEventCallback, vl::ActorEventCallback );
 public:
 	TextureViewActorEventCallback() {}
 
@@ -11,25 +13,26 @@ public:
 		vl::real frame_clock,
 		const vl::Camera* camera,
 		vl::Renderable* renderable,
-		const vl::Shader* shader, int pass) override
+		const vl::Shader* shader, int pass ) override
 	{
-		actor->gocUniform("screen_Size")->setUniform(vl::vec2(float(camera->viewport()->width()), float(camera->viewport()->height())));
-		const auto texture = actor->effect()->shader()->gocTextureSampler(0)->texture();
-		if (texture)
+		actor->gocUniform( "screen_Size" )->setUniform( vl::vec2( float( camera->viewport()->width() ), float( camera->viewport()->height() ) ) );
+		const auto texture = actor->effect()->shader()->gocTextureSampler( 0 )->texture();
+		if ( texture )
 		{
-			actor->gocUniform("texture_Size")->setUniform(vl::vec2(float(texture->width()), float(texture->height())));
+			actor->gocUniform( "texture_Size" )->setUniform( vl::vec2( float( texture->width() ), float( texture->height() ) ) );
 		}
 
 	}
-	virtual void onActorDelete(vl::Actor* actor) override {}
+	virtual void onActorDelete( vl::Actor* actor ) override {}
 };
 
-TextureRatioViewActor::TextureRatioViewActor(vl::Texture* texture)
-	: TextureViewActor(texture)
+TextureRatioViewActor::TextureRatioViewActor( vl::Texture* texture )
+	: TextureViewActor( texture )
 {
 	// каллбек для передачи в шейдер униформов width/height вьюпорта для сохранения пропорции текстур
 	auto ev_callback = new TextureViewActorEventCallback();
-	pActor->actorEventCallbacks()->push_back(ev_callback);
+	pActor->actorEventCallbacks()->push_back( ev_callback );
 
-	GetShader()->SetVShader(L"resources/glsl/texture_ratio_view.vs");
+	GetShader()->SetVShader( L"resources/glsl/texture_ratio_view.vs" );
+}
 }

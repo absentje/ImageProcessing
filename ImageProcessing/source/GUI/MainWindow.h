@@ -26,7 +26,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
 
 private:
-    vl::ref<ViewWindow>         pViewWindow;
+    vl::ref<VLExtension::ViewWindow>         pViewWindow;
     vl::ref<ImageProcessing>    pImageProcessing;
 
 	vlQt5::Qt5Widget*   pCanvas;

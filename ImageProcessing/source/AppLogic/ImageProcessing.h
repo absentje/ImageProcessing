@@ -3,10 +3,13 @@
 #include <vlCore/Object.hpp>
 #include <vlCore/Vector4.hpp>
 
+namespace VLExtension
+{
 class Scene;
 class TextureViewActor;
 class EffectPipeline;
 class BrightnessContrastEffect;
+}
 
 namespace vl
 {
@@ -29,7 +32,7 @@ class ImageProcessing : public vl::Object
 public:
     ImageProcessing();
 
-    Scene* GetScene();
+    VLExtension::Scene* GetScene();
 
     void LoadImage(const std::wstring& file_path);
     void SetBrightness(float value);
@@ -49,13 +52,13 @@ private:
     vl::ref<vl::Image> textureToImage(vl::Texture* inTexture);
 
 private:
-    vl::ref<Scene>              pScene;
+    vl::ref<VLExtension::Scene>              pScene;
     vl::ref<vl::Image>          pSourceImage;
     vl::ref<vl::Image>          pOutputImage;
-    vl::ref<TextureViewActor>   pActor;
+    vl::ref<VLExtension::TextureViewActor>   pActor;
 
-    vl::ref<EffectPipeline>             pPipeline;
-    vl::ref<BrightnessContrastEffect>   pEffect;
+    vl::ref<VLExtension::EffectPipeline>             pPipeline;
+    vl::ref<VLExtension::BrightnessContrastEffect>   pEffect;
 
     float fBrightness;
     float fContrast;

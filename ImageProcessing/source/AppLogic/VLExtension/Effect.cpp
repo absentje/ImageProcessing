@@ -1,10 +1,11 @@
 #include "Effect.h"
 
-
-Effect::Effect()
-    : isEnable(true)
+namespace VLExtension
 {
-	
+Effect::Effect()
+	: isEnable( true )
+{
+
 }
 
 bool	Effect::Enable() const
@@ -12,7 +13,8 @@ bool	Effect::Enable() const
 	return isEnable;
 }
 
-void	Effect::SetEnable(bool enable)
+void	Effect::SetEnable( bool enable )
 {
 	isEnable = enable;
+}
 }

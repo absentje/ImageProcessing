@@ -2,10 +2,6 @@
 #include <QWidget>
 #include <vlCore/Object.hpp>
 
-class FBORender;
-class Scene;
-class TextureViewActor;
-
 namespace vl
 {
     class UIEventListener;
@@ -14,19 +10,25 @@ namespace vl
     class OpenGLContext;
 }
 
-class ViewWindow : public vl::Object
+namespace VLExtension
 {
-    VL_INSTRUMENT_CLASS(ViewWindow, vl::Object)
+class FBORender;
+class Scene;
+class TextureViewActor;
+
+class ViewWindow: public vl::Object
+{
+    VL_INSTRUMENT_CLASS( ViewWindow, vl::Object )
 public:
-    ViewWindow(vl::OpenGLContext* vl_context);
+    ViewWindow( vl::OpenGLContext* vl_context );
     ~ViewWindow() override;
 
-    void    AddEventListener(vl::UIEventListener* evListener);
-    void    RemoveEventListener(vl::UIEventListener* evListener);
+    void    AddEventListener( vl::UIEventListener* evListener );
+    void    RemoveEventListener( vl::UIEventListener* evListener );
 
-    void	ShowScene(Scene* scene);
+    void	ShowScene( Scene* scene );
 
-    void    Resize(int width, int height);
+    void    Resize( int width, int height );
     void    ClearViewWindow();
     void    Render();
 private:
@@ -38,3 +40,4 @@ private:
     vl::ref<FBORender>                  pFBO;
     vl::ref<TextureViewActor>           pViewActor;
 };
+}

@@ -4,102 +4,106 @@
 #include "GUI/ViewWindow.h"
 #include <Actors/TextureViewActor.h>
 
-Scene::Scene(const std::wstring& scene_name)
-    : pViewWindow(nullptr), scene_name_(scene_name)
+
+namespace VLExtension
+{
+Scene::Scene( const std::wstring& scene_name )
+    : pViewWindow( nullptr ), scene_name_( scene_name )
 {
     pCamera = new vl::Camera;
-	// чтобы не инициализировалось с нулем
-	pCamera->viewport()->setWidth(8);
-	pCamera->viewport()->setHeight(8);
+    // чтобы не инициализировалось с нулем
+    pCamera->viewport()->setWidth( 8 );
+    pCamera->viewport()->setHeight( 8 );
 
     pSceneManager = new vl::SceneManagerActorTree;
 //    pSceneManager->setCullingEnabled(false);
 
 }
 
-const std::wstring&		Scene::GetName() const
+const std::wstring& Scene::GetName() const
 {
-	return scene_name_;
+    return scene_name_;
 }
 
-void    Scene::AddRenderActor(Actor* actor)
+void    Scene::AddRenderActor( Actor* actor )
 {
-    VL_CHECK(actor)
-	GetRenderSceneManager()->tree()->addActor(actor->VLActor());
+    VL_CHECK( actor );
+    GetRenderSceneManager()->tree()->addActor( actor->VLActor() );
 }
 
-void	Scene::RemoveRenderActor(Actor* actor)
+void	Scene::RemoveRenderActor( Actor* actor )
 {
-    VL_CHECK(actor)
-	GetRenderSceneManager()->tree()->eraseActor(actor->VLActor());
+    VL_CHECK( actor )
+        GetRenderSceneManager()->tree()->eraseActor( actor->VLActor() );
 }
 
-vl::SceneManagerActorTree*	Scene::GetRenderSceneManager()
+vl::SceneManagerActorTree* Scene::GetRenderSceneManager()
 {
-	return pSceneManager.get();
+    return pSceneManager.get();
 }
 
-const vl::SceneManagerActorTree*	Scene::GetRenderSceneManager() const
+const vl::SceneManagerActorTree* Scene::GetRenderSceneManager() const
 {
-	return pSceneManager.get();
+    return pSceneManager.get();
 }
 
 vl::Camera* Scene::GetRenderCamera()
 {
-	return pCamera.get();
+    return pCamera.get();
 }
 
 const vl::Camera* Scene::GetRenderCamera() const
 {
-	return pCamera.get();
+    return pCamera.get();
 }
 
-void Scene::AddSceneController(const std::wstring& name, SceneController* controller)
+void Scene::AddSceneController( const std::wstring& name, SceneController* controller )
 {
-    VL_CHECK(controller)
+    VL_CHECK( controller );
 //    controller->pSceneCamera = GetRenderCamera();
     mSceneControllers[name] = controller;
-    if (pViewWindow)
-        pViewWindow->AddEventListener(controller);
+    if ( pViewWindow )
+        pViewWindow->AddEventListener( controller );
     // вначале добавляем в ивентЛистнеры, потом уже каллбек на добавлении к сцене
-    controller->onSceneEnter(this);
+    controller->onSceneEnter( this );
 }
 
-void Scene::RemoveSceneController(const std::wstring& name)
+void Scene::RemoveSceneController( const std::wstring& name )
 {
-    auto f = mSceneControllers.find(name);
-    if (f != mSceneControllers.end())
+    auto f = mSceneControllers.find( name );
+    if ( f != mSceneControllers.end() )
     {
         auto& controller = f->second;
-        controller->onSceneLeave(this);
+        controller->onSceneLeave( this );
         // в обратном порядке: вначале каллбеки - потом удаляем листнер
-        if (pViewWindow)
-            pViewWindow->RemoveEventListener(controller.get());
+        if ( pViewWindow )
+            pViewWindow->RemoveEventListener( controller.get() );
 //        controller->pSceneCamera = nullptr;
-        mSceneControllers.erase(f);
+        mSceneControllers.erase( f );
     }
 }
 
-void Scene::onAddToViewWindow(ViewWindow* vw)
+void Scene::onAddToViewWindow( ViewWindow* vw )
 {
-    VL_CHECK(vw)
-    VL_CHECK(!pViewWindow)
+    VL_CHECK( vw );
+    VL_CHECK( !pViewWindow );
     pViewWindow = vw;
-    for (auto& s : mSceneControllers)
+    for ( auto& s : mSceneControllers )
     {
         SceneController* controller = s.second.get();
-        pViewWindow->AddEventListener(controller);
+        pViewWindow->AddEventListener( controller );
     }
 }
 
-void Scene::onRemoveFromViewWindow(ViewWindow* vw)
+void Scene::onRemoveFromViewWindow( ViewWindow* vw )
 {
-    VL_CHECK(vw)
-    VL_CHECK(pViewWindow)
-    for (auto& s : mSceneControllers)
+    VL_CHECK( vw );
+    VL_CHECK( pViewWindow );
+    for ( auto& s : mSceneControllers )
     {
         SceneController* controller = s.second.get();
-        vw->RemoveEventListener(controller);
+        vw->RemoveEventListener( controller );
     }
     pViewWindow = nullptr;
+}
 }

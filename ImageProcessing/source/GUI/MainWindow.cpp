@@ -80,7 +80,7 @@ MainWindow::MainWindow(QWidget *parent)
     pSubLayout->addWidget(pSaveImageButton);
 
     // app logic init
-    pViewWindow = new ViewWindow(pCanvas);
+    pViewWindow = new VLExtension::ViewWindow(pCanvas);
     pImageProcessing = new ImageProcessing;
     pViewWindow->ShowScene(pImageProcessing->GetScene());
 }
