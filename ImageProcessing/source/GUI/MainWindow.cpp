@@ -9,7 +9,6 @@
 #include <QGroupBox>
 #include <QRadioButton>
 
-#include "ViewWindow.h"
 #include "AppLogic/ImageProcessing.h"
 
 MainWindow::MainWindow(QWidget *parent)

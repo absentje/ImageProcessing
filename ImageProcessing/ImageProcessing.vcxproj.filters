@@ -34,9 +34,6 @@
     <ClCompile Include="source\GUI\MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\GUI\ViewWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -73,15 +70,15 @@
     <ClCompile Include="source\AppLogic\AppModes\AppMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\AppLogic\VLExtension\ViewWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AppLogic\Util\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\AppLogic\ImageProcessing.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GUI\ViewWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\AppLogic\VLExtension\Actors\TextureViewActor.h">
@@ -118,6 +115,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\AppLogic\AppModes\AppMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\VLExtension\ViewWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

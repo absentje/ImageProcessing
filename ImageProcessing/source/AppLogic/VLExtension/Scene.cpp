@@ -1,7 +1,7 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "SceneController.h"
-#include "GUI/ViewWindow.h"
+#include "ViewWindow.h"
 #include <Actors/TextureViewActor.h>
 
 

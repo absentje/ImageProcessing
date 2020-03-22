@@ -1,6 +1,6 @@
 #pragma once
 #include <QWidget>
-#include "ViewWindow.h"
+#include <AppLogic/VLExtension/ViewWindow.h>
 #include "AppLogic/ImageProcessing.h"
 
 class QHBoxLayout;
