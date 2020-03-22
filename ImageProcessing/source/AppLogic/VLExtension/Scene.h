@@ -1,11 +1,13 @@
 #pragma once
 #include <vlCore/Object.hpp>
-#include <vlGraphics/SceneManagerActorTree.hpp>
 
-#include <set>
 #include <unordered_map>
 #include <string>
 
+namespace vl
+{
+class SceneManagerActorTree;
+}
 
 namespace VLExtension
 {
@@ -30,8 +32,6 @@ public:
 
     vl::SceneManagerActorTree* GetRenderSceneManager();
     const vl::SceneManagerActorTree* GetRenderSceneManager() const;
-    vl::Camera* GetRenderCamera();
-    const vl::Camera* GetRenderCamera() const;
 
     void AddSceneController( const std::wstring& name, SceneController* controller );
     void RemoveSceneController( const std::wstring& name );
@@ -46,7 +46,6 @@ private:
 
     std::wstring                        scene_name_;
     vl::ref<vl::SceneManagerActorTree>	pSceneManager;
-    vl::ref<vl::Camera>                 pCamera;
 
     std::unordered_map<std::wstring, vl::ref<SceneController>>	mSceneControllers;
 };

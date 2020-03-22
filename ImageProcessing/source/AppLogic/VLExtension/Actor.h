@@ -16,31 +16,31 @@ public:
 
 	// методы VLActor() чисто дл€ добавлени€ в вл—цену
 	// Ќ≈ юзать дл€ доступа к еффектам/лода и т.п. !!!
-	vl::Actor* VLActor();
-	const vl::Actor* VLActor() const;
+	vl::Actor*			VLActor();
+	const vl::Actor*	VLActor() const;
 
 	Shader* AddShaderPass();
-	int				GetShaderPassCount() const;
-	int				GetMaxShaderPassCount() const;
-	void			UpdateAllShaders();
+	int		GetShaderPassCount() const;
+	int		GetMaxShaderPassCount() const;
+	void	UpdateAllShaders();
 
-	Shader* GetShader( int pass = 0 );
-	const Shader* GetShader( int pass = 0 ) const;
+	Shader*			GetShader( int pass = 0 );
+	const Shader*	GetShader( int pass = 0 ) const;
 
-	vl::Geometry* GetGeometry();
-	const vl::Geometry* GetGeometry() const;
+	vl::Geometry*		GetGeometry();
+	const vl::Geometry*	GetGeometry() const;
 
-	vl::Transform* GetTransform();
-	const vl::Transform* GetTransform() const;
+	vl::Transform*			GetTransform();
+	const vl::Transform*	GetTransform() const;
 	void					SetTransform( vl::Transform* tr );
 
 	virtual vl::ref<Actor>	CreateClone();
 
-	void		SetUniform( vl::Uniform* uni );
-	void		RemoveUniform( vl::Uniform* uni );
+	void	SetUniform( vl::Uniform* uni );
+	void	RemoveUniform( vl::Uniform* uni );
 
-	void		SetRenderRank( int rank );
-	int			GetRenderRank() const;
+	void	SetRenderRank( int rank );
+	int		GetRenderRank() const;
 
 protected:
 

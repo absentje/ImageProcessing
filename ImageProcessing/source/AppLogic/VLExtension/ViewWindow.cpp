@@ -58,32 +58,18 @@ private:
 ViewWindow::ViewWindow( vl::OpenGLContext* vl_context )
     : pCanvas( vl_context )
 {
-    pSceneMananager = new vl::SceneManagerActorTree;
-
     pRender = new vl::Rendering;
     pRender->renderer()->setFramebuffer( pCanvas->framebuffer() );
     pRender->camera()->viewport()->setClearColor( 0.2f, 0.3f, 0.4f, 1.0f );
-    pRender->sceneManagers()->push_back( pSceneMananager.get() );
     // делаем первичный рендер, чтоб создался контекст
     pRender->render();
-
-    pFBO = new FBORender( pCanvas );
-
-    pViewActor = new TextureViewActor;
-    pSceneMananager->tree()->addActor( pViewActor->VLActor() );
-    pViewActor->GetShader()->SetFShader( L"resources/glsl/window_screen.fs" );
-
     AddEventListener( vl::ref<VWEventListener>( new VWEventListener( this ) ).get() );
 }
 
 ViewWindow::~ViewWindow()
 {
     pRender = nullptr;
-    pSceneMananager = nullptr;
     pViewScene = nullptr;
-    pFBO = nullptr;
-    pViewActor = nullptr;
-//    pCanvas->close(); // need it?
 }
 
 void ViewWindow::ShowScene( Scene* scene )
@@ -92,27 +78,18 @@ void ViewWindow::ShowScene( Scene* scene )
     ClearViewWindow();
 
     pViewScene = scene;
-    pFBO->AddSceneManager( scene->GetRenderSceneManager() );
-    pFBO->SetCamera( scene->GetRenderCamera() );
-
+    pRender->sceneManagers()->push_back( scene->GetRenderSceneManager() );
     pViewScene->onAddToViewWindow( this );
 }
 
 void    ViewWindow::ClearViewWindow()
 {
-    pFBO->ClearAdditionalScenes();
-    pFBO->ClearActors();
-
+    pRender->sceneManagers()->clear();
     pViewScene = nullptr;
 }
 
 void    ViewWindow::Render()
 {
-    if ( pFBO )
-    {
-        pFBO->Render();
-    }
-    pViewActor->SetTexture( pFBO->GetRenderTexture() );
     if ( pRender )
     {
         pRender->render();
@@ -127,9 +104,7 @@ void    ViewWindow::Render()
 
 void    ViewWindow::Resize( int width, int height )
 {
-    pFBO->Resize( width, height );
     pCanvas->setSize( width, height );
-    pViewActor->SetTexture( pFBO->GetRenderTexture() );
 
     vl::Camera* pCamera = pRender->camera();
     pCamera->viewport()->set( 0, 0, width, height );

@@ -35,9 +35,6 @@ private:
     vl::OpenGLContext* pCanvas;
 
     vl::ref<vl::Rendering>				pRender;
-    vl::ref<vl::SceneManagerActorTree>  pSceneMananager;
     vl::ref<Scene>                      pViewScene;
-    vl::ref<FBORender>                  pFBO;
-    vl::ref<TextureViewActor>           pViewActor;
 };
 }

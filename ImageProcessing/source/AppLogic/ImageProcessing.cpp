@@ -9,6 +9,7 @@
 #include <EffectPipeline.h>
 #include <Effects/BrightnessContrastEffect.h>
 #include "AppLogic/Util/Timer.h"
+#include <vlGraphics/SceneManagerActorTree.hpp>
 #include <QMessageBox>
 
 static QMessageBox* msMessage = nullptr;

@@ -3,6 +3,7 @@
 #include "SceneController.h"
 #include "ViewWindow.h"
 #include <Actors/TextureViewActor.h>
+#include <vlGraphics/SceneManagerActorTree.hpp>
 
 
 namespace VLExtension
@@ -10,10 +11,10 @@ namespace VLExtension
 Scene::Scene( const std::wstring& scene_name )
     : pViewWindow( nullptr ), scene_name_( scene_name )
 {
-    pCamera = new vl::Camera;
+//    pCamera = new vl::Camera;
     // чтобы не инициализировалось с нулем
-    pCamera->viewport()->setWidth( 8 );
-    pCamera->viewport()->setHeight( 8 );
+//    pCamera->viewport()->setWidth( 8 );
+//    pCamera->viewport()->setHeight( 8 );
 
     pSceneManager = new vl::SceneManagerActorTree;
 //    pSceneManager->setCullingEnabled(false);
@@ -47,16 +48,6 @@ const vl::SceneManagerActorTree* Scene::GetRenderSceneManager() const
     return pSceneManager.get();
 }
 
-vl::Camera* Scene::GetRenderCamera()
-{
-    return pCamera.get();
-}
-
-const vl::Camera* Scene::GetRenderCamera() const
-{
-    return pCamera.get();
-}
-
 void Scene::AddSceneController( const std::wstring& name, SceneController* controller )
 {
     VL_CHECK( controller );
@@ -77,8 +68,9 @@ void Scene::RemoveSceneController( const std::wstring& name )
         controller->onSceneLeave( this );
         // в обратном порядке: вначале каллбеки - потом удаляем листнер
         if ( pViewWindow )
+        {
             pViewWindow->RemoveEventListener( controller.get() );
-//        controller->pSceneCamera = nullptr;
+        }
         mSceneControllers.erase( f );
     }
 }
