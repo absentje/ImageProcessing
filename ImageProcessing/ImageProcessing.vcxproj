@@ -22,7 +22,6 @@
     <ClCompile Include="source\AppLogic\VLExtension\EffectPipeline.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\FBORender.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Pipeline.cpp" />
-    <ClCompile Include="source\AppLogic\VLExtension\Scene.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Shader.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Actors\TextureViewActor.cpp" />
     <ClCompile Include="source\GUI\MainWindow.cpp" />
@@ -39,8 +38,6 @@
     <ClInclude Include="source\AppLogic\VLExtension\EffectPipeline.h" />
     <ClInclude Include="source\AppLogic\VLExtension\FBORender.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Pipeline.h" />
-    <ClInclude Include="source\AppLogic\VLExtension\Scene.h" />
-    <ClInclude Include="source\AppLogic\VLExtension\SceneController.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Shader.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actors\TextureViewActor.h" />
     <ClInclude Include="source\AppLogic\VLExtension\ViewWindow.h" />

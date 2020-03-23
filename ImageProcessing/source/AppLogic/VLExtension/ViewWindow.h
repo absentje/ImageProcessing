@@ -12,7 +12,6 @@ namespace vl
 namespace VLExtension
 {
 class FBORender;
-class Scene;
 class TextureViewActor;
 
 class ViewWindow: public vl::Object
@@ -25,7 +24,7 @@ public:
     void    AddEventListener( vl::UIEventListener* evListener );
     void    RemoveEventListener( vl::UIEventListener* evListener );
 
-    void	ShowScene( Scene* scene );
+    void	ShowScene( vl::SceneManagerActorTree* scene );
 
     void    Resize( int width, int height );
     void    ClearViewWindow();
@@ -34,6 +33,6 @@ private:
     vl::OpenGLContext* pCanvas;
 
     vl::ref<vl::Rendering>				pRender;
-    vl::ref<Scene>                      pViewScene;
+    vl::ref<vl::SceneManagerActorTree>  pViewScene;
 };
 }

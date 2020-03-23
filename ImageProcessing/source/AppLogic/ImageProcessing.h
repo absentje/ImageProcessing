@@ -5,7 +5,6 @@
 
 namespace VLExtension
 {
-class Scene;
 class TextureViewActor;
 class EffectPipeline;
 class BrightnessContrastEffect;
@@ -17,6 +16,7 @@ namespace vl
     class Image;
     class OpenGLContext;
     class Texture;
+    class SceneManagerActorTree;
 }
 
 enum class EImageProcessingType : unsigned char
@@ -32,7 +32,8 @@ class ImageProcessing : public vl::Object
 public:
     ImageProcessing();
 
-    VLExtension::Scene* GetScene();
+    vl::SceneManagerActorTree* GetScene();
+    vl::UIEventListener* GetUIEventListener();
 
     void LoadImage(const std::wstring& file_path);
     void SetBrightness(float value);
@@ -52,7 +53,9 @@ private:
     vl::ref<vl::Image> textureToImage(vl::Texture* inTexture);
 
 private:
-    vl::ref<VLExtension::Scene>              pScene;
+    vl::ref<vl::SceneManagerActorTree>  pScene;
+    vl::ref<vl::UIEventListener>        pUIEventListener;
+
     vl::ref<vl::Image>          pSourceImage;
     vl::ref<vl::Image>          pOutputImage;
     vl::ref<VLExtension::TextureViewActor>   pActor;
@@ -66,5 +69,5 @@ private:
 
     vl::OpenGLContext* pContext;
 
-    friend class ImageProcessingController;
+    friend class ImageProcessingUIListener;
 };

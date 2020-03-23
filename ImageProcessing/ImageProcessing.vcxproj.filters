@@ -46,9 +46,6 @@
     <ClCompile Include="source\AppLogic\VLExtension\Actor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\VLExtension\Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\AppLogic\VLExtension\FBORender.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -85,12 +82,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\AppLogic\VLExtension\Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\AppLogic\VLExtension\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\AppLogic\VLExtension\SceneController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\AppLogic\VLExtension\Pipeline.h">

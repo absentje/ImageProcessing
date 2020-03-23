@@ -9,7 +9,6 @@
 
 #include <Actors/TextureViewActor.h>
 #include <FBORender.h>
-#include <Scene.h>
 #include "AppLogic/Util/Timer.h"
 
 namespace VLExtension
@@ -72,14 +71,13 @@ ViewWindow::~ViewWindow()
     pViewScene = nullptr;
 }
 
-void ViewWindow::ShowScene( Scene* scene )
+void ViewWindow::ShowScene( vl::SceneManagerActorTree* scene )
 {
     VL_CHECK( scene );
     ClearViewWindow();
 
     pViewScene = scene;
-    pRender->sceneManagers()->push_back( scene->GetRenderSceneManager() );
-    pViewScene->onAddToViewWindow( this );
+    pRender->sceneManagers()->push_back( scene );
 }
 
 void    ViewWindow::ClearViewWindow()
@@ -121,7 +119,7 @@ void    ViewWindow::Resize( int width, int height )
     case vl::EProjectionMatrixType::PMT_UserProjection:
         break;
     }
-}
+} 
 
 void	ViewWindow::AddEventListener( vl::UIEventListener* evListener )
 {

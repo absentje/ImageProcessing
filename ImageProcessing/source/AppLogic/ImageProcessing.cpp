@@ -1,6 +1,4 @@
 #include "ImageProcessing.h"
-#include <Scene.h>
-#include <SceneController.h>
 #include <vlCore/Image.hpp>
 #include <Actors/TextureRatioViewActor.h>
 #include <thread>
@@ -10,16 +8,32 @@
 #include <Effects/BrightnessContrastEffect.h>
 #include "AppLogic/Util/Timer.h"
 #include <vlGraphics/SceneManagerActorTree.hpp>
+#include <vlGraphics/UIEventListener.hpp>
 #include <QMessageBox>
 
 static QMessageBox* msMessage = nullptr;
 
-class ImageProcessingController: public VLExtension::SceneController
+class ImageProcessingUIListener: public vl::UIEventListener
 {
-    VL_INSTRUMENT_CLASS( ImageProcessingController, VLExtension::SceneController );
+    VL_INSTRUMENT_CLASS( ImageProcessingController, vl::UIEventListener );
 public:
-    ImageProcessingController( ImageProcessing* ptr )
+    ImageProcessingUIListener( ImageProcessing* ptr )
         : pImageProcessing( ptr ) {}
+
+    virtual void initEvent() override {}
+    virtual void destroyEvent() override {}
+    virtual void updateEvent() override {}
+    virtual void enableEvent( bool enable ) override {}
+    virtual void removedListenerEvent( vl::OpenGLContext* openglContext ) override {}
+    virtual void mouseMoveEvent( int x, int y ) override {}
+    virtual void mouseUpEvent( vl::EMouseButton but, int x, int y ) override {}
+    virtual void mouseDownEvent( vl::EMouseButton but, int x, int y ) override {}
+    virtual void mouseWheelEvent( int delta ) override {}
+    virtual void keyPressEvent( unsigned short unicode, vl::EKey key ) override {}
+    virtual void keyReleaseEvent( unsigned short unicode, vl::EKey key ) override {}
+    virtual void resizeEvent( int x, int y ) override {}
+    virtual void visibilityEvent( bool visible ) override {}
+
 
     virtual void fileDroppedEvent( const std::vector<vl::String>& files ) override
     {
@@ -42,18 +56,24 @@ private:
 ImageProcessing::ImageProcessing()
     :fBrightness(0.f), fContrast(0.f)
 {
-    pScene = new VLExtension::Scene(L"ImageProcessingScene");
-    pScene->GetRenderSceneManager()->setCullingEnabled(false);
-    pScene->AddSceneController(L"ImageProcessingController", vl::ref<ImageProcessingController>(new ImageProcessingController(this)).get());
+    pScene = new vl::SceneManagerActorTree;;
+    pScene->setCullingEnabled(false);
     pActor = new VLExtension::TextureRatioViewActor;
-    pScene->AddRenderActor(pActor.get());
+    pScene->tree()->addActor( pActor.get() );
+
+    pUIEventListener = new ImageProcessingUIListener( this );
 
     SetImageProcessingType(EImageProcessingType::IPT_PARALLEL_CPU);
 }
 
-VLExtension::Scene* ImageProcessing::GetScene()
+vl::SceneManagerActorTree* ImageProcessing::GetScene()
 {
     return pScene.get();
+}
+
+vl::UIEventListener* ImageProcessing::GetUIEventListener()
+{
+    return pUIEventListener.get();
 }
 
 void ImageProcessing::SetImageProcessingType(EImageProcessingType etype)

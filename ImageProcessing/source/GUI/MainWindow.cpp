@@ -81,7 +81,8 @@ MainWindow::MainWindow(QWidget *parent)
     // app logic init
     pViewWindow = new VLExtension::ViewWindow(pCanvas);
     pImageProcessing = new ImageProcessing;
-    pViewWindow->ShowScene(pImageProcessing->GetScene());
+    pViewWindow->ShowScene( pImageProcessing->GetScene() );
+    pViewWindow->AddEventListener( pImageProcessing->GetUIEventListener() );
 }
 
 void MainWindow::BrightnessChanged(int value)
