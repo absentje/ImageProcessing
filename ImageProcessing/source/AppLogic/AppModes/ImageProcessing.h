@@ -2,6 +2,7 @@
 #include <string>
 #include <vlCore/Object.hpp>
 #include <vlCore/Vector4.hpp>
+#include <AppLogic/AppModes/AppMode.h>
 
 namespace VLExtension
 {
@@ -26,14 +27,11 @@ enum class EImageProcessingType : unsigned char
     IPT_GPU
 };
 
-class ImageProcessing : public vl::Object
+class ImageProcessing : public AppMode
 {
     VL_INSTRUMENT_CLASS(ImageProcessing, vl::Object)
 public:
     ImageProcessing();
-
-    vl::SceneManagerActorTree* GetScene();
-    vl::UIEventListener* GetUIEventListener();
 
     void LoadImage(const std::wstring& file_path);
     void SetBrightness(float value);
@@ -42,7 +40,6 @@ public:
     void ProcessImage();
     void SaveOutputImage();
     void ShowOutputImage();
-
 
 private:
     void    InitPipeline(vl::OpenGLContext* context);
@@ -53,9 +50,6 @@ private:
     vl::ref<vl::Image> textureToImage(vl::Texture* inTexture);
 
 private:
-    vl::ref<vl::SceneManagerActorTree>  pScene;
-    vl::ref<vl::UIEventListener>        pUIEventListener;
-
     vl::ref<vl::Image>          pSourceImage;
     vl::ref<vl::Image>          pOutputImage;
     vl::ref<VLExtension::TextureViewActor>   pActor;

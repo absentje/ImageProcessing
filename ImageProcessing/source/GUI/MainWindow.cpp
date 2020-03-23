@@ -9,7 +9,7 @@
 #include <QGroupBox>
 #include <QRadioButton>
 
-#include "AppLogic/ImageProcessing.h"
+#include <AppLogic/AppModes/ImageProcessing.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
@@ -81,8 +81,7 @@ MainWindow::MainWindow(QWidget *parent)
     // app logic init
     pViewWindow = new VLExtension::ViewWindow(pCanvas);
     pImageProcessing = new ImageProcessing;
-    pViewWindow->ShowScene( pImageProcessing->GetScene() );
-    pViewWindow->AddEventListener( pImageProcessing->GetUIEventListener() );
+    pImageProcessing->Enable( pViewWindow.get() );
 }
 
 void MainWindow::BrightnessChanged(int value)

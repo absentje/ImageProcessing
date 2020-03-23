@@ -13,7 +13,7 @@
   <ItemGroup>
     <ClCompile Include="source\AppLogic\AppModes\AppMode.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="source\AppLogic\ImageProcessing.cpp" />
+    <ClCompile Include="source\AppLogic\AppModes\ImageProcessing.cpp" />
     <ClCompile Include="source\AppLogic\Util\Timer.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Actor.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Actors\TextureRatioViewActor.cpp" />
@@ -29,7 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AppLogic\AppModes\AppMode.h" />
-    <ClInclude Include="source\AppLogic\ImageProcessing.h" />
+    <ClInclude Include="source\AppLogic\AppModes\ImageProcessing.h" />
     <ClInclude Include="source\AppLogic\Util\Timer.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actor.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actors\TextureRatioViewActor.h" />

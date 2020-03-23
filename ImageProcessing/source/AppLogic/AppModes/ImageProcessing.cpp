@@ -56,7 +56,6 @@ private:
 ImageProcessing::ImageProcessing()
     :fBrightness(0.f), fContrast(0.f)
 {
-    pScene = new vl::SceneManagerActorTree;;
     pScene->setCullingEnabled(false);
     pActor = new VLExtension::TextureRatioViewActor;
     pScene->tree()->addActor( pActor.get() );
@@ -64,16 +63,6 @@ ImageProcessing::ImageProcessing()
     pUIEventListener = new ImageProcessingUIListener( this );
 
     SetImageProcessingType(EImageProcessingType::IPT_PARALLEL_CPU);
-}
-
-vl::SceneManagerActorTree* ImageProcessing::GetScene()
-{
-    return pScene.get();
-}
-
-vl::UIEventListener* ImageProcessing::GetUIEventListener()
-{
-    return pUIEventListener.get();
 }
 
 void ImageProcessing::SetImageProcessingType(EImageProcessingType etype)

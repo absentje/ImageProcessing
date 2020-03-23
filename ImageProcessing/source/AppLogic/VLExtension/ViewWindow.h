@@ -11,8 +11,6 @@ namespace vl
 
 namespace VLExtension
 {
-class FBORender;
-class TextureViewActor;
 
 class ViewWindow: public vl::Object
 {

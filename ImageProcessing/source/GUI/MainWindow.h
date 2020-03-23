@@ -1,7 +1,6 @@
 #pragma once
 #include <QWidget>
 #include <AppLogic/VLExtension/ViewWindow.h>
-#include "AppLogic/ImageProcessing.h"
 
 class QHBoxLayout;
 class QVBoxLayout;
@@ -10,8 +9,7 @@ class QSlider;
 class QPushButton;
 class QGroupBox;
 class QRadioButton;
-//class ImageProcessing;
-
+class ImageProcessing;
 
 namespace vlQt5
 {

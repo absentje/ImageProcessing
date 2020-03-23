@@ -2,7 +2,6 @@
 #include <QApplication>
 #include <vlCore/VisualizationLibrary.hpp>
 #include <vlCore/Log.hpp>
-#include "AppLogic/ImageProcessing.h"
 #include <thread>
 
 #include <vlQt5/Qt5Widget.hpp>
