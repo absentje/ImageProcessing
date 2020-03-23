@@ -29,13 +29,13 @@ const std::wstring& Scene::GetName() const
 void    Scene::AddRenderActor( Actor* actor )
 {
     VL_CHECK( actor );
-    GetRenderSceneManager()->tree()->addActor( actor->VLActor() );
+    GetRenderSceneManager()->tree()->addActor( actor );
 }
 
 void	Scene::RemoveRenderActor( Actor* actor )
 {
     VL_CHECK( actor );
-    GetRenderSceneManager()->tree()->eraseActor( actor->VLActor() );
+    GetRenderSceneManager()->tree()->eraseActor( actor );
 }
 
 vl::SceneManagerActorTree* Scene::GetRenderSceneManager()

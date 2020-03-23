@@ -30,8 +30,8 @@ TextureRatioViewActor::TextureRatioViewActor( vl::Texture* texture )
 	: TextureViewActor( texture )
 {
 	// каллбек для передачи в шейдер униформов width/height вьюпорта для сохранения пропорции текстур
-	auto ev_callback = new TextureViewActorEventCallback();
-	pActor->actorEventCallbacks()->push_back( ev_callback );
+	vl::ref<TextureViewActorEventCallback> ev_callback = new TextureViewActorEventCallback();
+	actorEventCallbacks()->push_back( ev_callback.get() );
 
 	GetShader()->SetVShader( L"resources/glsl/texture_ratio_view.vs" );
 }

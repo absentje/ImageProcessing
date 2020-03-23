@@ -6,7 +6,7 @@
 #include <vlGraphics/SceneManagerActorTree.hpp>
 #include <vlGraphics/Texture.hpp>
 #include <vlGraphics/OpenGLContext.hpp>
-#include <Actor.h>
+#include "Actor.h"
 
 namespace VLExtension
 {
@@ -101,7 +101,7 @@ void	FBORender::ClearAdditionalScenes()
 
 void	FBORender::AddActor( Actor* actor )
 {
-	pScene->tree()->addActor( actor->VLActor() );
+	pScene->tree()->addActor( actor );
 }
 
 void	FBORender::ClearActors()

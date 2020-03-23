@@ -5,19 +5,12 @@
 
 namespace VLExtension
 {
-class Actor: public vl::Object
+class Actor: public vl::Actor
 {
-	VL_INSTRUMENT_CLASS( Actor, vl::Object )
+	VL_INSTRUMENT_CLASS( Actor, vl::Actor )
 public:
 	Actor( vl::Geometry* geom = nullptr, vl::Transform* tr = nullptr );
 	virtual ~Actor();
-
-	void setEnabled( bool value = true );
-
-	// методы VLActor() чисто дл€ добавлени€ в вл—цену
-	// Ќ≈ юзать дл€ доступа к еффектам/лода и т.п. !!!
-	vl::Actor*			VLActor();
-	const vl::Actor*	VLActor() const;
 
 	Shader* AddShaderPass();
 	int		GetShaderPassCount() const;
@@ -30,21 +23,9 @@ public:
 	vl::Geometry*		GetGeometry();
 	const vl::Geometry*	GetGeometry() const;
 
-	vl::Transform*			GetTransform();
-	const vl::Transform*	GetTransform() const;
-	void					SetTransform( vl::Transform* tr );
-
 	virtual vl::ref<Actor>	CreateClone();
 
-	void	SetUniform( vl::Uniform* uni );
-	void	RemoveUniform( vl::Uniform* uni );
-
-	void	SetRenderRank( int rank );
-	int		GetRenderRank() const;
-
 protected:
-
-	vl::ref<vl::Actor>		pActor;
 	vl::ref<vl::Geometry>	pGeometry;
 	vl::ref<vl::Transform>	pTransform;
 };
