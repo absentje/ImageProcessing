@@ -26,6 +26,7 @@
     <ClCompile Include="source\AppLogic\VLExtension\Actors\TextureViewActor.cpp" />
     <ClCompile Include="source\GUI\MainWindow.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\ViewWindow.cpp" />
+    <ClCompile Include="source\AppLogic\WidgetNodes\WidgetNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AppLogic\AppModes\AppMode.h" />
@@ -41,6 +42,7 @@
     <ClInclude Include="source\AppLogic\VLExtension\Shader.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actors\TextureViewActor.h" />
     <ClInclude Include="source\AppLogic\VLExtension\ViewWindow.h" />
+    <ClInclude Include="source\AppLogic\WidgetNodes\WidgetNode.h" />
     <QtMoc Include="source\GUI\MainWindow.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

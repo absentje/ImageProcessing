@@ -70,6 +70,9 @@
     <ClCompile Include="source\AppLogic\AppModes\ImageProcessing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\AppLogic\WidgetNodes\WidgetNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AppLogic\Util\Timer.h">
@@ -109,6 +112,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\AppLogic\AppModes\ImageProcessing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\WidgetNodes\WidgetNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
