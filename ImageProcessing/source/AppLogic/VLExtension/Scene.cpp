@@ -11,14 +11,7 @@ namespace VLExtension
 Scene::Scene( const std::wstring& scene_name )
     : pViewWindow( nullptr ), scene_name_( scene_name )
 {
-//    pCamera = new vl::Camera;
-    // чтобы не инициализировалось с нулем
-//    pCamera->viewport()->setWidth( 8 );
-//    pCamera->viewport()->setHeight( 8 );
-
     pSceneManager = new vl::SceneManagerActorTree;
-//    pSceneManager->setCullingEnabled(false);
-
 }
 
 const std::wstring& Scene::GetName() const
