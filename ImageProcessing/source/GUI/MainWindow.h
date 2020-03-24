@@ -4,12 +4,8 @@
 
 class QHBoxLayout;
 class QVBoxLayout;
-class QLabel;
-class QSlider;
-class QPushButton;
-class QGroupBox;
-class QRadioButton;
-class ImageProcessing;
+class ImageProcessingMode;
+class ImageProcessingModeWidget;
 
 namespace vlQt5
 {
@@ -25,32 +21,14 @@ public:
 
 private:
     vl::ref<VLExtension::ViewWindow>         pViewWindow;
-    vl::ref<ImageProcessing>    pImageProcessing;
+    vl::ref<ImageProcessingMode>    imageProcessing_;
 
 	vlQt5::Qt5Widget*   pCanvas;
     
     QHBoxLayout*        pMainLayout;
     QVBoxLayout*        pSubLayout;
-    QLabel*             pBrightnessLabel;
-    QSlider*            pBrightnessSlider;
-    QLabel*             pContrastLabel;
-    QSlider*            pContrastSlider;
-    QPushButton*        pProcessButton;
-    QPushButton*        pSaveImageButton;
-
-    QGroupBox*          pProcessTypeBox;
-    QVBoxLayout*        pProcessTypeLayout;
-    QRadioButton*       pCPUButton;
-    QRadioButton*       pCPUParallelButton;
-    QRadioButton*       pGPUButton;
+    ImageProcessingModeWidget* imageProcessingModeWidget_;
 
 protected:
 	virtual void closeEvent(QCloseEvent *event) override;
-
-private slots:
-    void BrightnessChanged(int value);
-    void ContrastChanged(int value);
-    void ProcessImage();
-    void ProcessTypeChanged();
-    void SaveImage();
 };

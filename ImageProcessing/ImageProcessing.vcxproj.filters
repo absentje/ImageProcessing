@@ -67,10 +67,10 @@
     <ClCompile Include="source\AppLogic\VLExtension\ViewWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\AppModes\ImageProcessing.cpp">
+    <ClCompile Include="source\GUI\ImageProcessingModeWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\WidgetNodes\WidgetNode.cpp">
+    <ClCompile Include="source\AppLogic\AppModes\ImageProcessingMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -111,15 +111,15 @@
     <ClInclude Include="source\AppLogic\VLExtension\ViewWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\AppLogic\AppModes\ImageProcessing.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\AppLogic\WidgetNodes\WidgetNode.h">
+    <ClInclude Include="source\AppLogic\AppModes\ImageProcessingMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="source\GUI\MainWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="source\GUI\ImageProcessingModeWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "ImageProcessing.h"
+#include "ImageProcessingMode.h"
 #include <vlCore/Image.hpp>
 #include <Actors/TextureRatioViewActor.h>
 #include <thread>
@@ -17,7 +17,7 @@ class ImageProcessingUIListener: public vl::UIEventListener
 {
     VL_INSTRUMENT_CLASS( ImageProcessingController, vl::UIEventListener );
 public:
-    ImageProcessingUIListener( ImageProcessing* ptr )
+    ImageProcessingUIListener( ImageProcessingMode* ptr )
         : pImageProcessing( ptr ) {}
 
     virtual void initEvent() override {}
@@ -50,10 +50,10 @@ public:
         }
     }
 private:
-    ImageProcessing* pImageProcessing;
+    ImageProcessingMode* pImageProcessing;
 };
 
-ImageProcessing::ImageProcessing()
+ImageProcessingMode::ImageProcessingMode()
     :fBrightness(0.f), fContrast(0.f)
 {
     pScene->setCullingEnabled(false);
@@ -65,19 +65,19 @@ ImageProcessing::ImageProcessing()
     SetImageProcessingType(EImageProcessingType::IPT_PARALLEL_CPU);
 }
 
-void ImageProcessing::SetImageProcessingType(EImageProcessingType etype)
+void ImageProcessingMode::SetImageProcessingType(EImageProcessingType etype)
 {
     eIPType = etype;
 }
 
-void ImageProcessing::LoadImage(const std::wstring& file_path)
+void ImageProcessingMode::LoadImage(const std::wstring& file_path)
 {
     pSourceImage = new vl::Image(file_path);
     ProcessImage();
     ShowOutputImage();
 }
 
-void ImageProcessing::SaveOutputImage()
+void ImageProcessingMode::SaveOutputImage()
 {
     if ( !pOutputImage )
     {
@@ -92,17 +92,17 @@ void ImageProcessing::SaveOutputImage()
     vl::saveImage(pOutputImage.get(), newFilePath);
 }
 
-void ImageProcessing::SetBrightness(float value)
+void ImageProcessingMode::SetBrightness(float value)
 {
     fBrightness = value;
 }
 
-void ImageProcessing::SetContrast(float value)
+void ImageProcessingMode::SetContrast(float value)
 {
     fContrast = value;
 }
 
-void ImageProcessing::ProcessImage()
+void ImageProcessingMode::ProcessImage()
 {
     static const int THREAD_COUNT = 4;
     std::vector<std::thread> threads;
@@ -160,7 +160,7 @@ void ImageProcessing::ProcessImage()
     msMessage->setText("ProcessingTime: " + QString(std::to_string(timer.GetElapsedSeconds() * 1000.f).c_str()) + " ms.");
 }
 
-void ImageProcessing::ShowOutputImage()
+void ImageProcessingMode::ShowOutputImage()
 {
     if ( !pOutputImage )
     {
@@ -169,7 +169,7 @@ void ImageProcessing::ShowOutputImage()
     pActor->SetTexture( vl::ref<vl::Texture>( new vl::Texture( pOutputImage.get() ) ).get() );
 }
 
-void ImageProcessing::ProcessOutputImage(int i, int w)
+void ImageProcessingMode::ProcessOutputImage(int i, int w)
 {
     if ( !pOutputImage )
     {
@@ -186,7 +186,7 @@ void ImageProcessing::ProcessOutputImage(int i, int w)
     }
 }
 
-void    ImageProcessing::ProcessColor(vl::ubvec3& color)
+void    ImageProcessingMode::ProcessColor(vl::ubvec3& color)
 {
     using UByte = unsigned char;
     vl::vec3 norm_color = vl::vec3(color.x() / 255.f, color.y() / 255.f, color.z() / 255.f);
@@ -218,7 +218,7 @@ void    ImageProcessing::ProcessColor(vl::ubvec3& color)
     color.z() = static_cast<UByte>(vl::clamp(norm_color.z() * 255.f, 0.f, 255.f));
 }
 
-void    ImageProcessing::toYUV(vl::vec3& RGB)
+void    ImageProcessingMode::toYUV(vl::vec3& RGB)
 {
     static const vl::mat3 coeffs =
             vl::mat3(
@@ -230,7 +230,7 @@ void    ImageProcessing::toYUV(vl::vec3& RGB)
     RGB = coeffs * RGB;
 }
 
-void    ImageProcessing::toRGB(vl::vec3& YUV)
+void    ImageProcessingMode::toRGB(vl::vec3& YUV)
 {
     static const vl::mat3 coeffs =
             vl::mat3(
@@ -241,7 +241,7 @@ void    ImageProcessing::toRGB(vl::vec3& YUV)
     YUV = coeffs * YUV;
 }
 
-void    ImageProcessing::InitPipeline(vl::OpenGLContext* context)
+void    ImageProcessingMode::InitPipeline(vl::OpenGLContext* context)
 {
     pPipeline = new VLExtension::EffectPipeline(context);
     pEffect = new VLExtension::BrightnessContrastEffect;
@@ -250,7 +250,7 @@ void    ImageProcessing::InitPipeline(vl::OpenGLContext* context)
     pPipeline->AddEffect(pEffect.get());
 }
 
-vl::ref<vl::Image> ImageProcessing::textureToImage(vl::Texture* inTexture)
+vl::ref<vl::Image> ImageProcessingMode::textureToImage(vl::Texture* inTexture)
 {
     vl::ref<vl::Image> resultValue = new vl::Image;
     vl::ref<VLExtension::Actor> pTextureViewActor = new VLExtension::TextureViewActor(inTexture);

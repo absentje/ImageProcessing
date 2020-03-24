@@ -8,9 +8,8 @@ AppMode::AppMode()
 	pScene = new vl::SceneManagerActorTree;
 }
 
-void AppMode::Enable( VLExtension::ViewWindow* viewWindow/*, WidgetNode* widgetNode*/ )
+void AppMode::Enable( VLExtension::ViewWindow* viewWindow )
 {
-//	enable_( widgetNode );
 	viewWindow->ShowScene( pScene.get() );
 	if ( pUIEventListener )
 	{

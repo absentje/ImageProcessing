@@ -11,9 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\GUI\ImageProcessingModeWidget.cpp" />
     <ClCompile Include="source\AppLogic\AppModes\AppMode.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="source\AppLogic\AppModes\ImageProcessing.cpp" />
+    <ClCompile Include="source\AppLogic\AppModes\ImageProcessingMode.cpp" />
     <ClCompile Include="source\AppLogic\Util\Timer.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Actor.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Actors\TextureRatioViewActor.cpp" />
@@ -26,11 +27,11 @@
     <ClCompile Include="source\AppLogic\VLExtension\Actors\TextureViewActor.cpp" />
     <ClCompile Include="source\GUI\MainWindow.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\ViewWindow.cpp" />
-    <ClCompile Include="source\AppLogic\WidgetNodes\WidgetNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="source\GUI\ImageProcessingModeWidget.h" />
     <ClInclude Include="source\AppLogic\AppModes\AppMode.h" />
-    <ClInclude Include="source\AppLogic\AppModes\ImageProcessing.h" />
+    <ClInclude Include="source\AppLogic\AppModes\ImageProcessingMode.h" />
     <ClInclude Include="source\AppLogic\Util\Timer.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actor.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actors\TextureRatioViewActor.h" />
@@ -42,7 +43,6 @@
     <ClInclude Include="source\AppLogic\VLExtension\Shader.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actors\TextureViewActor.h" />
     <ClInclude Include="source\AppLogic\VLExtension\ViewWindow.h" />
-    <ClInclude Include="source\AppLogic\WidgetNodes\WidgetNode.h" />
     <QtMoc Include="source\GUI\MainWindow.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -107,7 +107,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);C:\VisualizationLibrary-2.0-b3_msvc_17\src;C:\VisualizationLibrary-2.0-b3_msvc_17\build\src;C:\VisualizationLibrary-2.0-b3_msvc_17\src\3rdparty\freetype\include;C:\VisualizationLibrary-2.0-b3_msvc_17\src\3rdparty\Khronos;C:\VisualizationLibrary-2.0-b3_msvc_17\src\examples</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);C:\VisualizationLibrary-2.0-b3_msvc_17\src;C:\VisualizationLibrary-2.0-b3_msvc_17\build\src;C:\VisualizationLibrary-2.0-b3_msvc_17\src\3rdparty\freetype\include;C:\VisualizationLibrary-2.0-b3_msvc_17\src\3rdparty\Khronos;C:\VisualizationLibrary-2.0-b3_msvc_17\src\examples;.\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -123,7 +123,7 @@
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);C:\VisualizationLibrary-2.0-b3_msvc_17\src;C:\VisualizationLibrary-2.0-b3_msvc_17\build\src;C:\VisualizationLibrary-2.0-b3_msvc_17\src\3rdparty\freetype\include;C:\VisualizationLibrary-2.0-b3_msvc_17\src\3rdparty\Khronos;C:\VisualizationLibrary-2.0-b3_msvc_17\src\examples</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);C:\VisualizationLibrary-2.0-b3_msvc_17\src;C:\VisualizationLibrary-2.0-b3_msvc_17\build\src;C:\VisualizationLibrary-2.0-b3_msvc_17\src\3rdparty\freetype\include;C:\VisualizationLibrary-2.0-b3_msvc_17\src\3rdparty\Khronos;C:\VisualizationLibrary-2.0-b3_msvc_17\src\examples;.\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>

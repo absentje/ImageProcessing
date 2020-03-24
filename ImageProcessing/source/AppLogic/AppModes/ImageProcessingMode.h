@@ -27,11 +27,11 @@ enum class EImageProcessingType : unsigned char
     IPT_GPU
 };
 
-class ImageProcessing : public AppMode
+class ImageProcessingMode: public AppMode
 {
-    VL_INSTRUMENT_CLASS(ImageProcessing, vl::Object)
+    VL_INSTRUMENT_CLASS( ImageProcessingMode, vl::Object)
 public:
-    ImageProcessing();
+    ImageProcessingMode();
 
     void LoadImage(const std::wstring& file_path);
     void SetBrightness(float value);
@@ -40,6 +40,8 @@ public:
     void ProcessImage();
     void SaveOutputImage();
     void ShowOutputImage();
+
+protected:
 
 private:
     void    InitPipeline(vl::OpenGLContext* context);
