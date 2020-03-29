@@ -24,23 +24,15 @@ private:
     ImageProcessingMode* imageProcessingMode_;
 
     QVBoxLayout* pSubLayout;
-    QLabel* pBrightnessLabel;
-    QSlider* pBrightnessSlider;
-    QLabel* pContrastLabel;
-    QSlider* pContrastSlider;
+//    QLabel* pBrightnessLabel;
+//    QSlider* pBrightnessSlider;
+//    QLabel* pContrastLabel;
+//    QSlider* pContrastSlider;
     QPushButton* pProcessButton;
     QPushButton* pSaveImageButton;
 
-    QGroupBox* pProcessTypeBox;
-    QVBoxLayout* pProcessTypeLayout;
-    QRadioButton* pCPUButton;
-    QRadioButton* pCPUParallelButton;
-    QRadioButton* pGPUButton;
 
 private slots:
-    void BrightnessChanged( int value );
-    void ContrastChanged( int value );
     void ProcessImage();
-    void ProcessTypeChanged();
     void SaveImage();
 };

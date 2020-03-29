@@ -73,6 +73,27 @@
     <ClCompile Include="source\AppLogic\AppModes\ImageProcessingMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\AppLogic\Effects\IEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\Effects\WidgetData\EffectWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\Effects\WidgetData\EffectParamWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\Util\ColorUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\VLExtension\Util\TextureReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AppLogic\Util\Timer.h">
@@ -114,12 +135,33 @@
     <ClInclude Include="source\AppLogic\AppModes\ImageProcessingMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\AppLogic\Effects\IEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\Util\ColorUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\VLExtension\Util\TextureReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="source\GUI\MainWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="source\GUI\ImageProcessingModeWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="source\AppLogic\Effects\WidgetData\EffectWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="source\AppLogic\Effects\WidgetData\EffectParamWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

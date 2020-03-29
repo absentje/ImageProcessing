@@ -11,6 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.cpp" />
+    <ClCompile Include="source\AppLogic\Effects\IEffect.cpp" />
+    <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffect.cpp" />
+    <ClCompile Include="source\AppLogic\Util\ColorUtils.cpp" />
+    <ClCompile Include="source\AppLogic\VLExtension\Util\TextureReader.cpp" />
     <ClCompile Include="source\GUI\ImageProcessingModeWidget.cpp" />
     <ClCompile Include="source\AppLogic\AppModes\AppMode.cpp" />
     <ClCompile Include="main.cpp" />
@@ -27,11 +32,19 @@
     <ClCompile Include="source\AppLogic\VLExtension\Actors\TextureViewActor.cpp" />
     <ClCompile Include="source\GUI\MainWindow.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\ViewWindow.cpp" />
+    <ClCompile Include="source\AppLogic\Effects\WidgetData\EffectWidget.cpp" />
+    <ClCompile Include="source\AppLogic\Effects\WidgetData\EffectParamWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="source\AppLogic\Effects\WidgetData\EffectWidget.h" />
+    <QtMoc Include="source\AppLogic\Effects\WidgetData\EffectParamWidget.h" />
     <QtMoc Include="source\GUI\ImageProcessingModeWidget.h" />
+    <ClInclude Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.h" />
+    <ClInclude Include="source\AppLogic\Effects\IEffect.h" />
     <ClInclude Include="source\AppLogic\AppModes\AppMode.h" />
     <ClInclude Include="source\AppLogic\AppModes\ImageProcessingMode.h" />
+    <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffect.h" />
+    <ClInclude Include="source\AppLogic\Util\ColorUtils.h" />
     <ClInclude Include="source\AppLogic\Util\Timer.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actor.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actors\TextureRatioViewActor.h" />
@@ -42,6 +55,7 @@
     <ClInclude Include="source\AppLogic\VLExtension\Pipeline.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Shader.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actors\TextureViewActor.h" />
+    <ClInclude Include="source\AppLogic\VLExtension\Util\TextureReader.h" />
     <ClInclude Include="source\AppLogic\VLExtension\ViewWindow.h" />
     <QtMoc Include="source\GUI\MainWindow.h" />
   </ItemGroup>
