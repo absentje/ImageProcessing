@@ -95,5 +95,6 @@ void ImageProcessingMode::ShowOutputImage()
     {
         return;
     }
-    pActor->SetTexture( vl::ref<vl::Texture>( new vl::Texture( pOutputImage.get() ) ).get() );
+    vl::ref<vl::Texture> texture = new vl::Texture( pOutputImage.get() );
+    pActor->SetTexture( texture.get() );
 }

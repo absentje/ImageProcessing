@@ -62,7 +62,11 @@ void	TextureViewActor::SetTexture( vl::Texture* texture )
 void	TextureViewActor::SetTexture( vl::Texture* texture, int index, const char* name )
 {
 	auto shader = GetShader();
-	shader->gocTextureSampler( index )->setTexture( texture ? texture : ( new vl::Texture( 8, 8, vl::ETextureFormat::TF_RGBA ) ) );
+
+	auto tex = texture ? texture : ( new vl::Texture( 8, 8, vl::ETextureFormat::TF_RGBA ) );
+	tex->getTexParameter()->setWrap( vl::ETexParamWrap::TPW_CLAMP_TO_EDGE );
+
+	shader->gocTextureSampler( index )->setTexture( tex );
 	if ( name )
 		shader->gocUniform( name )->setUniformI( index );
 }

@@ -20,7 +20,6 @@ BrightnessContrastEffect::BrightnessContrastEffect()
 void	BrightnessContrastEffect::onPipelineAdd( Shader* shader, int width, int height )
 {
     shader->SetFShader( L"resources/glsl/brightness_contrast_effect.fs" );
-
     shader->setUniform( pUniBrightness.get() );
     shader->setUniform( pUniContrast.get() );
 }

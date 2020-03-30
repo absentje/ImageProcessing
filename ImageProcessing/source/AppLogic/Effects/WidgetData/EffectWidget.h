@@ -1,12 +1,12 @@
 #pragma once
 #include <vlCore/Object.hpp>
 #include <string>
-#include <QWidget>
+#include <QGroupBox>
 
 class IEffect;
 class QVBoxLayout;
 
-class EffectWidget: public QWidget
+class EffectWidget: public QGroupBox
 {
 	Q_OBJECT
 public:

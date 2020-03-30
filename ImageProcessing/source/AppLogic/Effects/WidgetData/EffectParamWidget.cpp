@@ -20,6 +20,7 @@ FloatWidgetParam::FloatWidgetParam( float& param, float min, float max, EffectWi
 
 	setMinimum( 0 );
 	setMaximum( cMaxSliderValue );
+	setValue( cMaxSliderValue / 2 );
 }
 
 void FloatWidgetParam::sliderValueChanged_( int value )
@@ -38,6 +39,7 @@ IntWidgetParam::IntWidgetParam( int& param, int min, int max, EffectWidget* effe
 
 	setMinimum( min_ );
 	setMaximum( max_ );
+	setValue( ( max_ + min_ ) / 2 );
 }
 
 void IntWidgetParam::sliderValueChanged_( int value )

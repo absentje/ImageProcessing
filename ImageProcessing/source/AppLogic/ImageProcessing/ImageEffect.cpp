@@ -13,7 +13,7 @@ ImageEffect::ImageEffect( const std::wstring& effectName )
 
 void ImageEffect::ApplyEffect()
 {
-	if ( !imProcMode_ )
+	if ( !imProcMode_ || !imProcMode_->pSourceImage )
 	{
 		return;
 	}
