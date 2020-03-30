@@ -16,20 +16,30 @@ ImageProcessingModeWidget::ImageProcessingModeWidget( QWidget* parent,
 	imageProcessingMode_( imageProcessingMode )
 {
 
-    pSubLayout = new QVBoxLayout( this );
-    setLayout( pSubLayout );
+    subLayout_ = new QVBoxLayout( this );
+    setLayout( subLayout_ );
 
-    pProcessButton = new QPushButton( "ProcessImage", this );
-    connect( pProcessButton, SIGNAL( clicked() ),
+    processButton_ = new QPushButton( "ProcessImage", this );
+    connect( processButton_, SIGNAL( clicked() ),
              this, SLOT( ProcessImage() ) );
-    pSaveImageButton = new QPushButton( "SaveImage", this );
-    connect( pSaveImageButton, SIGNAL( clicked() ),
+    saveImageButton_ = new QPushButton( "SaveImage", this );
+    connect( saveImageButton_, SIGNAL( clicked() ),
              this, SLOT( SaveImage() ) );
 
-    pSubLayout->addWidget( imageProcessingMode_->currentImageEffect_->CreateWidget( this ), 1 );
-    pSubLayout->addStretch( 5 );
-    pSubLayout->addWidget( pProcessButton );
-    pSubLayout->addWidget( pSaveImageButton );
+    applyChange_ = new QPushButton( "ApplyChange", this );
+    connect( applyChange_, SIGNAL( clicked() ),
+             this, SLOT( ApplyChange() ) );
+    discardChange_ = new QPushButton( "DiscardChange", this );
+    connect( discardChange_, SIGNAL( clicked() ),
+             this, SLOT( DiscardChange() ) );
+
+    subLayout_->addWidget( imageProcessingMode_->currentImageEffect_->CreateWidget( this ), 1 );
+    subLayout_->addStretch( 5 );
+    subLayout_->addWidget( processButton_ );
+    subLayout_->addWidget( saveImageButton_ );
+    subLayout_->addWidget( applyChange_ );
+    subLayout_->addWidget( discardChange_ );
+
 }
 
 ImageProcessingModeWidget::~ImageProcessingModeWidget()
@@ -43,7 +53,6 @@ void ImageProcessingModeWidget::ProcessImage()
         imageProcessingMode_->ProcessImage();
         imageProcessingMode_->ShowOutputImage();
     }
-
 }
 
 void ImageProcessingModeWidget::SaveImage()
@@ -52,5 +61,20 @@ void ImageProcessingModeWidget::SaveImage()
     {
         imageProcessingMode_->SaveOutputImage();
     }
+}
 
+void ImageProcessingModeWidget::ApplyChange()
+{
+    if ( imageProcessingMode_ )
+    {
+        imageProcessingMode_->ApplyChange();
+    }
+}
+
+void ImageProcessingModeWidget::DiscardChange()
+{
+    if ( imageProcessingMode_ )
+    {
+        imageProcessingMode_->DiscardChange();
+    }
 }

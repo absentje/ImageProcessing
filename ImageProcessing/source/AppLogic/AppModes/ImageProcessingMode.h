@@ -29,9 +29,13 @@ public:
     ImageProcessingMode();
 
     void LoadImage(const std::wstring& file_path);
-    void SaveOutputImage();
+    
     void ShowOutputImage();
+
+    void DiscardChange();
+    void ApplyChange();
     void ProcessImage();
+    void SaveOutputImage();
 
 private:
     vl::ref<vl::Image>          pSourceImage;

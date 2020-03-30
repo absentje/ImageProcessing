@@ -89,6 +89,20 @@ void ImageProcessingMode::ProcessImage()
     currentImageEffect_->ApplyEffect();
 }
 
+void ImageProcessingMode::DiscardChange()
+{
+    pOutputImage = pSourceImage;
+    ShowOutputImage();
+}
+
+void ImageProcessingMode::ApplyChange()
+{
+    if ( pOutputImage )
+    {
+        pSourceImage = pOutputImage;
+    }
+}
+
 void ImageProcessingMode::ShowOutputImage()
 {
     if ( !pOutputImage )

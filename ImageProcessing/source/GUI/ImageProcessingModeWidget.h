@@ -23,16 +23,17 @@ public:
 private:
     ImageProcessingMode* imageProcessingMode_;
 
-    QVBoxLayout* pSubLayout;
-//    QLabel* pBrightnessLabel;
-//    QSlider* pBrightnessSlider;
-//    QLabel* pContrastLabel;
-//    QSlider* pContrastSlider;
-    QPushButton* pProcessButton;
-    QPushButton* pSaveImageButton;
+    QVBoxLayout* subLayout_;
+
+    QPushButton* processButton_;
+    QPushButton* saveImageButton_;
+    QPushButton* applyChange_;
+    QPushButton* discardChange_;
 
 
 private slots:
     void ProcessImage();
     void SaveImage();
+    void ApplyChange();
+    void DiscardChange();
 };
