@@ -3,6 +3,7 @@
 #include <vlCore/Object.hpp>
 #include <vlCore/Vector4.hpp>
 #include <AppLogic/AppModes/AppMode.h>
+#include <vlCore/String.hpp>
 
 class ImageEffect;
 
@@ -30,16 +31,17 @@ public:
 
     void LoadImage(const std::wstring& file_path);
     
-    void ShowOutputImage();
-
     void DiscardChange();
     void ApplyChange();
     void ProcessImage();
-    void SaveOutputImage();
+    void SaveImage();
 
 private:
+    void ShowOutputImage_();
+
     vl::ref<vl::Image>          pSourceImage;
     vl::ref<vl::Image>          pOutputImage;
+    vl::String                  imageFilePath_;
     vl::ref<VLExtension::TextureViewActor>   pActor;
     vl::ref<ImageEffect> currentImageEffect_;
 

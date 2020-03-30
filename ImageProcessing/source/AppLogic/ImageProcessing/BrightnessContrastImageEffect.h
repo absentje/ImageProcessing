@@ -17,7 +17,7 @@ public:
 protected: 
 	virtual VLExtension::Effect* GetEffect() override;
 	// widget-parameters will be attached here
-	virtual void OnCreatedEffectWidget( ParamsWidget* effectWidget ) override;
+	virtual void OnCreatedParamsWidget( ParamsWidget* paramsWidget ) override;
 
 private:
 	vl::ref<VLExtension::BrightnessContrastEffect>   pipeEffect_;

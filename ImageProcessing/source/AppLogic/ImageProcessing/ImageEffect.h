@@ -1,5 +1,5 @@
 #pragma once
-#include <AppLogic/Effects/ParamsSelector.h>
+#include <AppLogic/Selectors/ParamsSelector.h>
 
 namespace vl
 {

@@ -1,12 +1,9 @@
 #include "ImageProcessingMode.h"
 #include <vlCore/Image.hpp>
 #include <Actors/TextureRatioViewActor.h>
-#include <thread>
 #include <vector>
 #include <FBORender.h>
 #include <EffectPipeline.h>
-#include <Effects/BrightnessContrastEffect.h>
-#include "AppLogic/Util/Timer.h"
 #include <vlGraphics/SceneManagerActorTree.hpp>
 #include <vlGraphics/UIEventListener.hpp>
 #include <AppLogic/ImageProcessing/BrightnessContrastImageEffect.h>
@@ -65,34 +62,36 @@ ImageProcessingMode::ImageProcessingMode()
 void ImageProcessingMode::LoadImage(const std::wstring& file_path)
 {
     pSourceImage = vl::loadImage( file_path );
+    imageFilePath_ = file_path;
     ProcessImage();
-    ShowOutputImage();
+    ShowOutputImage_();
 }
 
-void ImageProcessingMode::SaveOutputImage()
+void ImageProcessingMode::SaveImage()
 {
-    if ( !pOutputImage )
+    if ( !pSourceImage )
     {
         return;
     }
-    std::wstring fileName = pSourceImage->filePath().extractFileName().toStdWString();
-    std::wstring fileType = pSourceImage->filePath().extractFileExtension().toStdWString();
+    std::wstring fileName = imageFilePath_.extractFileName().toStdWString();
+    std::wstring fileType = imageFilePath_.extractFileExtension().toStdWString();
     auto iter = fileName.find(L'.');
     fileName.erase(iter);
 
     std::wstring newFilePath = L"resources/images/" + fileName + L"_обработано." + fileType;
-    vl::saveImage(pOutputImage.get(), newFilePath);
+    vl::saveImage( pSourceImage.get(), newFilePath);
 }
 
 void ImageProcessingMode::ProcessImage()
 {
     currentImageEffect_->Apply();
+    ShowOutputImage_();
 }
 
 void ImageProcessingMode::DiscardChange()
 {
     pOutputImage = pSourceImage;
-    ShowOutputImage();
+    ShowOutputImage_();
 }
 
 void ImageProcessingMode::ApplyChange()
@@ -103,7 +102,7 @@ void ImageProcessingMode::ApplyChange()
     }
 }
 
-void ImageProcessingMode::ShowOutputImage()
+void ImageProcessingMode::ShowOutputImage_()
 {
     if ( !pOutputImage )
     {

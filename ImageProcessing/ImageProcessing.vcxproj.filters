@@ -85,16 +85,16 @@
     <ClCompile Include="source\AppLogic\VLExtension\Util\TextureReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\Effects\Selector.cpp">
+    <ClCompile Include="source\AppLogic\Selectors\WidgetData\ParamsWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\Effects\ParamsSelector.cpp">
+    <ClCompile Include="source\AppLogic\Selectors\WidgetData\ParamWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\Effects\WidgetData\ParamsWidget.cpp">
+    <ClCompile Include="source\AppLogic\Selectors\ParamsSelector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\Effects\WidgetData\ParamWidget.cpp">
+    <ClCompile Include="source\AppLogic\Selectors\Selector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -150,10 +150,10 @@
     <ClInclude Include="source\AppLogic\VLExtension\Util\TextureReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\AppLogic\Effects\Selector.h">
+    <ClInclude Include="source\AppLogic\Selectors\ParamsSelector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\AppLogic\Effects\ParamsSelector.h">
+    <ClInclude Include="source\AppLogic\Selectors\Selector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -164,10 +164,10 @@
     <QtMoc Include="source\GUI\ImageProcessingModeWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="source\AppLogic\Effects\WidgetData\ParamsWidget.h">
+    <QtMoc Include="source\AppLogic\Selectors\WidgetData\ParamsWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="source\AppLogic\Effects\WidgetData\ParamWidget.h">
+    <QtMoc Include="source\AppLogic\Selectors\WidgetData\ParamWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

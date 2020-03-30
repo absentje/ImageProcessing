@@ -9,7 +9,7 @@ class FloatParamWidget: public QSlider
 {
 	Q_OBJECT
 public:
-	FloatParamWidget( float& param, float min, float max, ParamsWidget* effectWidget );
+	FloatParamWidget( float& param, float min, float max, ParamsWidget* paramsWidget );
 
 private:
 	float& param_;
@@ -24,7 +24,7 @@ class IntParamWidget: public QSlider
 {
 	Q_OBJECT
 public:
-	IntParamWidget( int& param, int min, int max, ParamsWidget* effectWidget );
+	IntParamWidget( int& param, int min, int max, ParamsWidget* paramsWidget );
 
 private:
 	int& param_;

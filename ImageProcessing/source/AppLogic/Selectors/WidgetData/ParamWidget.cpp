@@ -1,6 +1,6 @@
 #include "ParamWidget.h"
-#include <AppLogic/Effects/Selector.h>
-#include <AppLogic/Effects/WidgetData/ParamsWidget.h>
+#include <AppLogic/Selectors/Selector.h>
+#include <AppLogic/Selectors/WidgetData/ParamsWidget.h>
 #include <vlCore/glsl_math.hpp>
 
 namespace
@@ -11,8 +11,8 @@ constexpr int cMaxSliderValue = 1000;
 
 ///////////////////////////////////////////////////////////////
 // FloatParamWidget ///////////////////////////////////////////
-FloatParamWidget::FloatParamWidget( float& param, float min, float max, ParamsWidget* effectWidget )
-	: QSlider( Qt::Orientation::Horizontal, effectWidget ), effectWidget_( effectWidget ),
+FloatParamWidget::FloatParamWidget( float& param, float min, float max, ParamsWidget* paramsWidget )
+	: QSlider( Qt::Orientation::Horizontal, paramsWidget ), effectWidget_( paramsWidget ),
 	param_( param ), min_( min ), max_( max )
 {
 	connect( this, SIGNAL( valueChanged( int ) ),
@@ -30,8 +30,8 @@ void FloatParamWidget::sliderValueChanged_( int value )
 }
 ///////////////////////////////////////////////////////////////
 // IntParamWidget /////////////////////////////////////////////
-IntParamWidget::IntParamWidget( int& param, int min, int max, ParamsWidget* effectWidget )
-	: QSlider( Qt::Orientation::Horizontal, effectWidget ), effectWidget_( effectWidget ),
+IntParamWidget::IntParamWidget( int& param, int min, int max, ParamsWidget* paramsWidget )
+	: QSlider( Qt::Orientation::Horizontal, paramsWidget ), effectWidget_( paramsWidget ),
 	param_( param ), min_( min ), max_( max )
 {
 	connect( this, SIGNAL( valueChanged( int ) ),

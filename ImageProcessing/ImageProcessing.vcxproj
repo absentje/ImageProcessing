@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\AppLogic\Effects\ParamsSelector.cpp" />
+    <ClCompile Include="source\AppLogic\Selectors\ParamsSelector.cpp" />
     <ClCompile Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.cpp" />
-    <ClCompile Include="source\AppLogic\Effects\Selector.cpp" />
+    <ClCompile Include="source\AppLogic\Selectors\Selector.cpp" />
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffect.cpp" />
     <ClCompile Include="source\AppLogic\Util\ColorUtils.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Util\TextureReader.cpp" />
@@ -33,16 +33,16 @@
     <ClCompile Include="source\AppLogic\VLExtension\Actors\TextureViewActor.cpp" />
     <ClCompile Include="source\GUI\MainWindow.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\ViewWindow.cpp" />
-    <ClCompile Include="source\AppLogic\Effects\WidgetData\ParamsWidget.cpp" />
-    <ClCompile Include="source\AppLogic\Effects\WidgetData\ParamWidget.cpp" />
+    <ClCompile Include="source\AppLogic\Selectors\WidgetData\ParamsWidget.cpp" />
+    <ClCompile Include="source\AppLogic\Selectors\WidgetData\ParamWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="source\AppLogic\Effects\WidgetData\ParamsWidget.h" />
-    <QtMoc Include="source\AppLogic\Effects\WidgetData\ParamWidget.h" />
+    <QtMoc Include="source\AppLogic\Selectors\WidgetData\ParamsWidget.h" />
+    <QtMoc Include="source\AppLogic\Selectors\WidgetData\ParamWidget.h" />
     <QtMoc Include="source\GUI\ImageProcessingModeWidget.h" />
-    <ClInclude Include="source\AppLogic\Effects\ParamsSelector.h" />
+    <ClInclude Include="source\AppLogic\Selectors\ParamsSelector.h" />
     <ClInclude Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.h" />
-    <ClInclude Include="source\AppLogic\Effects\Selector.h" />
+    <ClInclude Include="source\AppLogic\Selectors\Selector.h" />
     <ClInclude Include="source\AppLogic\AppModes\AppMode.h" />
     <ClInclude Include="source\AppLogic\AppModes\ImageProcessingMode.h" />
     <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffect.h" />

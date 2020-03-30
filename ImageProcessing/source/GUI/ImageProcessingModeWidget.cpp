@@ -20,18 +20,21 @@ ImageProcessingModeWidget::ImageProcessingModeWidget( QWidget* parent,
     setLayout( subLayout_ );
 
     processButton_ = new QPushButton( "ProcessImage", this );
-    connect( processButton_, SIGNAL( clicked() ),
-             this, SLOT( ProcessImage() ) );
+    connect( processButton_, &QPushButton::clicked,
+             this, [this] { imageProcessingMode_->ProcessImage(); } );
+
+
     saveImageButton_ = new QPushButton( "SaveImage", this );
-    connect( saveImageButton_, SIGNAL( clicked() ),
-             this, SLOT( SaveImage() ) );
+    connect( saveImageButton_, &QPushButton::clicked,
+             this, [this] { imageProcessingMode_->SaveImage(); } );
 
     applyChange_ = new QPushButton( "ApplyChange", this );
-    connect( applyChange_, SIGNAL( clicked() ),
-             this, SLOT( ApplyChange() ) );
+    connect( applyChange_, &QPushButton::clicked,
+             this, [this] { imageProcessingMode_->ApplyChange(); } );
+
     discardChange_ = new QPushButton( "DiscardChange", this );
-    connect( discardChange_, SIGNAL( clicked() ),
-             this, SLOT( DiscardChange() ) );
+    connect( discardChange_, &QPushButton::clicked,
+             this, [this] { imageProcessingMode_->DiscardChange(); } );
 
     subLayout_->addWidget( imageProcessingMode_->currentImageEffect_->CreateWidget( this ), 1 );
     subLayout_->addStretch( 5 );
@@ -44,37 +47,4 @@ ImageProcessingModeWidget::ImageProcessingModeWidget( QWidget* parent,
 
 ImageProcessingModeWidget::~ImageProcessingModeWidget()
 {
-}
-
-void ImageProcessingModeWidget::ProcessImage()
-{
-    if ( imageProcessingMode_ )
-    {
-        imageProcessingMode_->ProcessImage();
-        imageProcessingMode_->ShowOutputImage();
-    }
-}
-
-void ImageProcessingModeWidget::SaveImage()
-{
-    if ( imageProcessingMode_ )
-    {
-        imageProcessingMode_->SaveOutputImage();
-    }
-}
-
-void ImageProcessingModeWidget::ApplyChange()
-{
-    if ( imageProcessingMode_ )
-    {
-        imageProcessingMode_->ApplyChange();
-    }
-}
-
-void ImageProcessingModeWidget::DiscardChange()
-{
-    if ( imageProcessingMode_ )
-    {
-        imageProcessingMode_->DiscardChange();
-    }
 }

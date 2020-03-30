@@ -12,5 +12,5 @@ public:
 
 protected:
 // widget-parameters will be attached here
-	virtual void OnCreatedEffectWidget( ParamsWidget* effectWidget ) = 0;
+	virtual void OnCreatedParamsWidget( ParamsWidget* paramsWidget ) = 0;
 };

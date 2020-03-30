@@ -29,11 +29,4 @@ private:
     QPushButton* saveImageButton_;
     QPushButton* applyChange_;
     QPushButton* discardChange_;
-
-
-private slots:
-    void ProcessImage();
-    void SaveImage();
-    void ApplyChange();
-    void DiscardChange();
 };

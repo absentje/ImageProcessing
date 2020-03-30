@@ -2,7 +2,7 @@
 #include <QVBoxLayout>
 #include <QSlider>
 #include "ParamWidget.h"
-#include <AppLogic/Effects/ParamsSelector.h>
+#include <AppLogic/Selectors/ParamsSelector.h>
 #include <QLabel>
 
 ParamsWidget::ParamsWidget( QWidget* parent, ParamsSelector* effect )
