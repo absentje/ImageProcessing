@@ -86,7 +86,7 @@ void ImageProcessingMode::SaveOutputImage()
 
 void ImageProcessingMode::ProcessImage()
 {
-    currentImageEffect_->ApplyEffect();
+    currentImageEffect_->Apply();
 }
 
 void ImageProcessingMode::DiscardChange()

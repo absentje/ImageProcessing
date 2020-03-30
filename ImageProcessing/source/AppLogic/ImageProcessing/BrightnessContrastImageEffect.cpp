@@ -1,6 +1,6 @@
 #include "BrightnessContrastImageEffect.h"
 #include <Effects/BrightnessContrastEffect.h>
-#include <AppLogic/Effects/WidgetData/EffectWidget.h>
+#include <AppLogic/Effects/WidgetData/ParamsWidget.h>
 #include <AppLogic/VLExtension/EffectPipeline.h>
 
 namespace
@@ -24,7 +24,7 @@ void BrightnessContrastImageEffect::UpdateData()
     pipeEffect_->SetContrast( contrast_ );
 }
 
-void BrightnessContrastImageEffect::OnCreatedEffectWidget( EffectWidget* effectWidget )
+void BrightnessContrastImageEffect::OnCreatedEffectWidget( ParamsWidget* effectWidget )
 {
     effectWidget->AddParam( L"Brightness", brightness_, -100.f, 100.f );
     effectWidget->AddParam( L"Contrast", contrast_, -100.f, 100.f );

@@ -1,6 +1,6 @@
-#include "EffectParamWidget.h"
-#include <AppLogic/Effects/IEffect.h>
-#include <AppLogic/Effects/WidgetData/EffectWidget.h>
+#include "ParamWidget.h"
+#include <AppLogic/Effects/Selector.h>
+#include <AppLogic/Effects/WidgetData/ParamsWidget.h>
 #include <vlCore/glsl_math.hpp>
 
 namespace
@@ -10,8 +10,8 @@ constexpr int cMaxSliderValue = 1000;
 }
 
 ///////////////////////////////////////////////////////////////
-// FloatWidgetParam ///////////////////////////////////////////
-FloatWidgetParam::FloatWidgetParam( float& param, float min, float max, EffectWidget* effectWidget )
+// FloatParamWidget ///////////////////////////////////////////
+FloatParamWidget::FloatParamWidget( float& param, float min, float max, ParamsWidget* effectWidget )
 	: QSlider( Qt::Orientation::Horizontal, effectWidget ), effectWidget_( effectWidget ),
 	param_( param ), min_( min ), max_( max )
 {
@@ -23,14 +23,14 @@ FloatWidgetParam::FloatWidgetParam( float& param, float min, float max, EffectWi
 	setValue( cMaxSliderValue / 2 );
 }
 
-void FloatWidgetParam::sliderValueChanged_( int value )
+void FloatParamWidget::sliderValueChanged_( int value )
 {
 	param_ = vl::mix( min_, max_, float( value ) / float( cMaxSliderValue ) );
 	effectWidget_->OnUpdate();
 }
 ///////////////////////////////////////////////////////////////
-// IntWidgetParam /////////////////////////////////////////////
-IntWidgetParam::IntWidgetParam( int& param, int min, int max, EffectWidget* effectWidget )
+// IntParamWidget /////////////////////////////////////////////
+IntParamWidget::IntParamWidget( int& param, int min, int max, ParamsWidget* effectWidget )
 	: QSlider( Qt::Orientation::Horizontal, effectWidget ), effectWidget_( effectWidget ),
 	param_( param ), min_( min ), max_( max )
 {
@@ -42,7 +42,7 @@ IntWidgetParam::IntWidgetParam( int& param, int min, int max, EffectWidget* effe
 	setValue( ( max_ + min_ ) / 2 );
 }
 
-void IntWidgetParam::sliderValueChanged_( int value )
+void IntParamWidget::sliderValueChanged_( int value )
 {
 	param_ = value;
 	effectWidget_->OnUpdate();

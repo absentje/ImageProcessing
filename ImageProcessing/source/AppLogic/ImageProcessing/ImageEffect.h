@@ -1,5 +1,5 @@
 #pragma once
-#include <AppLogic/Effects/IEffect.h>
+#include <AppLogic/Effects/ParamsSelector.h>
 
 namespace vl
 {
@@ -17,20 +17,21 @@ class Effect;
 
 class ImageProcessingMode;
 
-class ImageEffect: public IEffect
+class ImageEffect: public ParamsSelector
 {
-	VL_INSTRUMENT_CLASS( ImageEffect, IEffect );
+	VL_INSTRUMENT_CLASS( ImageEffect, ParamsSelector );
 public:
-	ImageEffect( const std::wstring& effectName );
+	ImageEffect( const std::wstring& name );
 
 	void	SetImageProcessingMode( ImageProcessingMode* imProcMode );
 
-	virtual void ApplyEffect() override;
+	virtual void Apply() override;
+	virtual void UpdateData() = 0;
 
 protected:
 	virtual VLExtension::Effect* GetEffect() = 0;
 
 private:
 	vl::ref<VLExtension::EffectPipeline> pipeline_;
-	ImageProcessingMode* imProcMode_;
+	ImageProcessingMode* imProcMode_ = nullptr;
 };

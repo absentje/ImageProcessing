@@ -3,14 +3,14 @@
 #include <string>
 #include <QGroupBox>
 
-class IEffect;
+class ParamsSelector;
 class QVBoxLayout;
 
-class EffectWidget: public QGroupBox
+class ParamsWidget: public QGroupBox
 {
 	Q_OBJECT
 public:
-	EffectWidget( QWidget* parent, IEffect* effect );
+	ParamsWidget( QWidget* parent, ParamsSelector* effect );
 	
 	void AddParam( const std::wstring& paramName, float& param, float min, float max );
 	void AddParam( const std::wstring& paramName, int& param, int min, int max );
@@ -19,7 +19,7 @@ public:
 	void OnUpdate();
 
 private:
-	IEffect* effect_;
+	ParamsSelector* effect_;
 
 	QVBoxLayout* mainLayout;
 };

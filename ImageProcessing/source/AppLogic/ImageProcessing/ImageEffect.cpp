@@ -3,15 +3,16 @@
 #include <AppLogic/VLExtension/EffectPipeline.h>
 #include <AppLogic/AppModes/ImageProcessingMode.h>
 #include <AppLogic/VLExtension/Util/TextureReader.h>
+#include <AppLogic/Effects/WidgetData/ParamsWidget.h>
 #include <vlGraphics/Texture.hpp>
 
-ImageEffect::ImageEffect( const std::wstring& effectName )
-	: IEffect( effectName )
+ImageEffect::ImageEffect( const std::wstring& name )
+	: super( name )
 {
 
 }
 
-void ImageEffect::ApplyEffect()
+void ImageEffect::Apply()
 {
 	if ( !imProcMode_ || !imProcMode_->pSourceImage )
 	{

@@ -73,15 +73,6 @@
     <ClCompile Include="source\AppLogic\AppModes\ImageProcessingMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\Effects\IEffect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AppLogic\Effects\WidgetData\EffectWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AppLogic\Effects\WidgetData\EffectParamWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\AppLogic\Util\ColorUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -92,6 +83,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\AppLogic\VLExtension\Util\TextureReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\Effects\Selector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\Effects\ParamsSelector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\Effects\WidgetData\ParamsWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\Effects\WidgetData\ParamWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -135,9 +138,6 @@
     <ClInclude Include="source\AppLogic\AppModes\ImageProcessingMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\AppLogic\Effects\IEffect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\AppLogic\Util\ColorUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -150,6 +150,12 @@
     <ClInclude Include="source\AppLogic\VLExtension\Util\TextureReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\AppLogic\Effects\Selector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\Effects\ParamsSelector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="source\GUI\MainWindow.h">
@@ -158,10 +164,10 @@
     <QtMoc Include="source\GUI\ImageProcessingModeWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="source\AppLogic\Effects\WidgetData\EffectWidget.h">
+    <QtMoc Include="source\AppLogic\Effects\WidgetData\ParamsWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="source\AppLogic\Effects\WidgetData\EffectParamWidget.h">
+    <QtMoc Include="source\AppLogic\Effects\WidgetData\ParamWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
