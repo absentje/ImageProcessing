@@ -4,12 +4,37 @@ UI: implement widget architecture for selecting application mode, effects and ef
 
 2D editor:
 1) implement the ability to load and save images (+)
+
 2) brightness - contrast effect (+)
-3) blur effect (-) { including gaussian blur }
+
+3) blur effect (-)
+{ including gaussian blur }
+
 4) border highlighting effect (-)
-5) something with FFT (fast fourier transform)
-{ visualize the representation of the image in the expansion in sines and cosines }
+
+5) something with FFT (-)
+{ FFT - fast fourier transform }
+{ Visualize the representation of the image in the expansion in sines and cosines }
 
 6) etc.
 
 3D editor:
+1) implement the ability to load and save meshes (-)
+{ mesh file formats? .FBX, .OBJ ? }
+
+2) Morph Animation (-)
+{ low priority }
+
+3) Skeletal Animation (-)
+{ low priority }
+
+4) PBR effect (-)
+{ PBR - physically based rendering }
+{ high priority }
+
+5) fur effect (-)
+{ fur tor }
+
+6) ambient occlusion (-)
+
+etc.
