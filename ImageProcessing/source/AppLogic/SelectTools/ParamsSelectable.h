@@ -1,11 +1,11 @@
 #pragma once
-#include "Selector.h"
+#include "Selectable.h"
 
-class ParamsSelector: public Selector
+class ParamsSelectable: public Selectable
 {
-	VL_INSTRUMENT_CLASS( ParamsSelector, Selector );
+	VL_INSTRUMENT_CLASS( ParamsSelectable, Selectable );
 public:
-	ParamsSelector( const std::wstring& name );
+	ParamsSelectable( const std::wstring& name );
 
 	virtual void UpdateData() = 0;
 	virtual QWidget* CreateWidget( QWidget* parent ) override final;

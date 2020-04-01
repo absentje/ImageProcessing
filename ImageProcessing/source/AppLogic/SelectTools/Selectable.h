@@ -5,11 +5,11 @@
 class QWidget;
 class ParamsWidget;
 
-class Selector: public vl::Object
+class Selectable: public vl::Object
 {
-	VL_INSTRUMENT_CLASS( Selector, vl::Object );
+	VL_INSTRUMENT_CLASS( Selectable, vl::Object );
 public:
-	Selector( const std::wstring& name );
+	Selectable( const std::wstring& name );
 
 	const std::wstring& GetName() const;
 

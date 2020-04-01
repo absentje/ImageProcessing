@@ -2,7 +2,7 @@
 #include <functional>
 #include <QSlider>
 
-class Selector;
+class Selectable;
 class ParamsWidget;
 
 class FloatParamWidget: public QSlider

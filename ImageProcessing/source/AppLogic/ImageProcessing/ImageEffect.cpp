@@ -3,7 +3,7 @@
 #include <AppLogic/VLExtension/EffectPipeline.h>
 #include <AppLogic/AppModes/ImageProcessingMode.h>
 #include <AppLogic/VLExtension/Util/TextureReader.h>
-#include <AppLogic/Selectors/WidgetData/ParamsWidget.h>
+#include <AppLogic/SelectTools/Widgets/ParamsWidget.h>
 #include <vlGraphics/Texture.hpp>
 
 ImageEffect::ImageEffect( const std::wstring& name )

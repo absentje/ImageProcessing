@@ -2,10 +2,10 @@
 #include <QVBoxLayout>
 #include <QSlider>
 #include "ParamWidget.h"
-#include <AppLogic/Selectors/ParamsSelector.h>
+#include <AppLogic/SelectTools/ParamsSelectable.h>
 #include <QLabel>
 
-ParamsWidget::ParamsWidget( QWidget* parent, ParamsSelector* effect )
+ParamsWidget::ParamsWidget( QWidget* parent, ParamsSelectable* effect )
 	: QGroupBox( QString::fromStdWString( effect->GetName() ), parent ), effect_( effect )
 {
 	mainLayout = new QVBoxLayout( this );

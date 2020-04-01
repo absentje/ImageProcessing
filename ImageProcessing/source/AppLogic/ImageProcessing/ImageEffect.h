@@ -1,5 +1,5 @@
 #pragma once
-#include <AppLogic/Selectors/ParamsSelector.h>
+#include <AppLogic/SelectTools/ParamsSelectable.h>
 
 namespace vl
 {
@@ -17,9 +17,9 @@ class Effect;
 
 class ImageProcessingMode;
 
-class ImageEffect: public ParamsSelector
+class ImageEffect: public ParamsSelectable
 {
-	VL_INSTRUMENT_CLASS( ImageEffect, ParamsSelector );
+	VL_INSTRUMENT_CLASS( ImageEffect, ParamsSelectable );
 public:
 	ImageEffect( const std::wstring& name );
 

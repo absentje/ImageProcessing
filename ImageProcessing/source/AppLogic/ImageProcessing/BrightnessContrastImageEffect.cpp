@@ -1,6 +1,6 @@
 #include "BrightnessContrastImageEffect.h"
 #include <Effects/BrightnessContrastEffect.h>
-#include <AppLogic/Selectors/WidgetData/ParamsWidget.h>
+#include <AppLogic/SelectTools/Widgets/ParamsWidget.h>
 #include <AppLogic/VLExtension/EffectPipeline.h>
 
 namespace
