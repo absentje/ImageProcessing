@@ -1,0 +1,15 @@
+Main: implement 2D and 3D editor.
+
+UI: implement widget architecture for selecting application mode, effects and effect parameters / settings
+
+2D editor:
+1) implement the ability to load and save images (+)
+2) brightness - contrast effect (+)
+3) blur effect (-) { including gaussian blur }
+4) border highlighting effect (-)
+5) something with FFT (fast fourier transform)
+{ visualize the representation of the image in the expansion in sines and cosines }
+
+6) etc.
+
+3D editor:
