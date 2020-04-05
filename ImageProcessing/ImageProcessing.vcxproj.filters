@@ -97,6 +97,15 @@
     <ClCompile Include="source\AppLogic\SelectTools\Widgets\ParamWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\AppLogic\SelectTools\SelectableList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\SelectTools\Widgets\SelectableListWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffectList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AppLogic\Util\Timer.h">
@@ -156,6 +165,12 @@
     <ClInclude Include="source\AppLogic\SelectTools\ParamsSelectable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\AppLogic\SelectTools\SelectableList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffectList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="source\GUI\MainWindow.h">
@@ -168,6 +183,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="source\AppLogic\SelectTools\Widgets\ParamWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="source\AppLogic\SelectTools\Widgets\SelectableListWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

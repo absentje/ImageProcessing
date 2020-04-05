@@ -7,6 +7,8 @@
 #include <vlGraphics/SceneManagerActorTree.hpp>
 #include <vlGraphics/UIEventListener.hpp>
 #include <AppLogic/ImageProcessing/BrightnessContrastImageEffect.h>
+#include <AppLogic/ImageProcessing/ImageEffectList.h>
+#include <AppLogic/VLExtension/Util/TextureReader.h>
 
 
 class ImageProcessingUIListener: public vl::UIEventListener
@@ -37,13 +39,7 @@ public:
         pImageProcessing->LoadImage( files[0].toStdWString() );
     }
 
-    virtual void addedListenerEvent( vl::OpenGLContext* openglContext ) override
-    {
-        if ( pImageProcessing )
-        {
-            pImageProcessing->pContext = openglContext;
-        }
-    }
+    virtual void addedListenerEvent( vl::OpenGLContext* openglContext ) override {}
 private:
     ImageProcessingMode* pImageProcessing;
 };
@@ -55,14 +51,22 @@ ImageProcessingMode::ImageProcessingMode()
     pScene->tree()->addActor( pActor.get() );
 
     pUIEventListener = new ImageProcessingUIListener( this );
-    currentImageEffect_ = new BrightnessContrastImageEffect();
-    currentImageEffect_->SetImageProcessingMode( this );
+
+    pipeline_ = new VLExtension::EffectPipeline;
+    vl::ref<ImageEffectList> imageEffectList = new ImageEffectList;
+    {
+        vl::ref<BrightnessContrastImageEffect> fx = new BrightnessContrastImageEffect;
+        imageEffectList->AddImageEffect( fx.get() );
+        pipeline_->AddEffect( fx->GetEffect() );
+    }
+    imageEffectList_ = imageEffectList;
 }
 
 void ImageProcessingMode::LoadImage(const std::wstring& file_path)
 {
     pSourceImage = vl::loadImage( file_path );
     imageFilePath_ = file_path;
+    pipeline_->SetInputTexture( vl::ref<vl::Texture>( new vl::Texture( pSourceImage.get() ) ).get() );
     ProcessImage();
     ShowOutputImage_();
 }
@@ -84,7 +88,9 @@ void ImageProcessingMode::SaveImage()
 
 void ImageProcessingMode::ProcessImage()
 {
-    currentImageEffect_->Apply();
+    pipeline_->Resize( pSourceImage->width(), pSourceImage->height() );
+    vl::Texture* outTexture = pipeline_->RenderOutTexture();
+    pOutputImage = TextureReader::TextureToImage( outTexture );
     ShowOutputImage_();
 }
 

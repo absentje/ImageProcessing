@@ -5,6 +5,7 @@
 #include <AppLogic/VLExtension/Util/TextureReader.h>
 #include <AppLogic/SelectTools/Widgets/ParamsWidget.h>
 #include <vlGraphics/Texture.hpp>
+#include <AppLogic/VLExtension/Effect.h>
 
 ImageEffect::ImageEffect( const std::wstring& name )
 	: super( name )
@@ -12,24 +13,12 @@ ImageEffect::ImageEffect( const std::wstring& name )
 
 }
 
-void ImageEffect::Apply()
+void ImageEffect::Enable()
 {
-	if ( !imProcMode_ || !imProcMode_->pSourceImage )
-	{
-		return;
-	}
-	if ( !pipeline_ )
-	{
-		pipeline_ = new VLExtension::EffectPipeline( imProcMode_->pContext );
-		pipeline_->AddEffect( GetEffect() );
-	}
-	pipeline_->SetInputTexture( new vl::Texture( imProcMode_->pSourceImage.get() ) );
-	pipeline_->Resize( imProcMode_->pSourceImage->width(), imProcMode_->pSourceImage->height() );
-	vl::Texture* outTexture = pipeline_->RenderOutTexture();
-	imProcMode_->pOutputImage = TextureReader::TextureToImage( outTexture );
+	GetEffect()->SetEnable( true );
 }
 
-void ImageEffect::SetImageProcessingMode( ImageProcessingMode* imProcMode )
+void ImageEffect::Disable()
 {
-	imProcMode_ = imProcMode;
+	GetEffect()->SetEnable( false );
 }

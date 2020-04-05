@@ -9,11 +9,11 @@ const vl::ivec2 START_SIZE = vl::ivec2(512, 512);
 
 namespace VLExtension
 {
-EffectPipeline::EffectPipeline( vl::OpenGLContext* context )
+EffectPipeline::EffectPipeline()
 	: super( START_SIZE.x(), START_SIZE.y() )
 {
-	pFBO[0] = new FBORender( context );
-	pFBO[1] = new FBORender( context );
+	pFBO[0] = new FBORender;
+	pFBO[1] = new FBORender;
 	pFBO[0]->Resize( START_SIZE.x(), START_SIZE.y() );
 	pFBO[1]->Resize( START_SIZE.x(), START_SIZE.y() );
 

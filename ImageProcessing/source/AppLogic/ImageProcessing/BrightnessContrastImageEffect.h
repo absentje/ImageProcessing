@@ -13,9 +13,9 @@ public:
 	BrightnessContrastImageEffect();
 
 	virtual void UpdateData() override;
+	virtual VLExtension::Effect* GetEffect() override;
 
 protected: 
-	virtual VLExtension::Effect* GetEffect() override;
 	// widget-parameters will be attached here
 	virtual void OnCreatedParamsWidget( ParamsWidget* paramsWidget ) override;
 

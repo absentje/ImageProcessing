@@ -10,7 +10,9 @@
 
 namespace VLExtension
 {
-FBORender::FBORender( vl::OpenGLContext* context ) : gl_context( context )
+vl::OpenGLContext* FBORender::gl_context = nullptr;
+
+FBORender::FBORender()
 {
 	fboWidth = 0;
 	fboHeight = 0;
@@ -26,8 +28,8 @@ FBORender::FBORender( vl::OpenGLContext* context ) : gl_context( context )
 
 FBORender::~FBORender()
 {
-	VL_CHECK( gl_context )
-		gl_context->destroyFramebufferObject( pFBO.get() );
+	VL_CHECK( gl_context );
+	gl_context->destroyFramebufferObject( pFBO.get() );
 }
 
 void	FBORender::createRenderingAndScene()

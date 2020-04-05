@@ -20,7 +20,9 @@ FloatParamWidget::FloatParamWidget( float& param, float min, float max, ParamsWi
 
 	setMinimum( 0 );
 	setMaximum( cMaxSliderValue );
-	setValue( cMaxSliderValue / 2 );
+
+	float alpha = ( param - min ) / ( max - min );
+	setValue( (int)vl::mix( float( 0 ), float( cMaxSliderValue ), alpha ) );
 }
 
 void FloatParamWidget::sliderValueChanged_( int value )
@@ -39,7 +41,7 @@ IntParamWidget::IntParamWidget( int& param, int min, int max, ParamsWidget* para
 
 	setMinimum( min_ );
 	setMaximum( max_ );
-	setValue( ( max_ + min_ ) / 2 );
+	setValue( param );
 }
 
 void IntParamWidget::sliderValueChanged_( int value )

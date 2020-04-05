@@ -13,7 +13,9 @@ public:
 
 	const std::wstring& GetName() const;
 
-	virtual void Apply() = 0;
+	virtual void Enable() = 0;
+	virtual void Disable() = 0;
+
 	virtual QWidget* CreateWidget( QWidget* parent ) = 0;
 
 private:

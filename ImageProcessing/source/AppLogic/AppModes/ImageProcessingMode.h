@@ -5,7 +5,7 @@
 #include <AppLogic/AppModes/AppMode.h>
 #include <vlCore/String.hpp>
 
-class ImageEffect;
+class Selectable;
 
 namespace VLExtension
 {
@@ -43,12 +43,12 @@ private:
     vl::ref<vl::Image>          pOutputImage;
     vl::String                  imageFilePath_;
     vl::ref<VLExtension::TextureViewActor>   pActor;
-    vl::ref<ImageEffect> currentImageEffect_;
-
-    vl::OpenGLContext* pContext;
+    vl::ref<Selectable> imageEffectList_;
 
     friend class ImageProcessingUIListener;
     friend class ImageEffect;
     friend class ImageProcessingModeWidget;
+
+    vl::ref<VLExtension::EffectPipeline> pipeline_;
 
 };

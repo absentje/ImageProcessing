@@ -21,7 +21,7 @@ class EffectPipeline: public Pipeline
 {
 	VL_INSTRUMENT_CLASS( EffectPipeline, Pipeline )
 public:
-	EffectPipeline( vl::OpenGLContext* context );
+	EffectPipeline();
 
 	virtual void    SetInputTexture( vl::Texture* texture ) override;
 	virtual void    SetInputPipeline( Pipeline* pipeline ) override;

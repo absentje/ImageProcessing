@@ -2,6 +2,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <vlQt5/Qt5Widget.hpp>
+#include <AppLogic/VLExtension/FBORender.h>
 
 #include <AppLogic/AppModes/ImageProcessingMode.h>
 #include "ImageProcessingModeWidget.h"
@@ -14,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     pCanvas->initGLContext();
     pCanvas->show();
     pCanvas->setPosition(0, 0);
+    VLExtension::FBORender::gl_context = pCanvas;
 
     pMainLayout = new QHBoxLayout( this );
     pMainLayout->addWidget(pCanvas, 5);

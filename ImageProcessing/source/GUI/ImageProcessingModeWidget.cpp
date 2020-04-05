@@ -1,6 +1,6 @@
 #include "ImageProcessingModeWidget.h"
 #include <AppLogic/AppModes/ImageProcessingMode.h>
-#include <AppLogic/ImageProcessing/ImageEffect.h>
+#include <AppLogic/SelectTools/Selectable.h>
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -36,7 +36,7 @@ ImageProcessingModeWidget::ImageProcessingModeWidget( QWidget* parent,
     connect( discardChange_, &QPushButton::clicked,
              this, [this] { imageProcessingMode_->DiscardChange(); } );
 
-    subLayout_->addWidget( imageProcessingMode_->currentImageEffect_->CreateWidget( this ), 1 );
+    subLayout_->addWidget( imageProcessingMode_->imageEffectList_->CreateWidget( this ), 1 );
     subLayout_->addStretch( 5 );
     subLayout_->addWidget( processButton_ );
     subLayout_->addWidget( saveImageButton_ );

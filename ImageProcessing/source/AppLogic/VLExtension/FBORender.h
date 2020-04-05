@@ -25,7 +25,7 @@ class FBORender: public vl::Object
 {
 	VL_INSTRUMENT_CLASS( FBORender, vl::Object );
 public:
-	FBORender( vl::OpenGLContext* context );
+	FBORender();
 	~FBORender();
 
 	void				SetTextureFormat( vl::ETextureFormat tex_format, vl::EAttachmentPoint ap = vl::AP_COLOR_ATTACHMENT0 );
@@ -48,6 +48,8 @@ public:
 
 	void		Resize( int width, int height );
 
+	static vl::OpenGLContext* gl_context;
+
 private:
 	void	createFBO( int w, int h );
 	void	createTexture( vl::ETextureFormat tex_format, vl::EAttachmentPoint ap );
@@ -61,7 +63,5 @@ private:
 	std::map<vl::EAttachmentPoint, vl::ref<vl::Texture>>	mAttachTextures;
 	int		fboWidth;
 	int		fboHeight;
-
-	vl::OpenGLContext* gl_context;
 };
 }
