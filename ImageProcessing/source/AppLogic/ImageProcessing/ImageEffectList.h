@@ -14,7 +14,7 @@ class ImageEffectList: public SelectableList
 	VL_INSTRUMENT_CLASS( ImageEffectList, SelectableList );
 public:
 	ImageEffectList();
-	void AddImageEffect( ImageEffect* effect );
+	VLExtension::EffectPipeline* GetImageEffectsPipeline();
 
 private:
 	vl::ref<VLExtension::EffectPipeline> pipeline_;

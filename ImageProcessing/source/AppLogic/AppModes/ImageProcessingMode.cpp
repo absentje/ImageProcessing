@@ -6,7 +6,7 @@
 #include <EffectPipeline.h>
 #include <vlGraphics/SceneManagerActorTree.hpp>
 #include <vlGraphics/UIEventListener.hpp>
-#include <AppLogic/ImageProcessing/BrightnessContrastImageEffect.h>
+
 #include <AppLogic/ImageProcessing/ImageEffectList.h>
 #include <AppLogic/VLExtension/Util/TextureReader.h>
 
@@ -51,22 +51,13 @@ ImageProcessingMode::ImageProcessingMode()
     pScene->tree()->addActor( pActor.get() );
 
     pUIEventListener = new ImageProcessingUIListener( this );
-
-    pipeline_ = new VLExtension::EffectPipeline;
-    vl::ref<ImageEffectList> imageEffectList = new ImageEffectList;
-    {
-        vl::ref<BrightnessContrastImageEffect> fx = new BrightnessContrastImageEffect;
-        imageEffectList->AddImageEffect( fx.get() );
-        pipeline_->AddEffect( fx->GetEffect() );
-    }
-    imageEffectList_ = imageEffectList;
+    imageEffectList_ = new ImageEffectList;
 }
 
 void ImageProcessingMode::LoadImage(const std::wstring& file_path)
 {
     pSourceImage = vl::loadImage( file_path );
     imageFilePath_ = file_path;
-    pipeline_->SetInputTexture( vl::ref<vl::Texture>( new vl::Texture( pSourceImage.get() ) ).get() );
     ProcessImage();
     ShowOutputImage_();
 }
@@ -88,8 +79,9 @@ void ImageProcessingMode::SaveImage()
 
 void ImageProcessingMode::ProcessImage()
 {
-    pipeline_->Resize( pSourceImage->width(), pSourceImage->height() );
-    vl::Texture* outTexture = pipeline_->RenderOutTexture();
+    auto pipe = imageEffectList_->GetImageEffectsPipeline();
+    pipe->SetInputTexture( vl::ref<vl::Texture>( new vl::Texture( pSourceImage.get() ) ).get() );
+    vl::Texture* outTexture = pipe->RenderOutTexture();
     pOutputImage = TextureReader::TextureToImage( outTexture );
     ShowOutputImage_();
 }

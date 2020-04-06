@@ -23,9 +23,9 @@ EffectPipeline::EffectPipeline()
 void EffectPipeline::SetInputTexture( vl::Texture* texture )
 {
 	super::SetInputTexture( texture );
-	pFBO[0]->Resize( texture->width(), texture->height() );
-	pFBO[1]->Resize( texture->width(), texture->height() );
+	Resize( texture->width(), texture->height() );
 }
+
 void EffectPipeline::SetInputPipeline( Pipeline* pipeline )
 {
 	super::SetInputPipeline( pipeline );

@@ -6,6 +6,7 @@
 #include <vlCore/String.hpp>
 
 class Selectable;
+class ImageEffectList;
 
 namespace VLExtension
 {
@@ -43,12 +44,10 @@ private:
     vl::ref<vl::Image>          pOutputImage;
     vl::String                  imageFilePath_;
     vl::ref<VLExtension::TextureViewActor>   pActor;
-    vl::ref<Selectable> imageEffectList_;
+    vl::ref<ImageEffectList> imageEffectList_;
 
     friend class ImageProcessingUIListener;
     friend class ImageEffect;
     friend class ImageProcessingModeWidget;
-
-    vl::ref<VLExtension::EffectPipeline> pipeline_;
 
 };
