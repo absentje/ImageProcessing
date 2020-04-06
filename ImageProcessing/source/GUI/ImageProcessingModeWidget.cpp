@@ -1,6 +1,7 @@
 #include "ImageProcessingModeWidget.h"
 #include <AppLogic/AppModes/ImageProcessingMode.h>
 #include <AppLogic/SelectTools/Selectable.h>
+#include <AppLogic/ImageProcessing/ImageEffectList.h>
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
