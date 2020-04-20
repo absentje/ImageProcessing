@@ -21,34 +21,30 @@ SelectableListWidget::SelectableListWidget( SelectableList* list, QWidget* paren
 			 this, &SelectableListWidget::TextChanged_ );
 }
 
-void SelectableListWidget::SetCurrentSelectedWidget( QWidget* widget )
-{
-	if ( curSelectedWidget_ )
-	{
-		delete curSelectedWidget_;
-		curSelectedWidget_ = nullptr;
-	}
-	if ( widget )
-	{
-		curSelectedWidget_ = widget;
-		mainLayout->addWidget( curSelectedWidget_ );
-	}
-}
-
 void SelectableListWidget::TextChanged_( const QString& str )
 {
-	if ( curSelectedWidget_ )
+	if ( auto selectable = getSelectable_( curSelectedStr_ ) )
 	{
-		delete curSelectedWidget_;
-		curSelectedWidget_ = nullptr;
+		selectable->Disable();
+		if ( curSelectedWidget_ )
+		{
+			delete curSelectedWidget_;
+			curSelectedWidget_ = nullptr;
+		}
 	}
 
-	auto it = list_->selectables_.find( str.toStdWString() );
-	if ( it != list_->selectables_.end() )
+	curSelectedStr_ = str.toStdWString();
+
+	if ( auto selectable = getSelectable_( curSelectedStr_ ) )
 	{
-		auto selectable = it->second;
 		curSelectedWidget_ = selectable->CreateWidget( this );
 		selectable->Enable();
 		mainLayout->addWidget( curSelectedWidget_ );
 	}
+}
+
+vl::ref<Selectable> SelectableListWidget::getSelectable_( const std::wstring& str )
+{
+	auto it = list_->selectables_.find( str );
+	return it != list_->selectables_.end() ? it->second : nullptr;
 }

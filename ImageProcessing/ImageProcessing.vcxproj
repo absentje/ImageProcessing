@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\AppLogic\AppModes\AppModeList.cpp" />
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffectList.cpp" />
     <ClCompile Include="source\AppLogic\SelectTools\SelectableList.cpp" />
     <ClCompile Include="source\AppLogic\SelectTools\ParamsSelectable.cpp" />
@@ -43,6 +44,7 @@
     <QtMoc Include="source\AppLogic\SelectTools\Widgets\ParamsWidget.h" />
     <QtMoc Include="source\AppLogic\SelectTools\Widgets\ParamWidget.h" />
     <QtMoc Include="source\GUI\ImageProcessingModeWidget.h" />
+    <ClInclude Include="source\AppLogic\AppModes\AppModeList.h" />
     <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffectList.h" />
     <ClInclude Include="source\AppLogic\SelectTools\SelectableList.h" />
     <ClInclude Include="source\AppLogic\SelectTools\ParamsSelectable.h" />

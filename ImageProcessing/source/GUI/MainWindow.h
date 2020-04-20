@@ -4,8 +4,7 @@
 
 class QHBoxLayout;
 class QVBoxLayout;
-class ImageProcessingMode;
-class ImageProcessingModeWidget;
+class AppModeList;
 
 namespace vlQt5
 {
@@ -20,15 +19,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
 
 private:
-    vl::ref<VLExtension::ViewWindow>         pViewWindow;
-    vl::ref<ImageProcessingMode>    imageProcessing_;
+    vl::ref<VLExtension::ViewWindow>    pViewWindow;
+    vl::ref<AppModeList>                appModeList_;
 
 	vlQt5::Qt5Widget*   pCanvas;
     
     QHBoxLayout*        pMainLayout;
     QVBoxLayout*        pSubLayout;
-    ImageProcessingModeWidget* imageProcessingModeWidget_;
-
 protected:
 	virtual void closeEvent(QCloseEvent *event) override;
 };

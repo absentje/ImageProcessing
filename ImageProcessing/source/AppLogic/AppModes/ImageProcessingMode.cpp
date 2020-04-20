@@ -13,7 +13,7 @@
 
 class ImageProcessingUIListener: public vl::UIEventListener
 {
-    VL_INSTRUMENT_CLASS( ImageProcessingController, vl::UIEventListener );
+    VL_INSTRUMENT_CLASS( ImageProcessingUIListener, vl::UIEventListener );
 public:
     ImageProcessingUIListener( ImageProcessingMode* ptr )
         : pImageProcessing( ptr ) {}
@@ -47,17 +47,17 @@ private:
 ImageProcessingMode::ImageProcessingMode()
     : super( L"Image processing mode" )
 {
-    pScene->setCullingEnabled(false);
-    pActor = new VLExtension::TextureRatioViewActor;
-    pScene->tree()->addActor( pActor.get() );
+    scene_->setCullingEnabled( false );
+    viewActor_ = new VLExtension::TextureRatioViewActor;
+    scene_->tree()->addActor( viewActor_.get() );
 
-    pUIEventListener = new ImageProcessingUIListener( this );
+    UIEventListeners_.push_back( new ImageProcessingUIListener( this ) );
     imageEffectList_ = new ImageEffectList;
 }
 
-void ImageProcessingMode::LoadImage(const std::wstring& file_path)
+void ImageProcessingMode::LoadImage( const std::wstring& file_path )
 {
-    pSourceImage = vl::loadImage( file_path );
+    sourceImage_ = vl::loadImage( file_path );
     imageFilePath_ = file_path;
     ProcessImage();
     ShowOutputImage_();
@@ -65,7 +65,7 @@ void ImageProcessingMode::LoadImage(const std::wstring& file_path)
 
 void ImageProcessingMode::SaveImage()
 {
-    if ( !pSourceImage )
+    if ( !sourceImage_ )
     {
         return;
     }
@@ -75,40 +75,40 @@ void ImageProcessingMode::SaveImage()
     fileName.erase(iter);
 
     std::wstring newFilePath = L"resources/images/" + fileName + L"_обработано." + fileType;
-    vl::saveImage( pSourceImage.get(), newFilePath);
+    vl::saveImage( sourceImage_.get(), newFilePath);
 }
 
 void ImageProcessingMode::ProcessImage()
 {
     auto pipe = imageEffectList_->GetImageEffectsPipeline();
-    pipe->SetInputTexture( vl::ref<vl::Texture>( new vl::Texture( pSourceImage.get() ) ).get() );
+    pipe->SetInputTexture( vl::ref<vl::Texture>( new vl::Texture( sourceImage_.get() ) ).get() );
     vl::Texture* outTexture = pipe->RenderOutTexture();
-    pOutputImage = TextureReader::TextureToImage( outTexture );
+    outputImage_ = TextureReader::TextureToImage( outTexture );
     ShowOutputImage_();
 }
 
 void ImageProcessingMode::DiscardChange()
 {
-    pOutputImage = pSourceImage;
+    outputImage_ = sourceImage_;
     ShowOutputImage_();
 }
 
 void ImageProcessingMode::ApplyChange()
 {
-    if ( pOutputImage )
+    if ( outputImage_ )
     {
-        pSourceImage = pOutputImage;
+        sourceImage_ = outputImage_;
     }
 }
 
 void ImageProcessingMode::ShowOutputImage_()
 {
-    if ( !pOutputImage )
+    if ( !outputImage_ )
     {
         return;
     }
-    vl::ref<vl::Texture> texture = new vl::Texture( pOutputImage.get() );
-    pActor->SetTexture( texture.get() );
+    vl::ref<vl::Texture> texture = new vl::Texture( outputImage_.get() );
+    viewActor_->SetTexture( texture.get() );
 }
 
 QWidget* ImageProcessingMode::CreateWidget( QWidget* parent )

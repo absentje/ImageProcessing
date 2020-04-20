@@ -59,18 +59,21 @@ ViewWindow* ViewWindow::currentViewWindow = nullptr;
 ViewWindow::ViewWindow( vl::OpenGLContext* vl_context )
     : pCanvas( vl_context )
 {
-    pRender = new vl::Rendering;
-    pRender->renderer()->setFramebuffer( pCanvas->framebuffer() );
-    pRender->camera()->viewport()->setClearColor( 0.2f, 0.3f, 0.4f, 1.0f );
+    rendering_ = new vl::Rendering;
+    rendering_->renderer()->setFramebuffer( pCanvas->framebuffer() );
+    rendering_->camera()->viewport()->setClearColor( 0.2f, 0.3f, 0.4f, 1.0f );
     // делаем первичный рендер, чтоб создался контекст
-    pRender->render();
+    rendering_->render();
     AddEventListener( vl::ref<VWEventListener>( new VWEventListener( this ) ).get() );
+
+    background_ = new vl::SceneManagerActorTree;
+    ClearViewWindow();
 }
 
 ViewWindow::~ViewWindow()
 {
-    pRender = nullptr;
-    pViewScene = nullptr;
+    rendering_ = nullptr;
+    viewScene_ = nullptr;
 }
 
 void ViewWindow::ShowScene( vl::SceneManagerActorTree* scene )
@@ -78,21 +81,22 @@ void ViewWindow::ShowScene( vl::SceneManagerActorTree* scene )
     VL_CHECK( scene );
     ClearViewWindow();
 
-    pViewScene = scene;
-    pRender->sceneManagers()->push_back( scene );
+    viewScene_ = scene;
+    rendering_->sceneManagers()->push_back( scene );
 }
 
 void    ViewWindow::ClearViewWindow()
 {
-    pRender->sceneManagers()->clear();
-    pViewScene = nullptr;
+    rendering_->sceneManagers()->clear();
+    rendering_->sceneManagers()->push_back( background_.get() );
+    viewScene_ = nullptr;
 }
 
 void    ViewWindow::Render()
 {
-    if ( pRender )
+    if ( rendering_ )
     {
-        pRender->render();
+        rendering_->render();
     }
 
     // show rendering
@@ -106,7 +110,7 @@ void    ViewWindow::Resize( int width, int height )
 {
     pCanvas->setSize( width, height );
 
-    vl::Camera* pCamera = pRender->camera();
+    vl::Camera* pCamera = rendering_->camera();
     pCamera->viewport()->set( 0, 0, width, height );
     switch ( pCamera->projectionMatrixType() )
     {
@@ -121,6 +125,8 @@ void    ViewWindow::Resize( int width, int height )
     case vl::EProjectionMatrixType::PMT_UserProjection:
         break;
     }
+
+    Render();
 } 
 
 void	ViewWindow::AddEventListener( vl::UIEventListener* evListener )

@@ -33,7 +33,8 @@ public:
 private:
     vl::OpenGLContext* pCanvas;
 
-    vl::ref<vl::Rendering>				pRender;
-    vl::ref<vl::SceneManagerActorTree>  pViewScene;
+    vl::ref<vl::Rendering>				rendering_;
+    vl::ref<vl::SceneManagerActorTree>  viewScene_;
+    vl::ref<vl::SceneManagerActorTree>  background_;
 };
 }

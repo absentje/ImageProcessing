@@ -6,17 +6,18 @@
 AppMode::AppMode( const std::wstring& name )
 	: super( name )
 {
-	pScene = new vl::SceneManagerActorTree;
+	scene_ = new vl::SceneManagerActorTree;
 }
 
 void AppMode::Enable()
 {
 	auto* viewWindow = VLExtension::ViewWindow::currentViewWindow;
 
-	viewWindow->ShowScene( pScene.get() );
-	if ( pUIEventListener )
+	viewWindow->ShowScene( scene_.get() );
+
+	for ( auto& evListener : UIEventListeners_ )
 	{
-		viewWindow->AddEventListener( pUIEventListener.get() );
+		viewWindow->AddEventListener( evListener.get() );
 	}
 }
 
@@ -25,8 +26,8 @@ void AppMode::Disable()
 	auto* viewWindow = VLExtension::ViewWindow::currentViewWindow;
 
 	viewWindow->ClearViewWindow();
-	if ( pUIEventListener )
+	for ( auto& evListener : UIEventListeners_ )
 	{
-		viewWindow->RemoveEventListener( pUIEventListener.get() );
+		viewWindow->RemoveEventListener( evListener.get() );
 	}
 }

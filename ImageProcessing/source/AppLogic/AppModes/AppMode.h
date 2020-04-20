@@ -1,6 +1,7 @@
 #pragma once
 #include <vlCore/Object.hpp>
 #include <AppLogic/SelectTools/Selectable.h>
+#include <vector>
 
 namespace VLExtension
 {
@@ -22,6 +23,6 @@ public:
 	virtual void Disable() override;
 
 protected:
-	vl::ref<vl::SceneManagerActorTree>  pScene;
-	vl::ref<vl::UIEventListener>        pUIEventListener;
+	vl::ref<vl::SceneManagerActorTree>			scene_;
+	std::vector<vl::ref<vl::UIEventListener>>	UIEventListeners_;
 };

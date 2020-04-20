@@ -1,27 +1,19 @@
 #pragma once
 #include <string>
-#include <vlCore/Object.hpp>
 #include <vlCore/Vector4.hpp>
 #include <AppLogic/AppModes/AppMode.h>
 #include <vlCore/String.hpp>
 
-class Selectable;
 class ImageEffectList;
 
 namespace VLExtension
 {
 class TextureViewActor;
-class EffectPipeline;
-class BrightnessContrastEffect;
 }
 
 namespace vl
 {
-    class UIEventListener;
     class Image;
-    class OpenGLContext;
-    class Texture;
-    class SceneManagerActorTree;
 }
 
 class ImageProcessingMode: public AppMode
@@ -42,10 +34,10 @@ public:
 private:
     void ShowOutputImage_();
 
-    vl::ref<vl::Image>          pSourceImage;
-    vl::ref<vl::Image>          pOutputImage;
+    vl::ref<vl::Image>          sourceImage_;
+    vl::ref<vl::Image>          outputImage_;
     vl::String                  imageFilePath_;
-    vl::ref<VLExtension::TextureViewActor>   pActor;
+    vl::ref<VLExtension::TextureViewActor>   viewActor_;
     vl::ref<ImageEffectList> imageEffectList_;
 
     friend class ImageProcessingUIListener;
