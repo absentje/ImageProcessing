@@ -1,7 +1,7 @@
 #include "ImageEffectList.h"
 #include "ImageEffect.h"
 #include <AppLogic/VLExtension/EffectPipeline.h>
-#include <AppLogic/ImageProcessing/BrightnessContrastImageEffect.h>
+#include <AppLogic/ImageProcessing/ImageEffects/BrightnessContrastImageEffect.h>
 #include <AppLogic/VLExtension/Effect.h>
 
 ImageEffectList::ImageEffectList()

@@ -76,9 +76,6 @@
     <ClCompile Include="source\AppLogic\Util\ColorUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -91,22 +88,25 @@
     <ClCompile Include="source\AppLogic\SelectTools\ParamsSelectable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\AppLogic\SelectTools\Widgets\ParamsWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AppLogic\SelectTools\Widgets\ParamWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\AppLogic\SelectTools\SelectableList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AppLogic\SelectTools\Widgets\SelectableListWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffectList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\AppLogic\AppModes\AppModeList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffects\BrightnessContrastImageEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GUI\ParamsWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GUI\ParamWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GUI\SelectableListWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -153,9 +153,6 @@
     <ClInclude Include="source\AppLogic\Util\ColorUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -177,6 +174,9 @@
     <ClInclude Include="source\AppLogic\AppModes\AppModeList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffects\BrightnessContrastImageEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="source\GUI\MainWindow.h">
@@ -185,13 +185,13 @@
     <QtMoc Include="source\GUI\ImageProcessingModeWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="source\AppLogic\SelectTools\Widgets\ParamsWidget.h">
+    <QtMoc Include="source\GUI\SelectableListWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="source\AppLogic\SelectTools\Widgets\ParamWidget.h">
+    <QtMoc Include="source\GUI\ParamWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="source\AppLogic\SelectTools\Widgets\SelectableListWidget.h">
+    <QtMoc Include="source\GUI\ParamsWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -1,5 +1,5 @@
 #pragma once
-#include "ImageEffect.h"
+#include <AppLogic/ImageProcessing/ImageEffect.h>
 
 namespace VLExtension
 {

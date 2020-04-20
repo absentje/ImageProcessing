@@ -15,10 +15,10 @@
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffectList.cpp" />
     <ClCompile Include="source\AppLogic\SelectTools\SelectableList.cpp" />
     <ClCompile Include="source\AppLogic\SelectTools\ParamsSelectable.cpp" />
-    <ClCompile Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.cpp" />
+    <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffects\BrightnessContrastImageEffect.cpp" />
     <ClCompile Include="source\AppLogic\SelectTools\Selectable.cpp" />
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffect.cpp" />
-    <ClCompile Include="source\AppLogic\SelectTools\Widgets\SelectableListWidget.cpp" />
+    <ClCompile Include="source\GUI\SelectableListWidget.cpp" />
     <ClCompile Include="source\AppLogic\Util\ColorUtils.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Util\TextureReader.cpp" />
     <ClCompile Include="source\GUI\ImageProcessingModeWidget.cpp" />
@@ -37,23 +37,23 @@
     <ClCompile Include="source\AppLogic\VLExtension\Actors\TextureViewActor.cpp" />
     <ClCompile Include="source\GUI\MainWindow.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\ViewWindow.cpp" />
-    <ClCompile Include="source\AppLogic\SelectTools\Widgets\ParamsWidget.cpp" />
-    <ClCompile Include="source\AppLogic\SelectTools\Widgets\ParamWidget.cpp" />
+    <ClCompile Include="source\GUI\ParamsWidget.cpp" />
+    <ClCompile Include="source\GUI\ParamWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="source\AppLogic\SelectTools\Widgets\ParamsWidget.h" />
-    <QtMoc Include="source\AppLogic\SelectTools\Widgets\ParamWidget.h" />
+    <QtMoc Include="source\GUI\ParamsWidget.h" />
+    <QtMoc Include="source\GUI\ParamWidget.h" />
     <QtMoc Include="source\GUI\ImageProcessingModeWidget.h" />
     <ClInclude Include="source\AppLogic\AppModes\AppModeList.h" />
     <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffectList.h" />
     <ClInclude Include="source\AppLogic\SelectTools\SelectableList.h" />
     <ClInclude Include="source\AppLogic\SelectTools\ParamsSelectable.h" />
-    <ClInclude Include="source\AppLogic\ImageProcessing\BrightnessContrastImageEffect.h" />
+    <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffects\BrightnessContrastImageEffect.h" />
     <ClInclude Include="source\AppLogic\SelectTools\Selectable.h" />
     <ClInclude Include="source\AppLogic\AppModes\AppMode.h" />
     <ClInclude Include="source\AppLogic\AppModes\ImageProcessingMode.h" />
     <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffect.h" />
-    <QtMoc Include="source\AppLogic\SelectTools\Widgets\SelectableListWidget.h" />
+    <QtMoc Include="source\GUI\SelectableListWidget.h" />
     <ClInclude Include="source\AppLogic\Util\ColorUtils.h" />
     <ClInclude Include="source\AppLogic\Util\Timer.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actor.h" />

@@ -1,5 +1,5 @@
 #include "SelectableList.h"
-#include <AppLogic/SelectTools/Widgets/SelectableListWidget.h>
+#include <GUI/SelectableListWidget.h>
 
 SelectableList::SelectableList( const std::wstring& name )
 	: super( name )

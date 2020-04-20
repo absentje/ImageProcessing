@@ -1,5 +1,5 @@
 #include "ParamsSelectable.h"
-#include <AppLogic/SelectTools/Widgets/ParamsWidget.h>
+#include <GUI/ParamsWidget.h>
 
 ParamsSelectable::ParamsSelectable( const std::wstring& name )
 	: super( name )

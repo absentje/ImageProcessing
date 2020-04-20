@@ -1,6 +1,6 @@
 #include "ParamWidget.h"
 #include <AppLogic/SelectTools/Selectable.h>
-#include <AppLogic/SelectTools/Widgets/ParamsWidget.h>
+#include <GUI/ParamsWidget.h>
 #include <vlCore/glsl_math.hpp>
 
 namespace

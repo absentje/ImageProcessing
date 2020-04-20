@@ -3,7 +3,7 @@
 #include <AppLogic/VLExtension/EffectPipeline.h>
 #include <AppLogic/AppModes/ImageProcessingMode.h>
 #include <AppLogic/VLExtension/Util/TextureReader.h>
-#include <AppLogic/SelectTools/Widgets/ParamsWidget.h>
+#include <GUI/ParamsWidget.h>
 #include <vlGraphics/Texture.hpp>
 #include <AppLogic/VLExtension/Effect.h>
 
