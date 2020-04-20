@@ -26,7 +26,7 @@ namespace vl
 
 class ImageProcessingMode: public AppMode
 {
-    VL_INSTRUMENT_CLASS( ImageProcessingMode, vl::Object)
+    VL_INSTRUMENT_CLASS( ImageProcessingMode, AppMode )
 public:
     ImageProcessingMode();
 
@@ -36,6 +36,8 @@ public:
     void ApplyChange();
     void ProcessImage();
     void SaveImage();
+
+    virtual QWidget* CreateWidget( QWidget* parent ) override;
 
 private:
     void ShowOutputImage_();
@@ -47,7 +49,5 @@ private:
     vl::ref<ImageEffectList> imageEffectList_;
 
     friend class ImageProcessingUIListener;
-    friend class ImageEffect;
     friend class ImageProcessingModeWidget;
-
 };

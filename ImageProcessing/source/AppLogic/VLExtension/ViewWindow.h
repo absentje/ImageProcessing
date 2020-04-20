@@ -27,6 +27,9 @@ public:
     void    Resize( int width, int height );
     void    ClearViewWindow();
     void    Render();
+
+    static ViewWindow* currentViewWindow;
+
 private:
     vl::OpenGLContext* pCanvas;
 

@@ -5,7 +5,6 @@
 #include <AppLogic/VLExtension/FBORender.h>
 
 #include <AppLogic/AppModes/ImageProcessingMode.h>
-#include "ImageProcessingModeWidget.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
@@ -26,11 +25,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     // app logic init
     pViewWindow = new VLExtension::ViewWindow(pCanvas);
-    imageProcessing_ = new ImageProcessingMode;
-    imageProcessing_->Enable( pViewWindow.get() );
+    VLExtension::ViewWindow::currentViewWindow = pViewWindow.get();
 
-    imageProcessingModeWidget_ = new ImageProcessingModeWidget( this, imageProcessing_.get() );
-    pSubLayout->addWidget( imageProcessingModeWidget_ );
+    imageProcessing_ = new ImageProcessingMode;
+    imageProcessing_->Enable();
+
+    pSubLayout->addWidget( imageProcessing_->CreateWidget( this ) );
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)

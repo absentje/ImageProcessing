@@ -20,4 +20,3 @@ protected:
 private:
 	friend class SelectableListWidget;
 };
-

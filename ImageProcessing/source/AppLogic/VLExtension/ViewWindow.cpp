@@ -54,6 +54,8 @@ private:
 };
 }
 
+ViewWindow* ViewWindow::currentViewWindow = nullptr;
+
 ViewWindow::ViewWindow( vl::OpenGLContext* vl_context )
     : pCanvas( vl_context )
 {

@@ -1,5 +1,6 @@
 #pragma once
 #include <vlCore/Object.hpp>
+#include <AppLogic/SelectTools/Selectable.h>
 
 namespace VLExtension
 {
@@ -12,12 +13,13 @@ class SceneManagerActorTree;
 class UIEventListener;
 }
 
-class AppMode : public vl::Object
+class AppMode : public Selectable
 {
-	VL_INSTRUMENT_CLASS(AppMode, vl::Object);
+	VL_INSTRUMENT_CLASS( AppMode, Selectable );
 public:
-	AppMode();
-	void Enable( VLExtension::ViewWindow* viewWindow );
+	AppMode( const std::wstring& name );
+	virtual void Enable() override;
+	virtual void Disable() override;
 
 protected:
 	vl::ref<vl::SceneManagerActorTree>  pScene;

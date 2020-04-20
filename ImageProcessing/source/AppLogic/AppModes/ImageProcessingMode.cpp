@@ -9,7 +9,7 @@
 
 #include <AppLogic/ImageProcessing/ImageEffectList.h>
 #include <AppLogic/VLExtension/Util/TextureReader.h>
-
+#include <GUI/ImageProcessingModeWidget.h>
 
 class ImageProcessingUIListener: public vl::UIEventListener
 {
@@ -45,6 +45,7 @@ private:
 };
 
 ImageProcessingMode::ImageProcessingMode()
+    : super( L"Image processing mode" )
 {
     pScene->setCullingEnabled(false);
     pActor = new VLExtension::TextureRatioViewActor;
@@ -108,4 +109,9 @@ void ImageProcessingMode::ShowOutputImage_()
     }
     vl::ref<vl::Texture> texture = new vl::Texture( pOutputImage.get() );
     pActor->SetTexture( texture.get() );
+}
+
+QWidget* ImageProcessingMode::CreateWidget( QWidget* parent )
+{
+    return new ImageProcessingModeWidget( parent, this );
 }

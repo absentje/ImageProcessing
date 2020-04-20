@@ -3,16 +3,30 @@
 #include <vlGraphics/SceneManagerActorTree.hpp>
 #include <vlGraphics/UIEventListener.hpp>
 
-AppMode::AppMode()
+AppMode::AppMode( const std::wstring& name )
+	: super( name )
 {
 	pScene = new vl::SceneManagerActorTree;
 }
 
-void AppMode::Enable( VLExtension::ViewWindow* viewWindow )
+void AppMode::Enable()
 {
+	auto* viewWindow = VLExtension::ViewWindow::currentViewWindow;
+
 	viewWindow->ShowScene( pScene.get() );
 	if ( pUIEventListener )
 	{
 		viewWindow->AddEventListener( pUIEventListener.get() );
+	}
+}
+
+void AppMode::Disable()
+{
+	auto* viewWindow = VLExtension::ViewWindow::currentViewWindow;
+
+	viewWindow->ClearViewWindow();
+	if ( pUIEventListener )
+	{
+		viewWindow->RemoveEventListener( pUIEventListener.get() );
 	}
 }
