@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     pCanvas->initGLContext();
     pCanvas->show();
     pCanvas->setPosition( 0, 0 );
+    pCanvas->setFocusPolicy( Qt::FocusPolicy::StrongFocus );
+
     VLExtension::FBORender::gl_context = pCanvas;
 
     pMainLayout = new QHBoxLayout( this );
@@ -28,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     appModeList_ = new AppModeList;
     pSubLayout->addWidget( appModeList_->CreateWidget( this ) );
+    pSubLayout->addStretch( 0 );
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)

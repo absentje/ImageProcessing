@@ -27,7 +27,17 @@ public:
     virtual void mouseUpEvent( vl::EMouseButton but, int x, int y ) override {}
     virtual void mouseDownEvent( vl::EMouseButton but, int x, int y ) override {}
     virtual void mouseWheelEvent( int delta ) override {}
-    virtual void keyPressEvent( unsigned short unicode, vl::EKey key ) override {}
+    virtual void keyPressEvent( unsigned short unicode, vl::EKey key ) override
+    {
+        switch ( key )
+        {
+        case vl::EKey::Key_U :
+        {
+            pImageProcessing->imageEffectList_->GetImageEffectsPipeline()->ReloadEffectShaders();
+            break;
+        }
+        }
+    }
     virtual void keyReleaseEvent( unsigned short unicode, vl::EKey key ) override {}
     virtual void resizeEvent( int x, int y ) override {}
     virtual void visibilityEvent( bool visible ) override {}
