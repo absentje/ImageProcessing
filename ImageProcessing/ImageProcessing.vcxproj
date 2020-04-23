@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="source\AppLogic\AppModes\AppModeList.cpp" />
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffectList.cpp" />
+    <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffects\BorderHighlightingImageEffect.cpp" />
     <ClCompile Include="source\AppLogic\SelectTools\SelectableList.cpp" />
     <ClCompile Include="source\AppLogic\SelectTools\ParamsSelectable.cpp" />
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffects\BrightnessContrastImageEffect.cpp" />
@@ -46,6 +47,7 @@
     <QtMoc Include="source\GUI\ImageProcessingModeWidget.h" />
     <ClInclude Include="source\AppLogic\AppModes\AppModeList.h" />
     <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffectList.h" />
+    <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffects\BorderHighlightingImageEffect.h" />
     <ClInclude Include="source\AppLogic\SelectTools\SelectableList.h" />
     <ClInclude Include="source\AppLogic\SelectTools\ParamsSelectable.h" />
     <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffects\BrightnessContrastImageEffect.h" />

@@ -18,12 +18,8 @@ public:
     float		GetBrightness() const;
     float		GetContrast() const;
 
-    virtual void	onPipelineAdd( Shader* shader, int width, int height ) override;
-
 protected:
-    vl::ref<vl::Uniform>	pUniBrightness;
-    vl::ref<vl::Uniform>	pUniContrast;
-    float		Brightness;
-    float		Contrast;
+    float		brightness_ = 0.f;
+    float		contrast_ = 0.f;
 };
 }

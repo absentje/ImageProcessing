@@ -109,6 +109,9 @@
     <ClCompile Include="source\GUI\SelectableListWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffects\BorderHighlightingImageEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AppLogic\Util\Timer.h">
@@ -175,6 +178,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffects\BrightnessContrastImageEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffects\BorderHighlightingImageEffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

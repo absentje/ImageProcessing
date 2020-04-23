@@ -8,38 +8,28 @@ const float DEFAULT_CONTRAST = 0.0f;
 namespace VLExtension
 {
 BrightnessContrastEffect::BrightnessContrastEffect()
-    : Brightness( DEFAULT_BRIGHTNESS ), Contrast( DEFAULT_CONTRAST )
+    : super( L"resources/glsl/brightness_contrast_effect.fs" )
 {
-    pUniBrightness = new vl::Uniform( "brightness" );
-    pUniBrightness->setUniform( Brightness );
-
-    pUniContrast = new vl::Uniform( "contrast" );
-    pUniContrast->setUniform( Contrast );
-}
-
-void	BrightnessContrastEffect::onPipelineAdd( Shader* shader, int width, int height )
-{
-    shader->SetFShader( L"resources/glsl/brightness_contrast_effect.fs" );
-    shader->setUniform( pUniBrightness.get() );
-    shader->setUniform( pUniContrast.get() );
+    SetBrightness( DEFAULT_BRIGHTNESS );
+    SetContrast( DEFAULT_CONTRAST );
 }
 
 float	BrightnessContrastEffect::GetBrightness() const
 {
-    return Brightness;
+    return brightness_;
 }
 float	BrightnessContrastEffect::GetContrast() const
 {
-    return Contrast;
+    return contrast_;
 }
 void	BrightnessContrastEffect::SetBrightness( float v )
 {
-    Brightness = v;
-    pUniBrightness->setUniform( v );
+    brightness_ = v;
+    uniform_set_->gocUniform( "brightness" )->setUniform( brightness_ );
 }
 void	BrightnessContrastEffect::SetContrast( float v )
 {
-    Contrast = v;
-    pUniContrast->setUniform( v );
+    contrast_ = v;
+    uniform_set_->gocUniform( "contrast" )->setUniform( contrast_ );
 }
 }

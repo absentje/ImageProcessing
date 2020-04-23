@@ -1,7 +1,7 @@
 #include "BrightnessContrastImageEffect.h"
-#include <Effects/BrightnessContrastEffect.h>
 #include <GUI/ParamsWidget.h>
 #include <AppLogic/VLExtension/EffectPipeline.h>
+#include <AppLogic/VLExtension/Effect.h>
 
 namespace
 {
@@ -14,14 +14,14 @@ constexpr float cMaxContrastValue = 100.f;
 BrightnessContrastImageEffect::BrightnessContrastImageEffect()
     : super( L"Brightness-Contrast effect" )
 {
-    pipeEffect_ = new VLExtension::BrightnessContrastEffect;
+    pipeEffect_ = new VLExtension::Effect( L"resources/glsl/brightness_contrast_effect.fs" );
     UpdateData();
 }
 
 void BrightnessContrastImageEffect::UpdateData()
 {
-    pipeEffect_->SetBrightness( brightness_ );
-    pipeEffect_->SetContrast( contrast_ );
+    pipeEffect_->GetUniformSet()->gocUniform( "brightness" )->setUniform( brightness_ );
+    pipeEffect_->GetUniformSet()->gocUniform( "contrast" )->setUniform( contrast_ );
 }
 
 void BrightnessContrastImageEffect::OnCreatedParamsWidget( ParamsWidget* paramsWidget )

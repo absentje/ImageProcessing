@@ -1,7 +1,18 @@
 Main: implement 2D and 3D editor.
 
+===============================================================================
 UI: implement widget architecture for selecting application mode, effects and effect parameters / settings
 
+
+===============================================================================
+* implement the ability to load and save meshes (-)
+{ mesh file formats? .FBX, .OBJ ? }
+{ "Assimp" library ? }
+
+* compute shader wrapper implementation
+
+
+===============================================================================
 2D editor:
 1) implement the ability to load and save images (+)
 
@@ -18,23 +29,30 @@ UI: implement widget architecture for selecting application mode, effects and ef
 
 6) etc.
 
+===============================================================================
 3D editor:
-1) implement the ability to load and save meshes (-)
-{ mesh file formats? .FBX, .OBJ ? }
+1) implementation of various lighting models (-)
 
-2) Morph Animation (-)
-{ low priority }
-
-3) Skeletal Animation (-)
-{ low priority }
-
-4) PBR effect (-)
+2) PBR effect (-)
 { PBR - physically based rendering }
 { high priority }
+
+
+3) ambient occlusion (-)
+
+4) Monte-Carlo path tracing
 
 5) fur effect (-)
 { fur tor }
 
-6) ambient occlusion (-)
+6) tessellation sample (-)
+
+7) bump mapping (-)
+
+8) Morph Animation (-)
+{ low priority }
+
+9) Skeletal Animation (-)
+{ low priority }
 
 etc.

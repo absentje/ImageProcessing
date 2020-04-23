@@ -3,6 +3,7 @@
 
 namespace VLExtension
 {
+class Effect;
 class BrightnessContrastEffect;
 }
 
@@ -20,7 +21,7 @@ protected:
 	virtual void OnCreatedParamsWidget( ParamsWidget* paramsWidget ) override;
 
 private:
-	vl::ref<VLExtension::BrightnessContrastEffect>   pipeEffect_;
+	vl::ref<VLExtension::Effect>   pipeEffect_;
 	float brightness_ = 0.f;
 	float contrast_ = 0.f;
 };
