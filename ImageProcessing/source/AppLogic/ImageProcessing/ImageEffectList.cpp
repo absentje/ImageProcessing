@@ -2,6 +2,7 @@
 #include "ImageEffect.h"
 #include <AppLogic/VLExtension/EffectPipeline.h>
 #include <AppLogic/ImageProcessing/ImageEffects/BrightnessContrastImageEffect.h>
+#include <AppLogic/ImageProcessing/ImageEffects/BorderHighlightingImageEffect.h>
 #include <AppLogic/VLExtension/Effect.h>
 
 ImageEffectList::ImageEffectList()
@@ -11,7 +12,8 @@ ImageEffectList::ImageEffectList()
 
 	std::vector<vl::ref<ImageEffect>> imageEffects =
 	{
-		new BrightnessContrastImageEffect
+		new BrightnessContrastImageEffect,
+		new BorderHighlightingImageEffect
 	};
 
 	for ( auto imageEffect : imageEffects )
