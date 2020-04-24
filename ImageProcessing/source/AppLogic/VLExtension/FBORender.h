@@ -28,7 +28,7 @@ public:
 	FBORender();
 	~FBORender();
 
-	void				SetTextureFormat( vl::ETextureFormat tex_format, vl::EAttachmentPoint ap = vl::AP_COLOR_ATTACHMENT0 );
+	void		 SetTextureFormat( vl::ETextureFormat tex_format, vl::EAttachmentPoint ap = vl::AP_COLOR_ATTACHMENT0 );
 	vl::Texture* GetRenderTexture( vl::EAttachmentPoint ap = vl::AP_COLOR_ATTACHMENT0 );
 
 	void		Render();

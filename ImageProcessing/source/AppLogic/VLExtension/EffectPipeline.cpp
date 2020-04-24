@@ -28,8 +28,7 @@ void EffectPipeline::SetInputTexture( vl::Texture* texture )
 
 void EffectPipeline::SetInputPipeline( Pipeline* pipeline )
 {
-	pFBO[0]->Resize( pipeline->GetWidth(), pipeline->GetHeight() );
-	pFBO[1]->Resize( pipeline->GetWidth(), pipeline->GetHeight() );
+	Resize( pipeline->GetWidth(), pipeline->GetHeight() );
 	super::SetInputPipeline( pipeline );
 }
 
@@ -47,6 +46,8 @@ int		EffectPipeline::GetHeight() const
 
 void	EffectPipeline::Resize( int width, int height )
 {
+	pFBO[0]->SetTextureFormat( GetTextureFormat() );
+	pFBO[1]->SetTextureFormat( GetTextureFormat() );
 	pFBO[0]->Resize( width, height );
 	pFBO[1]->Resize( width, height );
 
