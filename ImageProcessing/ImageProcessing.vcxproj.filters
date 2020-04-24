@@ -112,6 +112,9 @@
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffects\BorderHighlightingImageEffect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\AppLogic\VLExtension\Effects\BorderHighlightingEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AppLogic\Util\Timer.h">
@@ -181,6 +184,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\AppLogic\ImageProcessing\ImageEffects\BorderHighlightingImageEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AppLogic\VLExtension\Effects\BorderHighlightingEffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

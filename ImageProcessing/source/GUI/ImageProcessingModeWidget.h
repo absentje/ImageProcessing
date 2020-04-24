@@ -24,9 +24,5 @@ private:
     ImageProcessingMode* imageProcessingMode_;
 
     QVBoxLayout* subLayout_;
-
-    QPushButton* processButton_;
     QPushButton* saveImageButton_;
-    QPushButton* applyChange_;
-    QPushButton* discardChange_;
 };

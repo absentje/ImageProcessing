@@ -1,6 +1,6 @@
 #pragma once
-
 #include <vlCore/Object.hpp>
+#include <vlCore/vlnamespace.hpp>
 
 namespace vl
 {
@@ -16,23 +16,19 @@ class Pipeline: public vl::Object
 {
 	VL_INSTRUMENT_CLASS( Pipeline, vl::Object )
 public:
-//    Pipeline(int width, int height);
-//    Pipeline(vl::Texture* texture);
-//    Pipeline(Pipeline* pipeline);
-
 	Pipeline( int w, int h );
 	virtual ~Pipeline();
 
 	virtual void    SetInputTexture( vl::Texture* texture );
 	virtual void    SetInputPipeline( Pipeline* pipeline );
 
-	vl::Texture* RenderOutTexture();
-	vl::Texture* GetLastOutTexture();
+	vl::Texture*	RenderOutTexture();
+	vl::Texture*	GetLastOutTexture();
 
 	bool			HasInputTexture() const;
-	vl::Texture* GetInputTexture() const;
+	vl::Texture*	GetInputTexture() const;
 	bool			HasInputPipeline() const;
-	Pipeline* GetInputPipeline() const;
+	Pipeline*		GetInputPipeline() const;
 
 	void            SetEnable( bool enable );
 	bool            Enable() const;
@@ -41,6 +37,10 @@ public:
 	virtual int		GetHeight() const = 0;
 
 	virtual void	Resize( int width, int height );
+
+	void				SetTextureFormat( vl::ETextureFormat tex_format );
+	vl::ETextureFormat	GetTextureFormat() const;
+	void				SetIsInputResizing( bool value );
 
 protected:
 
@@ -55,5 +55,8 @@ private:
 	vl::ref<vl::Texture>	pLastOutTexture;
 
 	bool	isEnable;
+
+	vl::ETextureFormat		tex_format_ = vl::ETextureFormat::TF_RGBA;
+	bool					bIsInputResizing = true;
 };
 }

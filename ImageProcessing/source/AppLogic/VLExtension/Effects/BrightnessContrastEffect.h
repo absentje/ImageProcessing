@@ -1,10 +1,6 @@
 #pragma once
-#include "Effect.h"
+#include <AppLogic/VLExtension/Effect.h>
 
-namespace vl
-{
-    class Uniform;
-}
 namespace VLExtension
 {
 class BrightnessContrastEffect: public Effect

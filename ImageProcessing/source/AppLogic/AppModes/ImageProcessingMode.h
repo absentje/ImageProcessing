@@ -24,18 +24,13 @@ public:
 
     void LoadImage(const std::wstring& file_path);
     
-    void DiscardChange();
-    void ApplyChange();
-    void ProcessImage();
+    void RenderImage();
     void SaveImage();
 
     virtual QWidget* CreateWidget( QWidget* parent ) override;
 
 private:
-    void ShowOutputImage_();
-
     vl::ref<vl::Image>          sourceImage_;
-    vl::ref<vl::Image>          outputImage_;
     vl::String                  imageFilePath_;
     vl::ref<VLExtension::TextureViewActor>   viewActor_;
     vl::ref<ImageEffectList> imageEffectList_;

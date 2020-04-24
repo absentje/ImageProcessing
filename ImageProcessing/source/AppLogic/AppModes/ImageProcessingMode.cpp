@@ -20,7 +20,10 @@ public:
 
     virtual void initEvent() override {}
     virtual void destroyEvent() override {}
-    virtual void updateEvent() override {}
+    virtual void updateEvent() override
+    {
+        pImageProcessing->RenderImage();
+    }
     virtual void enableEvent( bool enable ) override {}
     virtual void removedListenerEvent( vl::OpenGLContext* openglContext ) override {}
     virtual void mouseMoveEvent( int x, int y ) override {}
@@ -69,8 +72,8 @@ void ImageProcessingMode::LoadImage( const std::wstring& file_path )
 {
     sourceImage_ = vl::loadImage( file_path );
     imageFilePath_ = file_path;
-    ProcessImage();
-    ShowOutputImage_();
+    auto pipe = imageEffectList_->GetImageEffectsPipeline();
+    pipe->SetInputTexture( vl::ref<vl::Texture>( new vl::Texture( sourceImage_.get() ) ).get() );
 }
 
 void ImageProcessingMode::SaveImage()
@@ -85,40 +88,15 @@ void ImageProcessingMode::SaveImage()
     fileName.erase(iter);
 
     std::wstring newFilePath = L"resources/images/" + fileName + L"_обработано." + fileType;
-    vl::saveImage( sourceImage_.get(), newFilePath);
+
+    auto pipe = imageEffectList_->GetImageEffectsPipeline();
+    TextureReader::saveTexture( imageEffectList_->GetImageEffectsPipeline()->GetLastOutTexture(), newFilePath );
 }
 
-void ImageProcessingMode::ProcessImage()
+void ImageProcessingMode::RenderImage()
 {
     auto pipe = imageEffectList_->GetImageEffectsPipeline();
-    pipe->SetInputTexture( vl::ref<vl::Texture>( new vl::Texture( sourceImage_.get() ) ).get() );
-    vl::Texture* outTexture = pipe->RenderOutTexture();
-    outputImage_ = TextureReader::TextureToImage( outTexture );
-    ShowOutputImage_();
-}
-
-void ImageProcessingMode::DiscardChange()
-{
-    outputImage_ = sourceImage_;
-    ShowOutputImage_();
-}
-
-void ImageProcessingMode::ApplyChange()
-{
-    if ( outputImage_ )
-    {
-        sourceImage_ = outputImage_;
-    }
-}
-
-void ImageProcessingMode::ShowOutputImage_()
-{
-    if ( !outputImage_ )
-    {
-        return;
-    }
-    vl::ref<vl::Texture> texture = new vl::Texture( outputImage_.get() );
-    viewActor_->SetTexture( texture.get() );
+    viewActor_->SetTexture( pipe->RenderOutTexture() );
 }
 
 QWidget* ImageProcessingMode::CreateWidget( QWidget* parent )

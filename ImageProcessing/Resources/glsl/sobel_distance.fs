@@ -1,10 +1,7 @@
 #version 440
-
 uniform sampler2D	texture0;
-uniform float highlightDistance;
-
 in vec4 texCoord;
-out vec4 FragColor;
+out float FragValue;
 
 float getGray(vec3 c)
 {
@@ -77,45 +74,7 @@ float edge_dist(sampler2D texture_sampler, vec2 pos)
 	return dist;
 }
 
-float max_edge_dist(vec2 pos, ivec2 box_size)
-{
-	ivec2 textSize = textureSize( texture0, 0 );
-
-	const float width = textSize.x;
-	const float height = textSize.y;
-
-	vec2 dr = vec2( 1.0 / width, 1.0 / height ) / 4.0;
-	vec2 starting_point = pos - vec2( box_size.x * dr.x, box_size.y * dr.y ) / 2.0;
-	float max_dist = 0.0;
-	for ( int i = 0; i != box_size.x; ++i )
-	{
-		for ( int j = 0; j != box_size.y; ++j )
-		{
-			vec2 cur_iter_point = starting_point + vec2( dr.x * i, dr.y * j );
-			float dist = edge_dist( texture0, cur_iter_point );
-			max_dist = max( max_dist, dist );
-		}
-	}
-	return max_dist;
-}
-
-
 void main(void)
 {
-	vec4 clr = texture2D(texture0, texCoord.xy);
-	vec3 color = clr.xyz;
-
-	ivec2 box_size = ivec2( 5, 5 );
-	float max_dist = max_edge_dist( texCoord.xy, box_size );
-
-	if (max_dist < 1.0)
-	{
-		FragColor.xyz = clr.xyz; // vec3( 0.0 );
-	}
-	else
-	{
-		FragColor.xyz = vec3( 0.0 );
-	}
-	FragColor.w = clr.w;
-	
+	FragValue = edge_dist(texture0, texCoord.xy);
 }

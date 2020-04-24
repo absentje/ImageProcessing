@@ -22,15 +22,15 @@ EffectPipeline::EffectPipeline()
 
 void EffectPipeline::SetInputTexture( vl::Texture* texture )
 {
-	super::SetInputTexture( texture );
 	Resize( texture->width(), texture->height() );
+	super::SetInputTexture( texture );
 }
 
 void EffectPipeline::SetInputPipeline( Pipeline* pipeline )
 {
-	super::SetInputPipeline( pipeline );
 	pFBO[0]->Resize( pipeline->GetWidth(), pipeline->GetHeight() );
 	pFBO[1]->Resize( pipeline->GetWidth(), pipeline->GetHeight() );
+	super::SetInputPipeline( pipeline );
 }
 
 EffectPipeline::~EffectPipeline()

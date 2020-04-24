@@ -20,10 +20,10 @@ public:
 	bool		Enable() const;
 	void		SetEnable( bool enable );
 
-	// метод в котором идет вся настройка еффекта, установка биндов/униформов и т.п.
+	// метод, в котором идет вся настройка эффекта, установка биндов/униформов и т.п.
 	virtual void	onPipelineAdd( Shader* shader, int width, int height );
 
-	// метод для упдейта различных униформов перед вызовом рендера
+	// метод апдейта перед вызовом рендера
 	virtual void	preRenderUpdate( Shader* shader, int width, int height, float deltaTime ) {}
 
 	vl::UniformSet*			GetUniformSet();
@@ -31,7 +31,8 @@ public:
 
 protected:
 	std::wstring				fs_path_;
-	vl::ref<vl::UniformSet>		uniform_set_; // набор униформ, которые подключаются в onPipelineAdd() к передаваемому шейдеру 
+	vl::ref<vl::UniformSet>		uniform_set_;	// набор униформ, которые подключаются
+												// к передаваемому шейдеру в onPipelineAdd()
 private:
 	bool						isEnable_ = true;
 };

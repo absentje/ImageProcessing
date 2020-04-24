@@ -77,7 +77,34 @@ vl::Texture* Pipeline::GetLastOutTexture()
 
 void	Pipeline::Resize( int width, int height )
 {
-	if ( pInPipeline )
-		pInPipeline->Resize( width, height );
+	if ( bIsInputResizing )
+	{
+		if ( HasInputPipeline() )
+		{
+			GetInputPipeline()->Resize( width, height );
+		}
+		if ( HasInputTexture() )
+		{
+			//pInTexture = new Texture(width, height);
+			GetInputTexture()->createTexture2D( width, height, GetInputTexture()->internalFormat() );
+		}
+	}
 }
+
+void Pipeline::SetTextureFormat( vl::ETextureFormat tex_format )
+{
+	tex_format_ = tex_format;
+	Resize( GetWidth(), GetHeight() );
+}
+
+vl::ETextureFormat Pipeline::GetTextureFormat() const
+{
+	return tex_format_;
+}
+
+void Pipeline::SetIsInputResizing( bool value )
+{
+	bIsInputResizing = value;
+}
+
 }
