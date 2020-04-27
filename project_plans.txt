@@ -1,15 +1,15 @@
 Main: implement 2D and 3D editor.
 
 ===============================================================================
-UI: implement widget architecture for selecting application mode, effects and effect parameters / settings
+UI: implement widget architecture for selecting application mode, effects and effect parameters / settings (+)
 
 
 ===============================================================================
-* implement the ability to load and save meshes (-)
+* implement the ability to load and save meshes (+/-)
 { mesh file formats? .FBX, .OBJ ? }
 { "Assimp" library ? }
 
-* compute shader wrapper implementation
+* compute shader wrapper implementation (-)
 
 
 ===============================================================================
@@ -18,10 +18,10 @@ UI: implement widget architecture for selecting application mode, effects and ef
 
 2) brightness - contrast effect (+)
 
-3) blur effect (-)
-{ including gaussian blur }
+3) border highlighting effect (+)
 
-4) border highlighting effect (-)
+4) blur effect (-)
+{ including gaussian blur }
 
 5) something with FFT (-)
 { FFT - fast fourier transform }
