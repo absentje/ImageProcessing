@@ -1,0 +1,3 @@
+[submodule "3rdparty/VisualizationLibrary"]
+	path = 3rdparty/VisualizationLibrary
+	url = https://github.com/MicBosi/VisualizationLibrary.git
