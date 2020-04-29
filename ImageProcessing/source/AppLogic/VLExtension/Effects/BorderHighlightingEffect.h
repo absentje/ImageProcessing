@@ -10,7 +10,7 @@ class BorderHighlightingEffect: public Effect
 public:
     BorderHighlightingEffect();
 
-    virtual void	preRenderUpdate( Shader* shader, int width, int height, float deltaTime ) {}
+    virtual void preRenderUpdate( Shader* shader, int width, int height, float deltaTime ) override;
 
 private:
     vl::ref<EffectPipeline> sobelDistancePipe_;

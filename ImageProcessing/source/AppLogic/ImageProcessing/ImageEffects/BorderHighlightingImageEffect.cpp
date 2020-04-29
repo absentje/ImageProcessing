@@ -1,11 +1,12 @@
 #include "BorderHighlightingImageEffect.h"
 #include <GUI/ParamsWidget.h>
 #include <AppLogic/VLExtension/Effect.h>
+#include <AppLogic/VLExtension/Effects/BorderHighlightingEffect.h>
 
 BorderHighlightingImageEffect::BorderHighlightingImageEffect()
     : super( L"Border highlighting effect" )
 {
-    pipeEffect_ = new VLExtension::Effect( L"resources/glsl/border_highlighting_effect.fs" );
+    pipeEffect_ = new VLExtension::BorderHighlightingEffect;
     UpdateData();
 }
 

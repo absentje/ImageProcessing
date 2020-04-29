@@ -24,7 +24,7 @@ public:
     virtual void initEvent() override {}
     virtual void destroyEvent() override {}
     virtual void updateEvent() override {
-        static const float FPS = 60.f;
+        static const float FPS = 120.f;
 
         if ( timer.GetElapsedSeconds() > 1.f / FPS )
         {

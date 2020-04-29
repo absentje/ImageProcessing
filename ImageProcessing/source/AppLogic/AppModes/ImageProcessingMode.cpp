@@ -1,6 +1,7 @@
 #include "ImageProcessingMode.h"
 #include <vlCore/Image.hpp>
 #include <Actors/TextureRatioViewActor.h>
+#include <Actors/FPSActor.h>
 #include <vector>
 #include <FBORender.h>
 #include <EffectPipeline.h>
@@ -10,6 +11,13 @@
 #include <AppLogic/ImageProcessing/ImageEffectList.h>
 #include <AppLogic/VLExtension/Util/TextureReader.h>
 #include <GUI/ImageProcessingModeWidget.h>
+
+
+namespace
+{
+constexpr bool FPSEnable = true;
+constexpr int FPSActorRenderRank = 1000;
+}
 
 class ImageProcessingUIListener: public vl::UIEventListener
 {
@@ -63,7 +71,13 @@ ImageProcessingMode::ImageProcessingMode()
     scene_->setCullingEnabled( false );
     viewActor_ = new VLExtension::TextureRatioViewActor;
     scene_->tree()->addActor( viewActor_.get() );
+    if ( FPSEnable && vl::Has_Fixed_Function_Pipeline )
+    {
+        vl::ref<vl::Actor> fpsActor = new VLExtension::FPSActor;
+        fpsActor->setRenderRank( FPSActorRenderRank );
+        scene_->tree()->addActor( fpsActor.get() );
 
+    }
     UIEventListeners_.push_back( new ImageProcessingUIListener( this ) );
     imageEffectList_ = new ImageEffectList;
 }

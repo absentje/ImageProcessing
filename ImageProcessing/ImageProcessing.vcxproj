@@ -19,6 +19,7 @@
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffects\BrightnessContrastImageEffect.cpp" />
     <ClCompile Include="source\AppLogic\SelectTools\Selectable.cpp" />
     <ClCompile Include="source\AppLogic\ImageProcessing\ImageEffect.cpp" />
+    <ClCompile Include="source\AppLogic\VLExtension\Actors\FPSActor.cpp" />
     <ClCompile Include="source\AppLogic\VLExtension\Effects\BorderHighlightingEffect.cpp" />
     <ClCompile Include="source\GUI\SelectableListWidget.cpp" />
     <ClCompile Include="source\AppLogic\Util\ColorUtils.cpp" />
@@ -60,6 +61,7 @@
     <ClInclude Include="source\AppLogic\Util\ColorUtils.h" />
     <ClInclude Include="source\AppLogic\Util\Timer.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actor.h" />
+    <ClInclude Include="source\AppLogic\VLExtension\Actors\FPSActor.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Actors\TextureRatioViewActor.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Effects\BorderHighlightingEffect.h" />
     <ClInclude Include="source\AppLogic\VLExtension\Effects\BrightnessContrastEffect.h" />

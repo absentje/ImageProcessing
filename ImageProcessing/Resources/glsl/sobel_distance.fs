@@ -1,5 +1,6 @@
 #version 440
 uniform sampler2D	texture0;
+
 in vec4 texCoord;
 out float FragValue;
 
