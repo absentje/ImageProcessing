@@ -8,7 +8,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(VL_ROOT "C:/ImageProcessingBuild/VL/install")
+set(VL_ROOT "C:/VisualizationLibrary/install")
 
 list(APPEND CMAKE_PREFIX_PATH "C:/Qt/5.12.5/msvc2017_64")
 list(APPEND CMAKE_PREFIX_PATH "${VL_ROOT}/x64-Debug")
