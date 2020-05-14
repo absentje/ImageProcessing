@@ -1,7 +1,7 @@
 #include "EffectPipeline.h"
 #include "Effect.h"
-#include <FBORender.h>
-#include <Actors/TextureViewActor.h>
+#include "FBORender.h"
+#include "Actors/TextureViewActor.h"
 #include <vlGraphics/Texture.hpp>
 #include <vlCore/Time.hpp>
 

@@ -7,9 +7,9 @@
 #include <vlGraphics/Rendering.hpp>
 #include <vlGraphics/OpenGLContext.hpp>
 
-#include <Actors/TextureViewActor.h>
-#include <FBORender.h>
-#include "AppLogic/Util/Timer.h"
+#include "Actors/TextureViewActor.h"
+#include "FBORender.h"
+#include <AppLogic/Util/Timer.h>
 
 namespace VLExtension
 {
