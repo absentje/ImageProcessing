@@ -36,4 +36,10 @@ const vl::UniformSet* Effect::GetUniformSet() const
 	return uniform_set_.get();
 }
 
+void Effect::preRenderUpdate(Shader* shader, int width, int height, float deltaTime)
+{
+	uniform_set_->gocUniform( "pipeWidth" )->setUniform( width );
+	uniform_set_->gocUniform( "pipeHeight" )->setUniform( height );
+}
+
 }

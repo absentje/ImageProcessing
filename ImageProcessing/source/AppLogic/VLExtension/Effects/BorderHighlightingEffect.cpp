@@ -18,6 +18,7 @@ BorderHighlightingEffect::BorderHighlightingEffect()
 
 void BorderHighlightingEffect::preRenderUpdate( Shader* shader, int width, int height, float deltaTime )
 {
+    super::preRenderUpdate(shader, width, height, deltaTime);
     sobelDistancePipe_->Resize( width, height );
     sobelDistancePipe_->SetInputTexture( shader->gocTextureSampler( 0 )->texture() );
     shader->gocTextureSampler( 1 )->setTexture( sobelDistancePipe_->RenderOutTexture() );

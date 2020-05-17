@@ -30,6 +30,16 @@ void ParamsWidget::AddParam( const std::wstring& paramName, int& param, int min,
 	mainLayout->addSpacing( 5 );
 }
 
+void ParamsWidget::AddParam( const std::wstring& paramName, bool& param )
+{
+	auto label = new QLabel( QString::fromStdWString( paramName ), this );
+	auto boolWidgetParam = new BoolParamWidget( param, this );
+	mainLayout->addWidget( label, 1 );
+	mainLayout->addWidget( boolWidgetParam, 1 );
+	mainLayout->addSpacing( 5 );
+
+}
+
 void ParamsWidget::OnUpdate()
 {
 	effect_->UpdateData();

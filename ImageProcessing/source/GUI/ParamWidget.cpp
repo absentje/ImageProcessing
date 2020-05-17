@@ -49,3 +49,25 @@ void IntParamWidget::sliderValueChanged_( int value )
 	param_ = value;
 	effectWidget_->OnUpdate();
 }
+
+///////////////////////////////////////////////////////////////
+// BoolParamWidget /////////////////////////////////////////////
+BoolParamWidget::BoolParamWidget( bool& param, ParamsWidget* paramsWidget )
+	: QCheckBox( paramsWidget ), effectWidget_( paramsWidget ),
+	param_( param )
+{
+	connect( this, SIGNAL( stateChanged( int ) ),
+			 this, SLOT( checkBoxValueChanged_( int ) ) );
+	setValue_( param );
+}
+
+void BoolParamWidget::setValue_( bool value )
+{
+	setCheckState( value ? Qt::CheckState::Checked : Qt::CheckState::Unchecked );
+}
+
+void BoolParamWidget::checkBoxValueChanged_( int value )
+{
+	param_ = value;
+	effectWidget_->OnUpdate();
+}

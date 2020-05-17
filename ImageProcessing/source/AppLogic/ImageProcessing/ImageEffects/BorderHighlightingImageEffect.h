@@ -16,7 +16,8 @@ protected:
 
 private:
 	vl::ref<VLExtension::Effect>   pipeEffect_;
-	float highlightDistance_ = 0.f;
+	float highlightDistance_ = 2.f;
+	bool isColorful_ = true;
 
 	// bool verticalHighlighting = true;
 	// bool horizontalHighlighting_ = true;

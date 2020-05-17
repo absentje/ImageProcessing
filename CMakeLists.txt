@@ -25,10 +25,10 @@ find_package(Qt5Widgets REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(VL COMPONENTS VLCore VLGraphics VLQt5 VLVG VLMain REQUIRED)
 
-message("CMAKE_HOME_DIRECTORY is ${CMAKE_HOME_DIRECTORY}/ImageProcessing/Resources")
+message("CMAKE_HOME_DIRECTORY is ${CMAKE_HOME_DIRECTORY}/ImageProcessing/resources")
 
 add_custom_target(ImageProcessingResources
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/ImageProcessing/Resources         ${CMAKE_BINARY_DIR}/ImageProcessing/Resources
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/ImageProcessing/resources         ${CMAKE_BINARY_DIR}/ImageProcessing/resources
 )
 
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 #include <QSlider>
+#include <QCheckBox>
 
 class Selectable;
 class ParamsWidget;
@@ -33,4 +34,20 @@ private:
 
 private slots:
 	void sliderValueChanged_( int value );
+};
+
+class BoolParamWidget : public QCheckBox
+{
+	Q_OBJECT
+public:
+	BoolParamWidget( bool& param, ParamsWidget* paramsWidget );
+
+private:
+	bool& param_;
+	ParamsWidget* effectWidget_;
+
+	void setValue_( bool value );
+
+private slots:
+	void checkBoxValueChanged_( int value );
 };

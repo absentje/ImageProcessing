@@ -21,10 +21,10 @@ public:
 	void		SetEnable( bool enable );
 
 	// метод, в котором идет вся настройка эффекта, установка биндов/униформов и т.п.
-	virtual void	onPipelineAdd( Shader* shader, int width, int height );
+	virtual void onPipelineAdd( Shader* shader, int width, int height );
 
 	// метод апдейта перед вызовом рендера
-	virtual void	preRenderUpdate( Shader* shader, int width, int height, float deltaTime ) {}
+	virtual void preRenderUpdate(Shader* shader, int width, int height, float deltaTime);
 
 	vl::UniformSet*			GetUniformSet();
 	const vl::UniformSet*	GetUniformSet() const;

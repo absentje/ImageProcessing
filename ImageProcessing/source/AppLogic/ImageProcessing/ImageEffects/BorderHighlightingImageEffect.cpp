@@ -12,7 +12,8 @@ BorderHighlightingImageEffect::BorderHighlightingImageEffect()
 
 void BorderHighlightingImageEffect::UpdateData()
 {
-    pipeEffect_->GetUniformSet()->gocUniform( "highlightDistance" )->setUniform( highlightDistance_ );
+    pipeEffect_->GetUniformSet()->gocUniform( "sigma" )->setUniform( highlightDistance_ );
+    pipeEffect_->GetUniformSet()->gocUniform( "isColorful" )->setUniform( isColorful_ );
 }
 
 VLExtension::Effect* BorderHighlightingImageEffect::GetEffect()
@@ -22,5 +23,6 @@ VLExtension::Effect* BorderHighlightingImageEffect::GetEffect()
 
 void BorderHighlightingImageEffect::OnCreatedParamsWidget( ParamsWidget* paramsWidget )
 {
-    paramsWidget->AddParam( L"Highlight distance", highlightDistance_, 0.f, 1.f );
+    paramsWidget->AddParam( L"Highlight distance(sigma)", highlightDistance_, 0.1f, 10.f );
+    paramsWidget->AddParam( L"Is colorful", isColorful_ );
 }
