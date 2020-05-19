@@ -1,6 +1,6 @@
 #include "BrightnessContrastEffect.h"
 #include <vlGraphics/Uniform.hpp>
-#include <AppLogic/VLExtension/Shader.h>
+#include <VLExtension/Shader.h>
 
 const float DEFAULT_BRIGHTNESS = 0.0f;
 const float DEFAULT_CONTRAST = 0.0f;

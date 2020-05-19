@@ -1,5 +1,5 @@
 #pragma once
-#include <AppLogic/VLExtension/Effect.h>
+#include <VLExtension/Effect.h>
 
 namespace VLExtension
 {

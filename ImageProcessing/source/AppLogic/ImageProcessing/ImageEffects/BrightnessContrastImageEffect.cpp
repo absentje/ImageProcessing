@@ -1,7 +1,7 @@
 #include "BrightnessContrastImageEffect.h"
 #include <GUI/ParamsWidget.h>
-#include <AppLogic/VLExtension/EffectPipeline.h>
-#include <AppLogic/VLExtension/Effect.h>
+#include <VLExtension/EffectPipeline.h>
+#include <VLExtension/Effect.h>
 
 namespace
 {

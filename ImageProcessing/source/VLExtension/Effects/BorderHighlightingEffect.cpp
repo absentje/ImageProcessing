@@ -1,5 +1,5 @@
 #include "BorderHighlightingEffect.h"
-#include <AppLogic/VLExtension/Shader.h>
+#include <VLExtension/Shader.h>
 
 namespace VLExtension
 {

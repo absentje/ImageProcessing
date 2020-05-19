@@ -1,11 +1,16 @@
 #pragma once
 #include <AppLogic/ImageProcessing/ImageEffect.h>
 
-class BorderHighlightingImageEffect: public ImageEffect
+namespace VLExtension
 {
-	VL_INSTRUMENT_CLASS( BorderHighlightingImageEffect, ImageEffect ); 
+class GaussianBlurEffect;
+}
+
+class GaussianBlurImageEffect : public ImageEffect
+{
+	VL_INSTRUMENT_CLASS( GaussianBlurImageEffect, ImageEffect );
 public:
-	BorderHighlightingImageEffect();
+	GaussianBlurImageEffect();
 
 	virtual void UpdateData() override;
 	virtual VLExtension::Effect* GetEffect() override;
@@ -15,7 +20,7 @@ protected:
 	virtual void OnCreatedParamsWidget( ParamsWidget* paramsWidget ) override;
 
 private:
-	vl::ref<VLExtension::Effect>   pipeEffect_;
+	vl::ref<VLExtension::GaussianBlurEffect>   pipeEffect_;
 	float sigma_ = 2.f;
 	bool isColorful_ = true;
 };

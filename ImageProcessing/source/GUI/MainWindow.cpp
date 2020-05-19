@@ -2,7 +2,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <vlQt5/Qt5Widget.hpp>
-#include <AppLogic/VLExtension/FBORender.h>
+#include <VLExtension/FBORender.h>
 #include <AppLogic/AppModes/AppModeList.h>
 
 MainWindow::MainWindow(QWidget *parent)

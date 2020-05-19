@@ -1,6 +1,6 @@
 #pragma once
-#include <AppLogic/VLExtension/Effect.h>
-#include <AppLogic/VLExtension/EffectPipeline.h>
+#include <VLExtension/Effect.h>
+#include <VLExtension/EffectPipeline.h>
 
 namespace VLExtension
 {

@@ -1,15 +1,15 @@
 #include "ImageProcessingMode.h"
 #include <vlCore/Image.hpp>
-#include <AppLogic/VLExtension/Actors/TextureRatioViewActor.h>
-#include <AppLogic/VLExtension/Actors/FPSActor.h>
+#include <VLExtension/Actors/TextureRatioViewActor.h>
+#include <VLExtension/Actors/FPSActor.h>
 #include <vector>
-#include <AppLogic/VLExtension/FBORender.h>
-#include <AppLogic/VLExtension/EffectPipeline.h>
+#include <VLExtension/FBORender.h>
+#include <VLExtension/EffectPipeline.h>
 #include <vlGraphics/SceneManagerActorTree.hpp>
 #include <vlGraphics/UIEventListener.hpp>
 
 #include <AppLogic/ImageProcessing/ImageEffectList.h>
-#include <AppLogic/VLExtension/Util/TextureReader.h>
+#include <VLExtension/Util/TextureReader.h>
 #include <GUI/ImageProcessingModeWidget.h>
 
 

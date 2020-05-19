@@ -1,11 +1,11 @@
 #include "ImageEffect.h"
 #include <vlCore/Image.hpp>
-#include <AppLogic/VLExtension/EffectPipeline.h>
+#include <VLExtension/EffectPipeline.h>
 #include <AppLogic/AppModes/ImageProcessingMode.h>
-#include <AppLogic/VLExtension/Util/TextureReader.h>
+#include <VLExtension/Util/TextureReader.h>
 #include <GUI/ParamsWidget.h>
 #include <vlGraphics/Texture.hpp>
-#include <AppLogic/VLExtension/Effect.h>
+#include <VLExtension/Effect.h>
 
 ImageEffect::ImageEffect( const std::wstring& name )
 	: super( name )

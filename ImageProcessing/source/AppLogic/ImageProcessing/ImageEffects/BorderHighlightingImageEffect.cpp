@@ -1,7 +1,7 @@
 #include "BorderHighlightingImageEffect.h"
 #include <GUI/ParamsWidget.h>
-#include <AppLogic/VLExtension/Effect.h>
-#include <AppLogic/VLExtension/Effects/BorderHighlightingEffect.h>
+#include <VLExtension/Effect.h>
+#include <VLExtension/Effects/BorderHighlightingEffect.h>
 
 BorderHighlightingImageEffect::BorderHighlightingImageEffect()
     : super( L"Border highlighting effect" )
@@ -12,8 +12,8 @@ BorderHighlightingImageEffect::BorderHighlightingImageEffect()
 
 void BorderHighlightingImageEffect::UpdateData()
 {
-    pipeEffect_->GetUniformSet()->gocUniform( "sigma" )->setUniform( highlightDistance_ );
-    pipeEffect_->GetUniformSet()->gocUniform( "isColorful" )->setUniform( isColorful_ );
+    pipeEffect_->GetUniformSet()->gocUniform( "sigma" )->setUniform( sigma_ );
+    pipeEffect_->GetUniformSet()->gocUniform( "is_colorful" )->setUniform( isColorful_ );
 }
 
 VLExtension::Effect* BorderHighlightingImageEffect::GetEffect()
@@ -23,6 +23,6 @@ VLExtension::Effect* BorderHighlightingImageEffect::GetEffect()
 
 void BorderHighlightingImageEffect::OnCreatedParamsWidget( ParamsWidget* paramsWidget )
 {
-    paramsWidget->AddParam( L"Highlight distance(sigma)", highlightDistance_, 0.1f, 10.f );
+    paramsWidget->AddParam( L"Sigma(param - border distance or diffuse)", sigma_, 0.1f, 5.f );
     paramsWidget->AddParam( L"Is colorful", isColorful_ );
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include <QWidget>
-#include <AppLogic/VLExtension/ViewWindow.h>
+#include <VLExtension/ViewWindow.h>
 
 class QHBoxLayout;
 class QVBoxLayout;

@@ -13,7 +13,8 @@ include_directories("source")
 
 set(GUI_DIR "source/GUI")
 set(APP_LOGIC_DIR "source/AppLogic")
-set(VLExtension_DIR "${APP_LOGIC_DIR}/VLExtension")
+set(VLExtension_DIR "source/VLExtension")
+
 add_executable (ImageProcessing 
 	"main.cpp"
 	# GUI
@@ -23,21 +24,23 @@ add_executable (ImageProcessing
 	"${GUI_DIR}/ParamWidget.cpp"
 	"${GUI_DIR}/SelectableListWidget.cpp"
 
+	# VLExtension_dir
+	"${VLExtension_DIR}/Actor.cpp"
+	"${VLExtension_DIR}/Effect.cpp"
+	"${VLExtension_DIR}/EffectPipeline.cpp"
+	"${VLExtension_DIR}/FBORender.cpp"
+	"${VLExtension_DIR}/Pipeline.cpp"
+	"${VLExtension_DIR}/Shader.cpp"
+	"${VLExtension_DIR}/ViewWindow.cpp"
+	"${VLExtension_DIR}/Actors/FPSActor.cpp"
+	"${VLExtension_DIR}/Actors/TextureRatioViewActor.cpp"
+	"${VLExtension_DIR}/Actors/TextureViewActor.cpp"
+	"${VLExtension_DIR}/Util/TextureReader.cpp"
+	"${VLExtension_DIR}/Effects/BorderHighlightingEffect.cpp"
+	"${VLExtension_DIR}/Effects/BrightnessContrastEffect.cpp"
+	"${VLExtension_DIR}/Effects/GaussianBlurEffect.cpp"
+
 	# AppLogic_dir
-		# VLExtension_dir
-		"${VLExtension_DIR}/Actor.cpp"
-		"${VLExtension_DIR}/Effect.cpp"
-		"${VLExtension_DIR}/EffectPipeline.cpp"
-		"${VLExtension_DIR}/FBORender.cpp"
-		"${VLExtension_DIR}/Pipeline.cpp"
-		"${VLExtension_DIR}/Shader.cpp"
-		"${VLExtension_DIR}/ViewWindow.cpp"
-		"${VLExtension_DIR}/Actors/FPSActor.cpp"
-		"${VLExtension_DIR}/Actors/TextureRatioViewActor.cpp"
-		"${VLExtension_DIR}/Actors/TextureViewActor.cpp"
-		"${VLExtension_DIR}/Effects/BorderHighlightingEffect.cpp"
-		"${VLExtension_DIR}/Effects/BrightnessContrastEffect.cpp"
-		"${VLExtension_DIR}/Util/TextureReader.cpp"
 		# AppModes_dir
 		"${APP_LOGIC_DIR}/AppModes/AppMode.cpp"
 		"${APP_LOGIC_DIR}/AppModes/AppModeList.cpp"
@@ -47,11 +50,12 @@ add_executable (ImageProcessing
 		"${APP_LOGIC_DIR}/ImageProcessing/ImageEffectList.cpp"
 		"${APP_LOGIC_DIR}/ImageProcessing/ImageEffects/BorderHighlightingImageEffect.cpp"
 		"${APP_LOGIC_DIR}/ImageProcessing/ImageEffects/BrightnessContrastImageEffect.cpp"
+		"${APP_LOGIC_DIR}/ImageProcessing/ImageEffects/GaussianBlurImageEffect.cpp"
 		# SelectTools_dir
 		"${APP_LOGIC_DIR}/SelectTools/ParamsSelectable.cpp"
 		"${APP_LOGIC_DIR}/SelectTools/Selectable.cpp"
 		"${APP_LOGIC_DIR}/SelectTools/SelectableList.cpp"
-		# Itil_dir
+		# Util_dir
 		"${APP_LOGIC_DIR}/Util/ColorUtils.cpp"
 		"${APP_LOGIC_DIR}/Util/Timer.cpp"
 	)

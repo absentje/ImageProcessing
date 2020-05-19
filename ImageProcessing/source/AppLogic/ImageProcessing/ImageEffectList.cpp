@@ -1,9 +1,10 @@
 #include "ImageEffectList.h"
 #include "ImageEffect.h"
-#include <AppLogic/VLExtension/EffectPipeline.h>
+#include <VLExtension/EffectPipeline.h>
 #include <AppLogic/ImageProcessing/ImageEffects/BrightnessContrastImageEffect.h>
 #include <AppLogic/ImageProcessing/ImageEffects/BorderHighlightingImageEffect.h>
-#include <AppLogic/VLExtension/Effect.h>
+#include <AppLogic/ImageProcessing/ImageEffects/GaussianBlurImageEffect.h>
+#include <VLExtension/Effect.h>
 
 ImageEffectList::ImageEffectList()
 	: super( L"ImageEffects" )
@@ -13,7 +14,8 @@ ImageEffectList::ImageEffectList()
 	std::vector<vl::ref<ImageEffect>> imageEffects =
 	{
 		new BrightnessContrastImageEffect,
-		new BorderHighlightingImageEffect
+		new BorderHighlightingImageEffect,
+		new GaussianBlurImageEffect
 	};
 
 	for ( auto imageEffect : imageEffects )

@@ -1,5 +1,5 @@
 #include "AppMode.h"
-#include <AppLogic/VLExtension/ViewWindow.h>
+#include <VLExtension/ViewWindow.h>
 #include <vlGraphics/SceneManagerActorTree.hpp>
 #include <vlGraphics/UIEventListener.hpp>
 
