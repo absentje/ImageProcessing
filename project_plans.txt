@@ -20,7 +20,7 @@ UI: implement widget architecture for selecting application mode, effects and ef
 
 3) border highlighting effect (+)
 
-4) blur effect (-)
+4) blur effect (+)
 { including gaussian blur }
 
 5) something with FFT (-)

@@ -18,11 +18,12 @@ set(VLExtension_DIR "source/VLExtension")
 add_executable (ImageProcessing 
 	"main.cpp"
 	# GUI
-	"${GUI_DIR}/ImageProcessingModeWidget.cpp"
 	"${GUI_DIR}/MainWindow.cpp"
 	"${GUI_DIR}/ParamsWidget.cpp"
 	"${GUI_DIR}/ParamWidget.cpp"
 	"${GUI_DIR}/SelectableListWidget.cpp"
+	"${GUI_DIR}/ImageProcessingModeWidget.cpp"
+	"${GUI_DIR}/Editor3DModeWidget.cpp"
 
 	# VLExtension_dir
 	"${VLExtension_DIR}/Actor.cpp"
@@ -45,6 +46,7 @@ add_executable (ImageProcessing
 		"${APP_LOGIC_DIR}/AppModes/AppMode.cpp"
 		"${APP_LOGIC_DIR}/AppModes/AppModeList.cpp"
 		"${APP_LOGIC_DIR}/AppModes/ImageProcessingMode.cpp"
+		"${APP_LOGIC_DIR}/AppModes/Editor3DMode.cpp"
 		# ImageProcessing_dir
 		"${APP_LOGIC_DIR}/ImageProcessing/ImageEffect.cpp"
 		"${APP_LOGIC_DIR}/ImageProcessing/ImageEffectList.cpp"

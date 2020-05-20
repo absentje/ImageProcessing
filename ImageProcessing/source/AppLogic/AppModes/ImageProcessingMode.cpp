@@ -2,15 +2,12 @@
 #include <vlCore/Image.hpp>
 #include <VLExtension/Actors/TextureRatioViewActor.h>
 #include <VLExtension/Actors/FPSActor.h>
-#include <vector>
 #include <VLExtension/FBORender.h>
 #include <VLExtension/EffectPipeline.h>
-#include <vlGraphics/SceneManagerActorTree.hpp>
-#include <vlGraphics/UIEventListener.hpp>
-
 #include <AppLogic/ImageProcessing/ImageEffectList.h>
 #include <VLExtension/Util/TextureReader.h>
 #include <GUI/ImageProcessingModeWidget.h>
+#include <vector>
 
 
 namespace

@@ -1,7 +1,10 @@
 #pragma once
 #include <vlCore/Object.hpp>
+#include <vlGraphics/SceneManagerActorTree.hpp>
+#include <vlGraphics/UIEventListener.hpp>
 #include <AppLogic/SelectTools/Selectable.h>
 #include <vector>
+
 
 namespace VLExtension
 {
