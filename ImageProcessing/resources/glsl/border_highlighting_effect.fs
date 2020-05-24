@@ -34,8 +34,9 @@ void main(void)
 		}
 		ij.y = 0.0;
 	}
-	FragColor = vec4( dist_value_sum / gaussian_sum );
+	const float average_dist = dist_value_sum / gaussian_sum;
+	FragColor = vec4( average_dist );
 	if (is_colorful)
-		FragColor *= clr;
+		FragColor = vec4(1.) - ((vec4(1. - average_dist)) * (vec4(1.) - clr));
 	FragColor.w = 1.0;
 }

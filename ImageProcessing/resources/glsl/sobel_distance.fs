@@ -9,8 +9,6 @@ float getGray(vec3 c)
     return (dot(c.rgb, vec3(0.33333, 0.33333, 0.33333)));
 }
 
-const float scale =	10.0;
-
 float edge_dist(sampler2D texture_sampler, vec2 pos)
 {
 	vec4 CC;
@@ -70,8 +68,7 @@ float edge_dist(sampler2D texture_sampler, vec2 pos)
 	sy -=  g20;
 	sy +=  g22;
 
-	float dist = clamp(((sx * sx + sy * sy) * scale), 0.0, 1.0);
-
+	float dist = clamp(sqrt(sx * sx + sy * sy), 0.0, 1.0);
 	return dist;
 }
 
