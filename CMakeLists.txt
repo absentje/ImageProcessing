@@ -9,6 +9,9 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(VL_ROOT "C:/VisualizationLibrary/install")
+set(FBXSDK_ROOT "${CMAKE_HOME_DIRECTORY}/3rdparty/FBX SDK")
+set(FBXSDK_LIBRARIES "${FBXSDK_ROOT}/lib/x64/${CMAKE_BUILD_TYPE}/libfbxsdk.lib")
+set(FBXSDK_INCLUDE_DIRS "${FBXSDK_ROOT}/include")
 
 list(APPEND CMAKE_PREFIX_PATH "C:/Qt/5.12.5/msvc2017_64")
 list(APPEND CMAKE_PREFIX_PATH "${VL_ROOT}/x64-Debug")
@@ -16,6 +19,7 @@ list(APPEND CMAKE_PREFIX_PATH "${VL_ROOT}/x64-Release")
 
 list(APPEND CMAKE_MODULE_PATH "${VL_ROOT}/x64-Debug/cmake" )
 list(APPEND CMAKE_MODULE_PATH "${VL_ROOT}/x64-Release/cmake" )
+
 
 # Включите подпроекты.
 add_subdirectory ("ImageProcessing")
@@ -30,7 +34,6 @@ message("CMAKE_HOME_DIRECTORY is ${CMAKE_HOME_DIRECTORY}/ImageProcessing/resourc
 add_custom_target(ImageProcessingResources
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/ImageProcessing/resources         ${CMAKE_BINARY_DIR}/ImageProcessing/resources
 )
-
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 	add_custom_target(Qt5CopyBinaries
@@ -64,3 +67,7 @@ else(${CMAKE_BUILD_TYPE} STREQUAL "Release")
         COMMAND ${CMAKE_COMMAND} -E copy ${VL_ROOT}/x64-Release/bin/VLX.dll          ${CMAKE_BINARY_DIR}/ImageProcessing/VLX.dll
     )
 endif()
+
+add_custom_target(FBXSDKCopyBinaries
+      COMMAND ${CMAKE_COMMAND} -E copy ${FBXSDK_ROOT}/lib/x64/${CMAKE_BUILD_TYPE}/libfbxsdk.dll ${CMAKE_BINARY_DIR}/ImageProcessing/libfbxsdk.dll
+    )

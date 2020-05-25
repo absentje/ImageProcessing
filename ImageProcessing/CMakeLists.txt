@@ -10,6 +10,7 @@ find_package(OpenGL REQUIRED)
 find_package(VL COMPONENTS VLCore VLGraphics VLQt5 VLVG VLMain REQUIRED)
 include_directories(${VL_INCLUDE_DIRS})
 include_directories("source")
+include_directories(${FBXSDK_INCLUDE_DIRS})
 
 set(GUI_DIR "source/GUI")
 set(APP_LOGIC_DIR "source/AppLogic")
@@ -37,6 +38,7 @@ add_executable (ImageProcessing
 	"${VLExtension_DIR}/Actors/TextureRatioViewActor.cpp"
 	"${VLExtension_DIR}/Actors/TextureViewActor.cpp"
 	"${VLExtension_DIR}/Util/TextureReader.cpp"
+	"${VLExtension_DIR}/Util/FBX_Support/FbxMeshConverter.cpp"
 	"${VLExtension_DIR}/Effects/BorderHighlightingEffect.cpp"
 	"${VLExtension_DIR}/Effects/BrightnessContrastEffect.cpp"
 	"${VLExtension_DIR}/Effects/GaussianBlurEffect.cpp"
@@ -63,8 +65,9 @@ add_executable (ImageProcessing
 	)
 
 
-target_link_libraries(ImageProcessing Qt5::Widgets Qt5::OpenGL ${VL_LIBRARIES} ${OPENGL_LIBRARIES})
+target_link_libraries(ImageProcessing Qt5::Widgets Qt5::OpenGL ${VL_LIBRARIES} ${OPENGL_LIBRARIES} ${FBXSDK_LIBRARIES})
 
 add_dependencies(ImageProcessing Qt5CopyBinaries)
 add_dependencies(ImageProcessing VLCopyBinaries)
 add_dependencies(ImageProcessing ImageProcessingResources)
+add_dependencies(ImageProcessing FBXSDKCopyBinaries)
