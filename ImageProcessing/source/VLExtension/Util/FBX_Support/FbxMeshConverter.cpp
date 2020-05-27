@@ -198,14 +198,15 @@ void FbxMeshConverter::get_vertices_and_polygons(const std::vector<int>& polygon
 	std::vector<std::shared_ptr<Vertex>>& output_vtx_vec, std::vector<MeshPolygon>& output_polygon_vec){
 	output_vtx_vec.clear();
 	output_polygon_vec.clear();
-	const int POLYGON_COUNT = (int)polygon_indices.size();
+	const size_t POLYGON_COUNT = polygon_indices.size();
 	output_polygon_vec.resize(POLYGON_COUNT);
 	using PolygonIndexPair = std::pair<int, int>; // pair<PolygonIndex, PolygonVertexIndex>
 	using PrimaryKey = int; // для задания упорядоченности конечных вертексов(в порядке добавления)
 	using PolygonIndexPairsPtr = std::shared_ptr<std::vector<PolygonIndexPair>>;
 	using VertexPtr = std::shared_ptr<Vertex>;
 	std::unordered_map<VertexPtr, std::pair<PolygonIndexPairsPtr, PrimaryKey>, HashUtils::hash<VertexPtr>, EqualOfSharedPtrs<Vertex>> vertex_map;
-	for (int polygon_index = 0; polygon_index != POLYGON_COUNT; ++polygon_index){
+	for ( size_t polygon_index = 0; polygon_index != POLYGON_COUNT; ++polygon_index )
+	{
 		const int FBX_POLYGON_INDEX = polygon_indices[polygon_index];
 		const int POLYGON_VERTEX_COUNT = fbx_mesh_->GetPolygonSize(FBX_POLYGON_INDEX);
 		for (int polygon_vertex_index = 0; polygon_vertex_index != POLYGON_VERTEX_COUNT; ++polygon_vertex_index){
@@ -220,15 +221,17 @@ void FbxMeshConverter::get_vertices_and_polygons(const std::vector<int>& polygon
 		}
 	}
 	// сорт. за O(n) и запись в выходной массив(output_vtx_vec)
-	const int INITIAL_VTX_COUNT = POLYGON_COUNT * 4;
+	const size_t INITIAL_VTX_COUNT = POLYGON_COUNT * 4;
 	std::vector<std::pair<VertexPtr, PolygonIndexPairsPtr>> vtx_info(INITIAL_VTX_COUNT);
-	for (auto& s : vertex_map){
+	for ( auto& s : vertex_map )
+	{
 		VertexPtr vtx = s.first;
 		PolygonIndexPairsPtr index_pairs = s.second.first;
 		const PrimaryKey PRIMARY_KEY = s.second.second;
 		vtx_info[PRIMARY_KEY] = std::pair<VertexPtr, PolygonIndexPairsPtr>{ vtx, index_pairs };
 	}
-	for (int i = 0, vertex_index = 0; i != INITIAL_VTX_COUNT; ++i){
+	for ( size_t i = 0, vertex_index = 0; i != INITIAL_VTX_COUNT; ++i )
+	{
 		auto& pair = vtx_info[i];
 		auto& vtx_ptr = pair.first;
 		auto& index_pairs_ptr = pair.second;
@@ -248,9 +251,9 @@ void FbxMeshConverter::get_vertices_and_polygons(const std::vector<int>& polygon
 
 void FbxMeshConverter::set_vl_buffers(const std::vector<std::shared_ptr<Vertex>>& vtx_vec, vl::Geometry* geometry)
 {
-	const int VERTEX_COUNT = (int)vtx_vec.size();
+	const size_t VERTEX_COUNT = vtx_vec.size();
 
-	if (VERTEX_COUNT == 0)
+	if (VERTEX_COUNT == 0U)
 		return;
 
 	// set Vertex, Normal, Color Arrays
@@ -274,7 +277,7 @@ void FbxMeshConverter::set_vl_buffers(const std::vector<std::shared_ptr<Vertex>>
 			geometry->setColorArray(color_array.get());
 		}
 
-		for (int vertex_index = 0; vertex_index != VERTEX_COUNT; ++vertex_index)
+		for ( size_t vertex_index = 0U; vertex_index != VERTEX_COUNT; ++vertex_index )
 		{
 			(*vertex_array)[vertex_index] = vtx_vec[vertex_index]->position.xyz();
 			(*normal_array)[vertex_index] = vtx_vec[vertex_index]->normal.xyz();
@@ -309,9 +312,10 @@ void FbxMeshConverter::set_vl_buffers(const std::vector<std::shared_ptr<Vertex>>
 
 void FbxMeshConverter::set_vl_draw_elements(const std::vector<MeshPolygon>& polygon_vec, vl::Geometry* geometry)
 {
-	const int POLYGON_COUNT = (int)polygon_vec.size();
-	int triangle_count = 0, quad_count = 0;
-	for (int i = 0; i != POLYGON_COUNT; ++i){
+	const size_t POLYGON_COUNT = polygon_vec.size();
+	size_t triangle_count = 0, quad_count = 0;
+	for ( size_t i = 0; i != POLYGON_COUNT; ++i )
+	{
 		switch (polygon_vec[i].ePolygonType){
 		case EMeshPolygonType::PT_Triangle:
 			++triangle_count;
@@ -334,10 +338,11 @@ void FbxMeshConverter::set_vl_draw_elements(const std::vector<MeshPolygon>& poly
 		geometry->drawCalls().push_back(quads_draw_element.get());
 	}
 
-	int triangle_draw_buffer_index = 0;
-	int quad_draw_buffer_index = 0;
+	size_t triangle_draw_buffer_index = 0;
+	size_t quad_draw_buffer_index = 0;
 
-	for (int i = 0; i != POLYGON_COUNT; ++i){
+	for ( size_t i = 0; i != POLYGON_COUNT; ++i )
+	{
 		switch (polygon_vec[i].ePolygonType){
 		case EMeshPolygonType::PT_Triangle:
 			triangles_draw_element->indexBuffer()->at(triangle_draw_buffer_index++) = polygon_vec[i].vertex_indexes[0];

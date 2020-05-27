@@ -38,6 +38,7 @@ add_executable (ImageProcessing
 	"${VLExtension_DIR}/Actors/TextureRatioViewActor.cpp"
 	"${VLExtension_DIR}/Actors/TextureViewActor.cpp"
 	"${VLExtension_DIR}/Util/TextureReader.cpp"
+	"${VLExtension_DIR}/Util/FBX_Support/FbxResource.cpp"
 	"${VLExtension_DIR}/Util/FBX_Support/FbxMeshConverter.cpp"
 	"${VLExtension_DIR}/Effects/BorderHighlightingEffect.cpp"
 	"${VLExtension_DIR}/Effects/BrightnessContrastEffect.cpp"
