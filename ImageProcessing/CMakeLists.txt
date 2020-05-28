@@ -42,8 +42,10 @@ add_executable (ImageProcessing
 		"${APP_LOGIC_DIR}/SelectTools/SelectableList.cpp"
 	)
 
+add_executable (vlTest "vlTest.cpp")
 
 target_link_libraries(ImageProcessing Qt5::Widgets Qt5::OpenGL VLExtension)
+target_link_libraries(vlTest VLExtension)
 
 add_dependencies(ImageProcessing Qt5CopyBinaries)
 add_dependencies(ImageProcessing VLCopyBinaries)
