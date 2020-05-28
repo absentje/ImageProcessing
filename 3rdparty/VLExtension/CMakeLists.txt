@@ -2,6 +2,7 @@
 
 find_package(OpenGL REQUIRED)
 find_package(VL COMPONENTS VLCore VLGraphics VLQt5 VLVG VLMain REQUIRED)
+
 include_directories(${VL_INCLUDE_DIRS})
 include_directories(${FBXSDK_INCLUDE_DIRS})
 
@@ -28,3 +29,4 @@ add_library (VLExtension STATIC
 target_link_libraries(VLExtension ${VL_LIBRARIES} ${OPENGL_LIBRARIES} ${FBXSDK_LIBRARIES})
 target_include_directories(VLExtension PUBLIC ${CMAKE_HOME_DIRECTORY}/3rdparty)
 target_include_directories(VLExtension PUBLIC ${VL_INCLUDE_DIRS})
+target_include_directories(VLExtension PUBLIC ${FBXSDK_INCLUDE_DIRS})

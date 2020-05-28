@@ -10,6 +10,7 @@ find_library(VLExtension REQUIRED)
 include_directories("source")
 include_directories("${CMAKE_HOME_DIRECTORY}/3rdparty")
 
+
 set(GUI_DIR "source/GUI")
 set(APP_LOGIC_DIR "source/AppLogic")
 set(VLExtension_DIR "source/VLExtension")
@@ -50,4 +51,3 @@ target_link_libraries(vlTest VLExtension)
 add_dependencies(ImageProcessing Qt5CopyBinaries)
 add_dependencies(ImageProcessing VLCopyBinaries)
 add_dependencies(ImageProcessing ImageProcessingResources)
-add_dependencies(ImageProcessing FBXSDKCopyBinaries)
