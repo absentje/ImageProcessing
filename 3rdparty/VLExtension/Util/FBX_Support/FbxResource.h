@@ -10,14 +10,15 @@ class FbxResource : public vl::Object
 public:
 	FbxResource();
 
-	bool LoadFile( const std::string& file_path, int meshIndex );
-	vl::ref<vl::Geometry> GetGeometry(const std::vector<int>& smoothing_group_indices);
-	int	GetGeometryCount();
+	bool LoadFile( const std::string& file_path );
+	std::vector<vl::ref<vl::Geometry>> GetGeometries() const;
 
+	int	GetGeometryCount() const;
+	vl::ref<vl::Geometry> GetGeometry( int meshIndex ) const;
+	vl::ref<vl::Geometry> GetGeometry( int meshIndex, const std::vector<int>& smoothing_group_indices ) const;
 private:
 	fbxsdk::FbxSharedDestroyPtr<fbxsdk::FbxManager> fbxManager;
 	fbxsdk::FbxSharedDestroyPtr<fbxsdk::FbxScene> fbxScene;
-	fbxsdk::FbxSharedDestroyPtr<fbxsdk::FbxMesh> fbxMesh;
 
 	vl::ref<vl::Geometry> geometry_;
 };

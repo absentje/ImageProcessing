@@ -1,5 +1,6 @@
 #pragma once
 #include <VLExtension/Actor.h>
+
 namespace vl
 {
 	class Texture;

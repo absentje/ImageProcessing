@@ -5,12 +5,10 @@ cmake_minimum_required (VERSION 3.8)
 
 find_package(Qt5OpenGL REQUIRED)
 find_package(Qt5Widgets REQUIRED)
-find_package(OpenGL REQUIRED)
+find_library(VLExtension REQUIRED)
 
-find_package(VL COMPONENTS VLCore VLGraphics VLQt5 VLVG VLMain REQUIRED)
-include_directories(${VL_INCLUDE_DIRS})
 include_directories("source")
-include_directories(${FBXSDK_INCLUDE_DIRS})
+include_directories("${CMAKE_HOME_DIRECTORY}/3rdparty")
 
 set(GUI_DIR "source/GUI")
 set(APP_LOGIC_DIR "source/AppLogic")
@@ -25,24 +23,6 @@ add_executable (ImageProcessing
 	"${GUI_DIR}/SelectableListWidget.cpp"
 	"${GUI_DIR}/ImageProcessingModeWidget.cpp"
 	"${GUI_DIR}/Editor3DModeWidget.cpp"
-
-	# VLExtension_dir
-	"${VLExtension_DIR}/Actor.cpp"
-	"${VLExtension_DIR}/Effect.cpp"
-	"${VLExtension_DIR}/EffectPipeline.cpp"
-	"${VLExtension_DIR}/FBORender.cpp"
-	"${VLExtension_DIR}/Pipeline.cpp"
-	"${VLExtension_DIR}/Shader.cpp"
-	"${VLExtension_DIR}/ViewWindow.cpp"
-	"${VLExtension_DIR}/Actors/FPSActor.cpp"
-	"${VLExtension_DIR}/Actors/TextureRatioViewActor.cpp"
-	"${VLExtension_DIR}/Actors/TextureViewActor.cpp"
-	"${VLExtension_DIR}/Util/TextureReader.cpp"
-	"${VLExtension_DIR}/Util/FBX_Support/FbxResource.cpp"
-	"${VLExtension_DIR}/Util/FBX_Support/FbxMeshConverter.cpp"
-	"${VLExtension_DIR}/Effects/BorderHighlightingEffect.cpp"
-	"${VLExtension_DIR}/Effects/BrightnessContrastEffect.cpp"
-	"${VLExtension_DIR}/Effects/GaussianBlurEffect.cpp"
 
 	# AppLogic_dir
 		# AppModes_dir
@@ -60,13 +40,10 @@ add_executable (ImageProcessing
 		"${APP_LOGIC_DIR}/SelectTools/ParamsSelectable.cpp"
 		"${APP_LOGIC_DIR}/SelectTools/Selectable.cpp"
 		"${APP_LOGIC_DIR}/SelectTools/SelectableList.cpp"
-		# Util_dir
-		"${APP_LOGIC_DIR}/Util/ColorUtils.cpp"
-		"${APP_LOGIC_DIR}/Util/Timer.cpp"
 	)
 
 
-target_link_libraries(ImageProcessing Qt5::Widgets Qt5::OpenGL ${VL_LIBRARIES} ${OPENGL_LIBRARIES} ${FBXSDK_LIBRARIES})
+target_link_libraries(ImageProcessing Qt5::Widgets Qt5::OpenGL VLExtension)
 
 add_dependencies(ImageProcessing Qt5CopyBinaries)
 add_dependencies(ImageProcessing VLCopyBinaries)

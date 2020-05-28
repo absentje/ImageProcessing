@@ -22,7 +22,13 @@
       "buildCommandArgs": "-v",
       "ctestCommandArgs": "",
       "inheritEnvironments": [ "msvc_x64_x64" ],
-      "variables": []
+      "variables": [
+        {
+          "name": "VLExtension_DIR",
+          "value": "C:/GitFolder/ImageProcessing/3rdparty/VLExtension",
+          "type": "PATH"
+        }
+      ]
     }
   ]
 }

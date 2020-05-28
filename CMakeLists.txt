@@ -12,6 +12,7 @@ set(VL_ROOT "C:/VisualizationLibrary/install")
 set(FBXSDK_ROOT "${CMAKE_HOME_DIRECTORY}/3rdparty/FBX SDK")
 set(FBXSDK_LIBRARIES "${FBXSDK_ROOT}/lib/x64/${CMAKE_BUILD_TYPE}/libfbxsdk.lib")
 set(FBXSDK_INCLUDE_DIRS "${FBXSDK_ROOT}/include")
+set(VLExtension_DIR "${CMAKE_HOME_DIRECTORY}/3rdparty/VLExtension")
 
 list(APPEND CMAKE_PREFIX_PATH "C:/Qt/5.12.5/msvc2017_64")
 list(APPEND CMAKE_PREFIX_PATH "${VL_ROOT}/x64-Debug")
@@ -19,15 +20,16 @@ list(APPEND CMAKE_PREFIX_PATH "${VL_ROOT}/x64-Release")
 
 list(APPEND CMAKE_MODULE_PATH "${VL_ROOT}/x64-Debug/cmake" )
 list(APPEND CMAKE_MODULE_PATH "${VL_ROOT}/x64-Release/cmake" )
-
+list(APPEND CMAKE_MODULE_PATH "${VLExtension_DIR}" )
 
 # Включите подпроекты.
 add_subdirectory ("ImageProcessing")
+add_subdirectory ("3rdparty/VLExtension")
 
 find_package(Qt5OpenGL REQUIRED)
 find_package(Qt5Widgets REQUIRED)
-find_package(OpenGL REQUIRED)
-find_package(VL COMPONENTS VLCore VLGraphics VLQt5 VLVG VLMain REQUIRED)
+#find_package(OpenGL REQUIRED)
+#find_package(VL COMPONENTS VLCore VLGraphics VLQt5 VLVG VLMain REQUIRED)
 
 message("CMAKE_HOME_DIRECTORY is ${CMAKE_HOME_DIRECTORY}/ImageProcessing/resources")
 
