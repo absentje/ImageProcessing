@@ -25,10 +25,9 @@ public:
     virtual void initEvent() override {}
     virtual void destroyEvent() override {}
     virtual void updateEvent() override {
-        static const float FPS = 120.f;
-
-        if ( timer.GetElapsedSeconds() > 1.f / FPS )
-        {
+//        static const float FPS = 60.f;
+//        if ( timer.GetElapsedSeconds() > 1.f / FPS )
+        {   // limit from UI library (approximately == 60 fps)
             pViewWindow->Render();
             timer.Start();
         }
@@ -76,6 +75,7 @@ ViewWindow::ViewWindow( vl::OpenGLContext* vl_context )
     clearRenderable->setClearColorBuffer( true );
 
     vl::ref<vl::Actor> clearActor = new vl::Actor( clearRenderable.get(), new vl::Effect );
+    clearActor->setRenderRank( -1 );
     background_->tree()->addActor( clearActor.get() );
 
     ClearViewWindow();
