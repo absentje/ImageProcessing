@@ -7,6 +7,7 @@ AppMode::AppMode( const std::wstring& name )
 	: super( name )
 {
 	scene_ = new vl::SceneManagerActorTree;
+	camera_ = new vl::Camera;
 }
 
 void AppMode::Enable()
@@ -14,6 +15,7 @@ void AppMode::Enable()
 	auto* viewWindow = VLExtension::ViewWindow::currentViewWindow;
 
 	viewWindow->ShowScene( scene_.get() );
+	viewWindow->SetCamera( camera_.get() );
 
 	for ( auto& evListener : UIEventListeners_ )
 	{

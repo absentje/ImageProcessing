@@ -6,6 +6,7 @@
 #include <vlGraphics/Text.hpp>
 #include <vlGraphics/Rendering.hpp>
 #include <vlGraphics/OpenGLContext.hpp>
+#include <vlGraphics/Clear.hpp>
 
 #include "Actors/TextureViewActor.h"
 #include "FBORender.h"
@@ -59,14 +60,24 @@ ViewWindow* ViewWindow::currentViewWindow = nullptr;
 ViewWindow::ViewWindow( vl::OpenGLContext* vl_context )
     : pCanvas( vl_context )
 {
+    const vl::vec4 clearColor = vl::vec4( 0.2f, 0.3f, 0.4f, 1.0f );
     rendering_ = new vl::Rendering;
     rendering_->renderer()->setFramebuffer( pCanvas->framebuffer() );
-    rendering_->camera()->viewport()->setClearColor( 0.2f, 0.3f, 0.4f, 1.0f );
+    rendering_->camera()->viewport()->setClearColor( clearColor );
     // делаем первичный рендер, чтоб создался контекст
     rendering_->render();
     AddEventListener( vl::ref<VWEventListener>( new VWEventListener( this ) ).get() );
 
     background_ = new vl::SceneManagerActorTree;
+    background_->setCullingEnabled( false );
+
+    vl::ref<vl::Clear> clearRenderable = new vl::Clear;
+    clearRenderable->setClearColorValue( clearColor );
+    clearRenderable->setClearColorBuffer( true );
+
+    vl::ref<vl::Actor> clearActor = new vl::Actor( clearRenderable.get(), new vl::Effect );
+    background_->tree()->addActor( clearActor.get() );
+
     ClearViewWindow();
 }
 
@@ -108,8 +119,7 @@ void    ViewWindow::Render()
 
 void    ViewWindow::Resize( int width, int height )
 {
-    pCanvas->setSize( width, height );
-
+//    pCanvas->setSize( width, height );
     vl::Camera* pCamera = rendering_->camera();
     pCamera->viewport()->set( 0, 0, width, height );
     switch ( pCamera->projectionMatrixType() )
@@ -137,6 +147,11 @@ void	ViewWindow::AddEventListener( vl::UIEventListener* evListener )
 void	ViewWindow::RemoveEventListener( vl::UIEventListener* evListener )
 {
     pCanvas->removeEventListener( evListener );
+}
+
+void    ViewWindow::SetCamera( vl::Camera* camera )
+{
+    rendering_->setCamera( camera );
 }
 
 }

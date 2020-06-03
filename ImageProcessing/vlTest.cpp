@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
 	fbxResource.LoadFile("resources/fbx/Sc2.fbx");
 
 	auto geoms = fbxResource.GetGeometries();
+	auto materialCount = fbxResource.GetMaterialCount();
+
 	// test code
 	// ...
 	vl::VisualizationLibrary::shutdown();

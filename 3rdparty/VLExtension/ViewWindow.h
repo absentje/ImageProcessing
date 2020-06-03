@@ -7,6 +7,7 @@ namespace vl
     class Rendering;
     class SceneManagerActorTree;
     class OpenGLContext;
+    class Camera;
 }
 
 namespace VLExtension
@@ -23,6 +24,7 @@ public:
     void    RemoveEventListener( vl::UIEventListener* evListener );
 
     void	ShowScene( vl::SceneManagerActorTree* scene );
+    void    SetCamera( vl::Camera* camera );
 
     void    Resize( int width, int height );
     void    ClearViewWindow();

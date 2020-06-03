@@ -42,6 +42,11 @@ int	FbxResource::GetGeometryCount() const
 	return fbxScene->GetGeometryCount();
 }
 
+int FbxResource::GetMaterialCount() const
+{
+	return fbxScene->GetMaterialCount();
+}
+
 std::vector<vl::ref<vl::Geometry>> FbxResource::GetGeometries() const
 {
 	std::vector<vl::ref<vl::Geometry>> result;

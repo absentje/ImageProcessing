@@ -15,6 +15,7 @@ namespace vl
 {
 class SceneManagerActorTree;
 class UIEventListener;
+class Camera;
 }
 
 class AppMode : public Selectable
@@ -28,4 +29,5 @@ public:
 protected:
 	vl::ref<vl::SceneManagerActorTree>			scene_;
 	std::vector<vl::ref<vl::UIEventListener>>	UIEventListeners_;
+	vl::ref<vl::Camera>							camera_;
 };
