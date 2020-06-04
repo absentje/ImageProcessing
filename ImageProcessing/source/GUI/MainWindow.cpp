@@ -10,10 +10,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     // qt gui init
     pCanvas = new vlQt5::Qt5Widget( this );
-    pCanvas->initGLContext();
+    vl::OpenGLContextFormat glInfo;
+    pCanvas->initQt5Widget( "title", glInfo );
+    pCanvas->initializeGL();
     pCanvas->show();
     pCanvas->setPosition( 0, 0 );
     pCanvas->setFocusPolicy( Qt::FocusPolicy::StrongFocus );
+
+    pCanvas->framebuffer();
 
     VLExtension::FBORender::gl_context = pCanvas;
 

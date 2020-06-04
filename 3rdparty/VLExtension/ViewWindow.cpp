@@ -7,6 +7,7 @@
 #include <vlGraphics/Rendering.hpp>
 #include <vlGraphics/OpenGLContext.hpp>
 #include <vlGraphics/Clear.hpp>
+#include <VLExtension/Actors/FPSActor.h>
 
 #include "Actors/TextureViewActor.h"
 #include "FBORender.h"
@@ -14,6 +15,13 @@
 
 namespace VLExtension
 {
+namespace
+{
+constexpr bool FPSEnable = true;
+constexpr int FPSActorRenderRank = 1000;
+const vl::vec4 clearColor = vl::vec4( 0.2f, 0.3f, 0.4f, 1.0f );
+}
+
 namespace
 {
 class VWEventListener: public vl::UIEventListener
@@ -25,12 +33,15 @@ public:
     virtual void initEvent() override {}
     virtual void destroyEvent() override {}
     virtual void updateEvent() override {
-//        static const float FPS = 60.f;
-//        if ( timer.GetElapsedSeconds() > 1.f / FPS )
-        {   // limit from UI library (approximately == 60 fps)
+        static const float FPS = 1000.f;
+        static const float FPS_reverse = 1.f / FPS;
+        if ( timer.GetElapsedSeconds() > FPS_reverse )
+        {
             pViewWindow->Render();
             timer.Start();
         }
+
+        pViewWindow;
     }
     virtual void enableEvent( bool ) override {}
     virtual void addedListenerEvent( vl::OpenGLContext* ) override {}
@@ -59,7 +70,6 @@ ViewWindow* ViewWindow::currentViewWindow = nullptr;
 ViewWindow::ViewWindow( vl::OpenGLContext* vl_context )
     : pCanvas( vl_context )
 {
-    const vl::vec4 clearColor = vl::vec4( 0.2f, 0.3f, 0.4f, 1.0f );
     rendering_ = new vl::Rendering;
     rendering_->renderer()->setFramebuffer( pCanvas->framebuffer() );
     rendering_->camera()->viewport()->setClearColor( clearColor );
@@ -70,14 +80,24 @@ ViewWindow::ViewWindow( vl::OpenGLContext* vl_context )
     background_ = new vl::SceneManagerActorTree;
     background_->setCullingEnabled( false );
 
-    vl::ref<vl::Clear> clearRenderable = new vl::Clear;
-    clearRenderable->setClearColorValue( clearColor );
-    clearRenderable->setClearColorBuffer( true );
+    { // add clear actor (glClear)
+        vl::ref<vl::Clear> clearRenderable = new vl::Clear;
+        clearRenderable->setClearColorValue( clearColor );
+        clearRenderable->setClearColorBuffer( true );
+        clearRenderable->setClearDepthBuffer( true );
 
-    vl::ref<vl::Actor> clearActor = new vl::Actor( clearRenderable.get(), new vl::Effect );
-    clearActor->setRenderRank( -1 );
-    background_->tree()->addActor( clearActor.get() );
-
+        vl::ref<vl::Actor> clearActor = new vl::Actor( clearRenderable.get(), new vl::Effect );
+        clearActor->setRenderRank( -1 );
+        background_->tree()->addActor( clearActor.get() );
+    }
+    { // add fps actor
+        if ( FPSEnable && vl::Has_Fixed_Function_Pipeline )
+        {
+            vl::ref<vl::Actor> fpsActor = new VLExtension::FPSActor;
+            fpsActor->setRenderRank( FPSActorRenderRank );
+            background_->tree()->addActor( fpsActor.get() );
+        }
+    }
     ClearViewWindow();
 }
 
