@@ -17,6 +17,7 @@ add_library (VLExtension STATIC
 	"Actors/FPSActor.cpp"
 	"Actors/TextureRatioViewActor.cpp"
 	"Actors/TextureViewActor.cpp"
+	"Actors/SkyBoxActor.cpp"
 	"Effects/BorderHighlightingEffect.cpp"
 	"Effects/BrightnessContrastEffect.cpp"
 	"Effects/GaussianBlurEffect.cpp"

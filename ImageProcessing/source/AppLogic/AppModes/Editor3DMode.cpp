@@ -7,6 +7,9 @@
 #include <vlGraphics/Geometry.hpp>
 #include <vlGraphics/GeometryPrimitives.hpp>
 #include <VLExtension/Actor.h>
+#include <VLExtension/Actors/SkyBoxActor.h>
+
+using ManipulatorType = vl::TrackballManipulator;
 
 namespace
 {
@@ -17,10 +20,9 @@ vl::ref<vl::Actor> createPlaneActor()
     auto shader = planeActor->GetShader();
 
     vl::ref<vl::Texture> texture = new vl::Texture( "resources/images/plane_texture.jpg", vl::TF_RGBA, true );
-    texture->getTexParameter()->setWrap( vl::ETexParamWrap::TPW_REPEAT );
+    texture->getTexParameter()->setWrap( vl::ETexParamWrap::TPW_CLAMP_TO_BORDER );
     texture->getTexParameter()->setMinFilter( vl::ETexParamFilter::TPF_LINEAR_MIPMAP_LINEAR );
-//    texture->getTexParameter()->setMinFilter( vl::ETexParamFilter::TPF_NEAREST );
-
+    texture->getTexParameter()->setMagFilter( vl::ETexParamFilter::TPF_LINEAR );
     shader->gocTextureSampler( 0 )->setTexture( texture.get() );
     shader->SetVShader( L"resources/glsl/test_plane_view.vs" );
     shader->SetFShader( L"resources/glsl/test_plane_view.fs" );
@@ -35,14 +37,15 @@ Editor3DMode::Editor3DMode()
 {
     scene_->setCullingEnabled( false );
     scene_->tree()->addActor( createPlaneActor().get() );
+    scene_->tree()->addActor( new VLExtension::SkyBoxActor );
 
-    vl::vec3 eye = vl::vec3( 0, 1, 4 ); // camera position
+    vl::vec3 eye = vl::vec3( 0, 0, 5 ); // camera position
     vl::vec3 center = vl::vec3( 0, 0, 0 );   // point the camera is looking at
     vl::vec3 up = vl::vec3( 0, 1, 0 );   // up direction
     vl::mat4 view_mat = vl::mat4::getLookAt( eye, center, up );
     camera_->setViewMatrix( view_mat );
 
-    vl::ref<vl::TrackballManipulator> manipulator = new vl::TrackballManipulator;
+    vl::ref<ManipulatorType> manipulator = new ManipulatorType;
     manipulator->setCamera( camera_.get() );
     UIEventListeners_.push_back( manipulator.get() );
 }

@@ -7,8 +7,10 @@ namespace vl
 }
 
 /*
-	Актор, к. рендрит заданную текстуру(-ы) по вьюпорту
+	TextureViewActor is an actor that displays the texture on the viewport
+	(without texture proportions w/h)
 */
+
 namespace VLExtension
 {
 class TextureViewActor: public Actor

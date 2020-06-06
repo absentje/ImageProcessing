@@ -2,7 +2,7 @@
 #include "TextureViewActor.h"
 
 /*
-	јктор, к. рендрит заданную текстуру(-ы) сохран€€ пропорции текстуры
+	TextureRatioViewActor is TextureViewActor that preserves texture proportions (w/h)
 */
 namespace VLExtension
 {
