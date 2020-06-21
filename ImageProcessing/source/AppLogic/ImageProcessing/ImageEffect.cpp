@@ -13,12 +13,7 @@ ImageEffect::ImageEffect( const std::wstring& name )
 
 }
 
-void ImageEffect::Enable()
+void ImageEffect::Enable( bool value )
 {
-	GetEffect()->SetEnable( true );
-}
-
-void ImageEffect::Disable()
-{
-	GetEffect()->SetEnable( false );
+	GetEffect()->SetEnable( value );
 }

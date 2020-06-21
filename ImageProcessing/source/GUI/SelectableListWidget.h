@@ -2,6 +2,7 @@
 #include <QGroupBox>
 #include <string>
 #include <vlCore/Object.hpp>
+#include <vector>
 
 class SelectableList;
 class QComboBox;
@@ -13,6 +14,7 @@ class SelectableListWidget: public QGroupBox
 	Q_OBJECT
 public:
 	SelectableListWidget( SelectableList* list, QWidget* parent );
+	void AddSelectableName( const std::wstring& name );
 
 private:
 	SelectableList* list_ = nullptr;
@@ -20,8 +22,6 @@ private:
 	QVBoxLayout* mainLayout = nullptr;
 	QComboBox* comboBox_ = nullptr;
 	QWidget* curSelectedWidget_ = nullptr;
-	std::wstring curSelectedStr_;
 
 	void					TextChanged_( const QString& str );
-	vl::ref<Selectable>		getSelectable_( const std::wstring& str );
 };

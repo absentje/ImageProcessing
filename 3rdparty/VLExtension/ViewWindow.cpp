@@ -139,9 +139,15 @@ void    ViewWindow::Render()
 
 void    ViewWindow::Resize( int width, int height )
 {
-//    pCanvas->setSize( width, height );
+    pCanvas->setSize( width, height );
+    UpdateCamera();
+    Render();
+}
+
+void    ViewWindow::UpdateCamera()
+{
     vl::Camera* pCamera = rendering_->camera();
-    pCamera->viewport()->set( 0, 0, width, height );
+    pCamera->viewport()->set( 0, 0, GetWidth(), GetHeight() );
     switch ( pCamera->projectionMatrixType() )
     {
     case vl::EProjectionMatrixType::PMT_PerspectiveProjection:
@@ -155,9 +161,17 @@ void    ViewWindow::Resize( int width, int height )
     case vl::EProjectionMatrixType::PMT_UserProjection:
         break;
     }
+}
 
-    Render();
-} 
+int     ViewWindow::GetWidth() const
+{
+    return pCanvas->width();
+}
+
+int     ViewWindow::GetHeight() const
+{
+    return pCanvas->height();
+}
 
 void	ViewWindow::AddEventListener( vl::UIEventListener* evListener )
 {

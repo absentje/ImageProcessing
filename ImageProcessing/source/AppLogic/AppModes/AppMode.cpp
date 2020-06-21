@@ -10,12 +10,18 @@ AppMode::AppMode( const std::wstring& name )
 	camera_ = new vl::Camera;
 }
 
-void AppMode::Enable()
+void AppMode::Enable( bool value )
+{
+	value ? enable_() : disable_();
+}
+
+void AppMode::enable_()
 {
 	auto* viewWindow = VLExtension::ViewWindow::currentViewWindow;
 
 	viewWindow->ShowScene( scene_.get() );
 	viewWindow->SetCamera( camera_.get() );
+	viewWindow->UpdateCamera();
 
 	for ( auto& evListener : UIEventListeners_ )
 	{
@@ -23,7 +29,7 @@ void AppMode::Enable()
 	}
 }
 
-void AppMode::Disable()
+void AppMode::disable_()
 {
 	auto* viewWindow = VLExtension::ViewWindow::currentViewWindow;
 

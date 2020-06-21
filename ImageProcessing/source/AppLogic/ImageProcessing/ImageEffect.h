@@ -15,8 +15,7 @@ class ImageEffect: public ParamsSelectable
 public:
 	ImageEffect( const std::wstring& name );
 
-	virtual void Enable() override;
-	virtual void Disable() override;
+	virtual void Enable( bool value ) override;
 	virtual void UpdateData() = 0;
 
 	virtual VLExtension::Effect* GetEffect() = 0;

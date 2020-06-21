@@ -29,6 +29,9 @@ public:
     void    Resize( int width, int height );
     void    ClearViewWindow();
     void    Render();
+    void    UpdateCamera();
+    int     GetWidth() const;
+    int     GetHeight() const;
 
     static ViewWindow* currentViewWindow;
 

@@ -23,11 +23,14 @@ class AppMode : public Selectable
 	VL_INSTRUMENT_CLASS( AppMode, Selectable );
 public:
 	AppMode( const std::wstring& name );
-	virtual void Enable() override;
-	virtual void Disable() override;
+	virtual void Enable( bool value ) override;
 
 protected:
 	vl::ref<vl::SceneManagerActorTree>			scene_;
 	std::vector<vl::ref<vl::UIEventListener>>	UIEventListeners_;
 	vl::ref<vl::Camera>							camera_;
+
+private:
+	void enable_();
+	void disable_();
 };

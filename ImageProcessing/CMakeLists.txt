@@ -31,6 +31,11 @@ add_executable (ImageProcessing
 		"${APP_LOGIC_DIR}/AppModes/AppModeList.cpp"
 		"${APP_LOGIC_DIR}/AppModes/ImageProcessingMode.cpp"
 		"${APP_LOGIC_DIR}/AppModes/Editor3DMode.cpp"
+		# Editor3D_dir
+		"${APP_LOGIC_DIR}/Editor3D/Mode3D.cpp"
+		"${APP_LOGIC_DIR}/Editor3D/Mode3DList.cpp"
+		"${APP_LOGIC_DIR}/Editor3D/Modes3D/PBRViewMode.cpp"
+
 		# ImageProcessing_dir
 		"${APP_LOGIC_DIR}/ImageProcessing/ImageEffect.cpp"
 		"${APP_LOGIC_DIR}/ImageProcessing/ImageEffectList.cpp"
