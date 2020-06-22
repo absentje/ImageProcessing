@@ -6,7 +6,17 @@ PBRViewMode::PBRViewMode()
 
 }
 
-void PBRViewMode::Enable( bool value )
+void	PBRViewMode::Enable( bool value )
+{
+
+}
+
+void	PBRViewMode::UpdateData()
+{
+
+}
+
+void	PBRViewMode::OnCreatedParamsWidget( ParamsWidget* paramsWidget )
 {
 
 }

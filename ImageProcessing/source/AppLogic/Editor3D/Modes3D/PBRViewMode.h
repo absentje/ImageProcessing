@@ -8,5 +8,9 @@ public:
 	PBRViewMode();
 
 	virtual void Enable( bool value ) override;
-	virtual void UpdateData() = 0;
+	virtual void UpdateData() override;
+
+protected:
+	// widget-parameters will be attached here
+	virtual void OnCreatedParamsWidget( ParamsWidget* paramsWidget ) override;
 };

@@ -16,6 +16,7 @@ public:
 	void AddParam( const std::wstring& paramName, int& param, int min, int max );
 	void AddParam( const std::wstring& paramName, bool& param );
 
+
 	void OnUpdate();
 
 private:

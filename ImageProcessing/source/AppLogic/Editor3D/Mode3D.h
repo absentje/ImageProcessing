@@ -10,5 +10,6 @@ public:
 	virtual void Enable( bool value ) override;
 	virtual void UpdateData() = 0;
 
-
+protected:
+	
 };

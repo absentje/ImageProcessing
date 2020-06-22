@@ -2,6 +2,9 @@
 #include <AppLogic/SelectTools/Selectable.h>
 #include <GUI/ParamsWidget.h>
 #include <vlCore/glsl_math.hpp>
+#include <QFileDialog>
+#include <VLExtension/Util/FBX_Support/FbxResource.h>
+#include <codecvt>
 
 namespace
 {
@@ -12,7 +15,7 @@ constexpr int cMaxSliderValue = 1000;
 ///////////////////////////////////////////////////////////////
 // FloatParamWidget ///////////////////////////////////////////
 FloatParamWidget::FloatParamWidget( float& param, float min, float max, ParamsWidget* paramsWidget )
-	: QSlider( Qt::Orientation::Horizontal, paramsWidget ), effectWidget_( paramsWidget ),
+	: QSlider( Qt::Orientation::Horizontal, paramsWidget ), paramsWidget_( paramsWidget ),
 	param_( param ), min_( min ), max_( max )
 {
 	connect( this, SIGNAL( valueChanged( int ) ),
@@ -28,12 +31,12 @@ FloatParamWidget::FloatParamWidget( float& param, float min, float max, ParamsWi
 void FloatParamWidget::sliderValueChanged_( int value )
 {
 	param_ = vl::mix( min_, max_, float( value ) / float( cMaxSliderValue ) );
-	effectWidget_->OnUpdate();
+	paramsWidget_->OnUpdate();
 }
 ///////////////////////////////////////////////////////////////
 // IntParamWidget /////////////////////////////////////////////
 IntParamWidget::IntParamWidget( int& param, int min, int max, ParamsWidget* paramsWidget )
-	: QSlider( Qt::Orientation::Horizontal, paramsWidget ), effectWidget_( paramsWidget ),
+	: QSlider( Qt::Orientation::Horizontal, paramsWidget ), paramsWidget_( paramsWidget ),
 	param_( param ), min_( min ), max_( max )
 {
 	connect( this, SIGNAL( valueChanged( int ) ),
@@ -47,13 +50,13 @@ IntParamWidget::IntParamWidget( int& param, int min, int max, ParamsWidget* para
 void IntParamWidget::sliderValueChanged_( int value )
 {
 	param_ = value;
-	effectWidget_->OnUpdate();
+	paramsWidget_->OnUpdate();
 }
 
 ///////////////////////////////////////////////////////////////
 // BoolParamWidget /////////////////////////////////////////////
 BoolParamWidget::BoolParamWidget( bool& param, ParamsWidget* paramsWidget )
-	: QCheckBox( paramsWidget ), effectWidget_( paramsWidget ),
+	: QCheckBox( paramsWidget ), paramsWidget_( paramsWidget ),
 	param_( param )
 {
 	connect( this, SIGNAL( stateChanged( int ) ),
@@ -69,5 +72,68 @@ void BoolParamWidget::setValue_( bool value )
 void BoolParamWidget::checkBoxValueChanged_( int value )
 {
 	param_ = value;
-	effectWidget_->OnUpdate();
+	paramsWidget_->OnUpdate();
+}
+
+///////////////////////////////////////////////////////////////
+// FileParamWidget /////////////////////////////////////////////
+FileParamWidget::FileParamWidget( ParamsWidget* paramsWidget )
+	: QPushButton( paramsWidget ), paramsWidget_( paramsWidget )
+{
+	connect( this, &QPushButton::clicked,
+			 this, [this] { onClicked_(); } );
+
+	fileFilter_ = "All files (*.*)";
+}
+
+void FileParamWidget::SetFileFilter( const QString& fileFilter )
+{
+	fileFilter_ = fileFilter; // sample: "Images (*.png *.xpm *.jpg);;All files (*.*)"
+}
+
+void FileParamWidget::onClicked_()
+{
+	file_name_ = QFileDialog::getOpenFileName(	this,
+											QString::fromUtf8( "Open file" ),
+											QDir::currentPath(),
+											fileFilter_ ).toStdWString();
+	onFileNameChanged();
+	paramsWidget_->OnUpdate();
+}
+
+///////////////////////////////////////////////////////////////
+// TextureParamWidget /////////////////////////////////////////////
+TextureParamWidget::TextureParamWidget( vl::Texture& param, ParamsWidget* paramsWidget )
+	:	FileParamWidget( paramsWidget ),
+		tex_format_( vl::ETextureFormat::TF_RGBA ),
+		param_( param )
+{
+	SetFileFilter( "Images (*.png *.jpg *.bmp );;All files (*.*)" );
+}
+
+void TextureParamWidget::SetTextureFormat( vl::ETextureFormat format )
+{
+	tex_format_ = format;
+}
+
+void TextureParamWidget::onFileNameChanged()
+{
+	param_.createTexture2D( vl::loadImage( file_name_ ).get(), tex_format_ );
+}
+
+///////////////////////////////////////////////////////////////
+// GeometryParamWidget /////////////////////////////////////////////
+GeometryParamWidget::GeometryParamWidget( vl::Geometry& param, ParamsWidget* paramsWidget )
+	: FileParamWidget( paramsWidget ),
+	param_( param )
+{
+	SetFileFilter( "Images (*.png *.jpg *.bmp );;All files (*.*)" );
+}
+
+void GeometryParamWidget::onFileNameChanged()
+{
+	using WStringConverter = std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>;
+	FbxResource fbxFile;
+	fbxFile.LoadFile( WStringConverter().to_bytes( file_name_ ) );
+	param_.shallowCopyFrom( *fbxFile.GetGeometry( 0 ) );
 }
