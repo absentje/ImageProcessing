@@ -23,7 +23,6 @@ add_executable (ImageProcessing
 	"${GUI_DIR}/ParamWidget.cpp"
 	"${GUI_DIR}/SelectableListWidget.cpp"
 	"${GUI_DIR}/ImageProcessingModeWidget.cpp"
-	"${GUI_DIR}/Editor3DModeWidget.cpp"
 
 	# AppLogic_dir
 		# AppModes_dir

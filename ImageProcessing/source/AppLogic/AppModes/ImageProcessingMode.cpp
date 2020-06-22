@@ -97,5 +97,8 @@ void ImageProcessingMode::RenderImage()
 
 QWidget* ImageProcessingMode::CreateWidget( QWidget* parent )
 {
-    return new ImageProcessingModeWidget( parent, this );
+    auto widget = new ImageProcessingModeWidget( parent, imageEffectList_.get() );
+    widget->SetSaveImageCallback( [this] { SaveImage(); } );
+    widget->SetImageEffectListWidget( imageEffectList_->CreateWidget( widget ) );
+    return widget;
 }

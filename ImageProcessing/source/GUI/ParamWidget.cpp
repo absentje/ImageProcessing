@@ -127,7 +127,7 @@ GeometryParamWidget::GeometryParamWidget( vl::Geometry& param, ParamsWidget* par
 	: FileParamWidget( paramsWidget ),
 	param_( param )
 {
-	SetFileFilter( "Images (*.png *.jpg *.bmp );;All files (*.*)" );
+	SetFileFilter( "Geometries (*.fbx *.FBX );;All files (*.*)" );
 }
 
 void GeometryParamWidget::onFileNameChanged()

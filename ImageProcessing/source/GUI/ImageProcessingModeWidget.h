@@ -1,7 +1,8 @@
 #pragma once
 #include <QWidget>
+#include <functional>
 
-class ImageProcessingMode;
+class ImageEffectList;
 
 class QHBoxLayout;
 class QVBoxLayout;
@@ -16,13 +17,11 @@ class ImageProcessingModeWidget : public QWidget
 	Q_OBJECT
 
 public:
-	ImageProcessingModeWidget( QWidget* parent,
-                               ImageProcessingMode* imageProcessingMode );
-	~ImageProcessingModeWidget();
+	ImageProcessingModeWidget( QWidget* parent, ImageEffectList* imageEffectList );
+    void SetSaveImageCallback( std::function<void()> callback );
+    void SetImageEffectListWidget( QWidget* widget );
 
 private:
-    ImageProcessingMode* imageProcessingMode_;
-
     QVBoxLayout* subLayout_;
     QPushButton* saveImageButton_;
 };

@@ -12,7 +12,7 @@ public:
 	virtual void Enable( bool value ) {}
 	virtual QWidget* CreateWidget( QWidget* parent ) override;
 
-	Selectable* SelectableChanged( const std::wstring& selectable_name );
+	virtual Selectable* SelectableChanged( const std::wstring& selectable_name );
 
 protected:
 	void Add( Selectable* selectable );

@@ -12,24 +12,23 @@
 #include <QRadioButton>
 
 ImageProcessingModeWidget::ImageProcessingModeWidget( QWidget* parent,
-                                                      ImageProcessingMode* imageProcessingMode )
-	: QWidget( parent ),
-	imageProcessingMode_( imageProcessingMode )
+                                                      ImageEffectList* imageEffectList )
+	: QWidget( parent )
 {
-
     subLayout_ = new QVBoxLayout( this );
     setLayout( subLayout_ );
-
     saveImageButton_ = new QPushButton( "SaveImage", this );
-    connect( saveImageButton_, &QPushButton::clicked,
-             this, [this] { imageProcessingMode_->SaveImage(); } );
-
-    subLayout_->addWidget( imageProcessingMode_->imageEffectList_->CreateWidget( this ), 1 );
-    subLayout_->addStretch( 5 );
-    subLayout_->addWidget( saveImageButton_ );
-
 }
 
-ImageProcessingModeWidget::~ImageProcessingModeWidget()
+void ImageProcessingModeWidget::SetImageEffectListWidget( QWidget* widget )
 {
+    subLayout_->addWidget( widget, 1 );
+    subLayout_->addStretch( 5 );
+    subLayout_->addWidget( saveImageButton_ );
+}
+
+
+void ImageProcessingModeWidget::SetSaveImageCallback( std::function<void()> callback )
+{
+    connect( saveImageButton_, &QPushButton::clicked, this, callback );
 }

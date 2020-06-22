@@ -3,6 +3,7 @@
 #include <vlCore/Vector4.hpp>
 #include <AppLogic/AppModes/AppMode.h>
 #include <vlCore/String.hpp>
+#include <AppLogic/Editor3D/Mode3DList.h>
 
 class ImageEffectList;
 
@@ -24,4 +25,5 @@ public:
     virtual QWidget* CreateWidget( QWidget* parent ) override;
 
 private:
+    vl::ref<Mode3DList> mode3DList_;
 };

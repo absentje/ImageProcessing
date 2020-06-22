@@ -36,5 +36,4 @@ private:
     vl::ref<ImageEffectList> imageEffectList_;
 
     friend class ImageProcessingUIListener;
-    friend class ImageProcessingModeWidget;
 };
