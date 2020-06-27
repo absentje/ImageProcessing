@@ -109,6 +109,7 @@ TextureParamWidget::TextureParamWidget( vl::Texture& param, ParamsWidget* params
 		param_( param )
 {
 	SetFileFilter( "Images (*.png *.jpg *.bmp );;All files (*.*)" );
+	setText( "Load Texture" );
 }
 
 void TextureParamWidget::SetTextureFormat( vl::ETextureFormat format )
@@ -128,6 +129,7 @@ GeometryParamWidget::GeometryParamWidget( vl::Geometry& param, ParamsWidget* par
 	param_( param )
 {
 	SetFileFilter( "Geometries (*.fbx *.FBX );;All files (*.*)" );
+	setText( "Load FBX Geometry" );
 }
 
 void GeometryParamWidget::onFileNameChanged()
@@ -135,5 +137,8 @@ void GeometryParamWidget::onFileNameChanged()
 	using WStringConverter = std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>;
 	FbxResource fbxFile;
 	fbxFile.LoadFile( WStringConverter().to_bytes( file_name_ ) );
-	param_.shallowCopyFrom( *fbxFile.GetGeometry( 0 ) );
+
+	auto geom = fbxFile.GetGeometry( 0, { 0 } );
+	param_.deepCopyFrom( *geom );
+	param_.computeNormals();
 }
